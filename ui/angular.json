@@ -13,6 +13,12 @@
           "style": "scss"
         }
       },
+      "i18n": {
+        "sourceLocale": "en",
+        "locales": {
+          "zh": "src/locale/messages.zh.json"
+        }
+      },
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
@@ -27,16 +33,8 @@
                 "inlineCritical": false
               }
             },
-            "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              "src/logout-success-oauth.html"
-            ],
-            "styles": [
-              "node_modules/@clr/icons/clr-icons.css",
-              "node_modules/@clr/ui/clr-ui.css",
-              "src/styles.scss"
-            ],
+            "assets": ["src/favicon.ico", "src/assets", "src/logout-success-oauth.html"],
+            "styles": ["node_modules/@clr/icons/clr-icons.css", "node_modules/@clr/ui/clr-ui.css", "src/styles.scss"],
             "scripts": [
               "node_modules/@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js",
               "node_modules/@webcomponents/webcomponentsjs/webcomponents-bundle.js",
@@ -97,6 +95,9 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true
+            },
+            "zh": {
+              "localize": ["zh"]
             }
           },
           "defaultConfiguration": ""
@@ -110,6 +111,9 @@
           "configurations": {
             "production": {
               "browserTarget": "dataflow:build:production"
+            },
+            "zh": {
+              "browserTarget": "dataflow:build:zh"
             }
           }
         },
@@ -126,24 +130,15 @@
             "polyfills": "src/polyfills.ts",
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss"],
             "scripts": [],
-            "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              "src/logout-success-oauth.html"
-            ]
+            "assets": ["src/favicon.ico", "src/assets", "src/logout-success-oauth.html"]
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
-            "lintFilePatterns": [
-              "src/app/**/*.ts",
-              "src/app/**/*.html"
-            ]
+            "lintFilePatterns": ["src/app/**/*.ts", "src/app/**/*.html"]
           }
         }
       }
@@ -168,9 +163,7 @@
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "tsConfig": "e2e/tsconfig.e2e.json",
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "exclude": ["**/node_modules/**"]
           }
         }
       }

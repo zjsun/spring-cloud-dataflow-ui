@@ -6,7 +6,7 @@
 
   <a clrVerticalNavLink routerLink="apps" routerLinkActive="active">
     <clr-icon shape="applications" class="is-solid" clrVerticalNavIcon></clr-icon>
-    Applications
+    <ng-container i18n="@@nav.applications">Applications</ng-container>
   </a>
 
   <clr-vertical-nav-group
@@ -16,10 +16,14 @@
     appFeature="streams"
   >
     <clr-icon shape="cloud-scale" clrVerticalNavIcon></clr-icon>
-    Streams
+    <ng-container i18n="@@nav.streams">Streams</ng-container>
     <clr-vertical-nav-group-children>
-      <a clrVerticalNavLink routerLinkActive="active" routerLink="streams/list"> Streams </a>
-      <a clrVerticalNavLink routerLinkActive="active" routerLink="streams/runtime"> Runtime </a>
+      <a clrVerticalNavLink routerLinkActive="active" routerLink="streams/list" i18n="@@nav.streams.streams">
+        Streams
+      </a>
+      <a clrVerticalNavLink routerLinkActive="active" routerLink="streams/runtime" i18n="@@nav.streams.runtime">
+        Runtime
+      </a>
     </clr-vertical-nav-group-children>
   </clr-vertical-nav-group>
 
@@ -30,17 +34,34 @@
     appFeature="tasks"
   >
     <clr-icon shape="blocks-group" clrVerticalNavIcon></clr-icon>
-    Tasks / Jobs
+    <ng-container i18n="@@nav.tasks_jobs">Tasks / Jobs</ng-container>
     <clr-vertical-nav-group-children>
-      <a clrVerticalNavLink routerLinkActive="active" routerLink="tasks-jobs/tasks"> Tasks </a>
-      <a clrVerticalNavLink routerLinkActive="active" routerLink="tasks-jobs/task-executions"> Tasks executions </a>
-      <a clrVerticalNavLink routerLinkActive="active" routerLink="tasks-jobs/job-executions"> Jobs executions </a>
+      <a clrVerticalNavLink routerLinkActive="active" routerLink="tasks-jobs/tasks" i18n="@@nav.tasks_jobs.tasks">
+        Tasks
+      </a>
+      <a
+        clrVerticalNavLink
+        routerLinkActive="active"
+        routerLink="tasks-jobs/task-executions"
+        i18n="@@nav.tasks_jobs.task_executions"
+      >
+        Tasks executions
+      </a>
+      <a
+        clrVerticalNavLink
+        routerLinkActive="active"
+        routerLink="tasks-jobs/job-executions"
+        i18n="@@nav.tasks_jobs.jobs_executions"
+      >
+        Jobs executions
+      </a>
       <a
         clrVerticalNavLink
         routerLinkActive="active"
         routerLink="tasks-jobs/schedules"
         [appRole]="[]"
         appFeature="schedules"
+        i18n="@@nav.tasks_jobs.schedules"
       >
         Schedules
       </a>
@@ -49,15 +70,18 @@
 
   <clr-vertical-nav-group routerLinkActive="active" clrVerticalNavGroupExpanded="false">
     <clr-icon shape="briefcase" clrVerticalNavIcon></clr-icon>
-    Manage
+    <ng-container i18n="@@nav.manage">Manage</ng-container>
     <clr-vertical-nav-group-children>
-      <a clrVerticalNavLink routerLinkActive="active" routerLink="manage/records"> Audit Records </a>
+      <a clrVerticalNavLink routerLinkActive="active" routerLink="manage/records" i18n="@@nav.manage.audit_records">
+        Audit Records
+      </a>
       <a
         clrVerticalNavLink
         routerLinkActive="active"
         routerLink="manage/tools"
         [appRole]="[]"
         appFeature="streams,tasks"
+        i18n="@@nav.manage.tools"
       >
         Tools
       </a>

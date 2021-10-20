@@ -1,14 +1,15 @@
 <clr-signpost>
-  <a class="nav-link nav-icon" aria-label="settings" clrSignpostTrigger>
+  <a class="nav-link nav-icon" aria-label="settings" clrSignpostTrigger (click)="more()">
     <clr-icon shape="info-standard"></clr-icon>
   </a>
-  <clr-signpost-content #signpost class="signpost-about" clrPosition="bottom-left" *clrIfOpen>
-    <h3 style="margin-top: 0">Spring Cloud Data Flow</h3>
+  <clr-signpost-content #signpost class="signpost-about" clrPosition="bottom-left">
+    <h3 style="margin-top: 0" i18n="@@app.title">Spring Cloud Data Flow</h3>
     <p>
-      Data Flow Server Implementation<br />
-      <strong>Name</strong>: {{ about.versions.implementation.name || 'n/a' }}<br />
-      <strong>Version</strong>: {{ about.versions.implementation.version || 'n/a' }}<br />
-      <button class="btn btn-sm btn-primary" (click)="more()">More info</button>
+      <ng-container i18n="@@about.server.title">Data Flow Server Implementation</ng-container>
+      <br />
+      <strong i18n="@@about.server.name">Name</strong>: {{ about.versions.implementation.name || 'n/a' }}<br />
+      <strong i18n="@@about.server.version">Version</strong>: {{ about.versions.implementation.version || 'n/a' }}<br />
+      <button class="btn btn-sm btn-primary" (click)="more()" i18n="@@about.server.more">More info</button>
     </p>
     <ul>
       <ul>

@@ -1,7 +1,7 @@
 <h1 class="page-title">
   <span class="text-truncate">
-    Application <strong>{{ app.name }}</strong
-    >&nbsp;
+    <ng-container>Application</ng-container>
+    <strong>{{ app.name }}</strong>&nbsp;
     <span class="{{ app.labelTypeClass() }}">{{ app.type }}</span>
     <span *ngIf="defaultApp" class="label">{{ defaultApp.version }}</span>
   </span>

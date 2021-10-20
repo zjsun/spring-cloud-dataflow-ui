@@ -5,13 +5,13 @@
       <clr-icon shape="caret down"></clr-icon>
     </button>
     <clr-dropdown-menu *clrIfOpen clrPosition="bottom-right">
-      <a (click)="logout()" clrDropdownItem>Log out</a>
+      <a (click)="logout()" clrDropdownItem i18n="@@app.logout">Log out</a>
     </clr-dropdown-menu>
   </clr-dropdown>
 </div>
 
 <ng-template #logIn>
   <div>
-    <a href="/login" class="nav-link nav-icon-text"> Log In </a>
+    <a href="/login" class="nav-link nav-icon-text" i18n="@@app.login"> Log In </a>
   </div>
 </ng-template>

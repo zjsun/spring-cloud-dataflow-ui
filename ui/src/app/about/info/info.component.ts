@@ -1,4 +1,5 @@
 import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {LocaleService} from '../../shared/service/locale.service';
 import {AboutState} from '../../shared/store/about.reducer';
 import {AboutService} from '../../shared/api/about.service';
 import {NotificationService} from '../../shared/service/notification.service';
@@ -18,7 +19,8 @@ export class InfoComponent implements OnInit {
   constructor(
     private aboutService: AboutService,
     private clipboardCopyService: ClipboardCopyService,
-    private notificationService: NotificationService
+    private notificationService: NotificationService,
+    public locale: LocaleService
   ) {}
 
   ngOnInit(): void {

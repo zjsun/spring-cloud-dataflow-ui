@@ -28,6 +28,7 @@ import {TippyDirective} from './directive/tippy.directive';
 import {CapitalizePipe} from './pipe/capitalize.pipe';
 import {LocalStorageModule} from 'angular-2-local-storage';
 import {StreamDslComponent} from './component/stream-dsl/stream-dsl.component';
+import {LocaleService} from './service/locale.service';
 import {
   WavefrontRuntimeAppDirective,
   WavefrontRuntimeInstanceDirective,
