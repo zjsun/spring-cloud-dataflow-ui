@@ -1,5 +1,5 @@
 <h1 class="page-title-actions">
-  <ng-container i18n="@@apps.title">Applications</ng-container>
+  <ng-container i18n="@@apps.list.title">Applications</ng-container>
   <span class="actions">
     <button
       id="btnAddApplications"
@@ -8,7 +8,7 @@
       (click)="add()"
       [appRole]="['ROLE_CREATE']"
     >
-      <ng-container i18n="@@apps.add">Add application(s)</ng-container>
+      <ng-container i18n="@@apps.list.add">Add application(s)</ng-container>
     </button>
   </span>
 </h1>
@@ -36,7 +36,7 @@
       class="btn btn-sm btn-outline-danger"
       (click)="unregistersApp(selected)"
       [appRole]="['ROLE_DESTROY']"
-      i18n="@@apps.unregister"
+      i18n="@@apps.list.unregister"
     >
       Unregister application(s)
     </button>
@@ -48,7 +48,7 @@
       class="btn btn-sm btn-secondary"
       (click)="setMode(true)"
       [appRole]="['ROLE_DESTROY']"
-      i18n="@@apps.group_actions"
+      i18n="@@list.group_actions"
     >
       Group Actions
     </button>
@@ -57,7 +57,7 @@
       type="button"
       class="btn btn-sm btn-secondary"
       (click)="refresh(state)"
-      i18n="@@apps.refresh"
+      i18n="@@list.refresh"
     >
       Refresh
     </button>
@@ -152,7 +152,7 @@
       </button>
     </clr-dg-action-overflow>
   </clr-dg-row>
-  <clr-dg-placeholder i18n="@@apps.results.none">No results found.</clr-dg-placeholder>
+  <clr-dg-placeholder i18n="@@list.no_results">No results found.</clr-dg-placeholder>
   <clr-dg-footer>
     <clr-dg-pagination
       #pagination
@@ -160,12 +160,12 @@
       [clrDgPageSize]="+context.size"
       [clrDgPage]="+context.current"
     >
-      <clr-dg-page-size [clrPageSizeOptions]="[10, 20, 50, 100]" i18n="@@apps.pager.per"
-        >Applications per page</clr-dg-page-size
-      >
+      <clr-dg-page-size [clrPageSizeOptions]="[10, 20, 50, 100]">
+        <ng-container i18n="@@apps.title1">Applications</ng-container> <ng-container i18n="@@pager.per">per page</ng-container>
+      </clr-dg-page-size>
       {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }}
-      <ng-container i18n="@@apps.pager.of">of</ng-container> {{ page?.total }}
-      <ng-container i18n="@@apps.pager.object">applications</ng-container>
+      <ng-container i18n="@@pager.of">of</ng-container> {{ page?.total }}
+      <ng-container i18n="@@apps.title2">applications</ng-container>
     </clr-dg-pagination>
   </clr-dg-footer>
 </clr-datagrid>

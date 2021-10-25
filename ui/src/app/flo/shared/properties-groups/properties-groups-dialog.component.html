@@ -7,6 +7,7 @@
           type="search"
           class="clr-input"
           placeholder="Search properties ..."
+          i18n-placeholder="@@streams.deploy.builder.modal.group.search.placeholder"
           [(ngModel)]="searchFilterText"
           [ngModelOptions]="{standalone: true}"
         />
@@ -40,10 +41,13 @@
     </form>
   </div>
   <div class="modal-body app-properties" *ngIf="propertiesGroupModels.length === 0">
-    <div style="padding: 10px 0"><clr-spinner clrSmall clrInline></clr-spinner>&nbsp; Loading...</div>
+    <div style="padding: 10px 0">
+      <clr-spinner clrSmall clrInline></clr-spinner>&nbsp;
+      <ng-container i18n="@@streams.deploy.builder.modal.group.loading">Loading...</ng-container>
+    </div>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-default" (click)="handleCancel()">Cancel</button>
-    <button type="submit" class="btn btn-primary" (click)="handleOk()">Update</button>
+    <button type="button" class="btn btn-default" (click)="handleCancel()" i18n="@@modal.cancel">Cancel</button>
+    <button type="submit" class="btn btn-primary" (click)="handleOk()" i18n="@@streams.deploy.builder.modal.group.update">Update</button>
   </div>
 </clr-modal>

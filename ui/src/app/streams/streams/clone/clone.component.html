@@ -1,6 +1,6 @@
 <clr-modal [(clrModalOpen)]="isOpen" *ngIf="streams" [clrModalClosable]="!isRunning">
-  <h3 *ngIf="streams?.length === 1" class="modal-title">Clone Stream</h3>
-  <h3 *ngIf="streams?.length > 1" class="modal-title">Clone Streams</h3>
+  <h3 *ngIf="streams?.length === 1" class="modal-title" i18n="@@streams.modal.clone.confirm.title1">Clone Stream</h3>
+  <h3 *ngIf="streams?.length > 1" class="modal-title" i18n="@@streams.modal.clone.confirm.title2">Clone Streams</h3>
   <div class="modal-body" *ngIf="!isRunning && !loading">
     <form
       clrForm
@@ -10,14 +10,17 @@
       clrLabelSize="4"
       style="padding: 0; margin: 0"
     >
-      <div style="margin-bottom: 0">This action will create the following <strong>stream(s)</strong>:</div>
+      <div style="margin-bottom: 0">
+        <ng-container i18n="@@streams.modal.clone.confirm.text1">This action will create the following</ng-container>&nbsp;
+        <strong><ng-container i18n="@@streams.modal.clone.confirm.text2">stream(s)</ng-container></strong>:
+      </div>
       <div class="alert alert-danger" *ngIf="form?.hasError('uniqueStreamNames')">
         <div class="alert-items">
           <div class="alert-item static">
             <div class="alert-icon-wrapper">
               <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
             </div>
-            <div class="alert-text">Duplicate stream name, please check input names.</div>
+            <div class="alert-text" i18n="@@streams.modal.clone.confirm.text3">Duplicate stream name, please check input names.</div>
           </div>
         </div>
       </div>
@@ -30,7 +33,7 @@
             </div>
           </div>
           <clr-input-container style="margin-top: 0">
-            <label class="clr-col-12 clr-col-md-2">Name</label>
+            <label class="clr-col-12 clr-col-md-2" i18n="@@streams.modal.clone.name">Name</label>
             <input
               clrInput
               name="name"
@@ -40,14 +43,14 @@
               class="clr-col-12 clr-col-md-10"
               style="width: 100%"
             />
-            <clr-control-error *clrIfError="'required'"> Stream name is required. </clr-control-error>
-            <clr-control-error *clrIfError="'pattern'">
+            <clr-control-error *clrIfError="'required'" i18n="@@streams.modal.clone.name.required"> Stream name is required. </clr-control-error>
+            <clr-control-error *clrIfError="'pattern'" i18n="@@streams.modal.clone.name.pattern">
               Invalid stream name (no space or special charaters).
             </clr-control-error>
-            <clr-control-error *clrIfError="'maxLength'">
+            <clr-control-error *clrIfError="'maxLength'" i18n="@@streams.modal.clone.name.max_length">
               Stream name must be less than 255 characters long.
             </clr-control-error>
-            <clr-control-error *clrIfError="'uniqueStreamName'"> Stream name is already taken. </clr-control-error>
+            <clr-control-error *clrIfError="'uniqueStreamName'" i18n="@@streams.modal.clone.name.unique"> Stream name is already taken. </clr-control-error>
           </clr-input-container>
         </div>
       </div>
@@ -55,17 +58,17 @@
   </div>
   <div class="modal-body" *ngIf="isRunning">
     <clr-spinner clrInline clrSmall></clr-spinner>
-    Loading...
+    <ng-container i18n="@@streams.modal.clone.loading">Loading...</ng-container>
   </div>
   <div class="modal-body" *ngIf="isRunning">
     <clr-spinner clrInline clrSmall></clr-spinner>
-    Cloning stream(s)...
+    <ng-container i18n="@@streams.modal.clone.cloning">Cloning stream(s)...</ng-container>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline" (click)="isOpen = false" [disabled]="isRunning">Cancel</button>
     <button type="button" class="btn btn-primary" (click)="submit()" [disabled]="isRunning">
-      <span *ngIf="streams.length === 1">Clone the stream</span>
-      <span *ngIf="streams.length > 1">Clone the streams</span>
+      <span *ngIf="streams.length === 1" i18n="@@streams.modal.clone.confirm.text4">Clone the stream</span>
+      <span *ngIf="streams.length > 1" i18n="@@streams.modal.clone.confirm.text5">Clone the streams</span>
     </button>
   </div>
 </clr-modal>

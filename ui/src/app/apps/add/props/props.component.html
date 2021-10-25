@@ -1,44 +1,46 @@
 <p>
-  Enter the list of properties into the text area field below.<br />
-  Alternatively, you can also select a file in your local file system, which is used to populate the text area field.
+  <ng-container i18n="@@apps.add.props.desc1">Enter the list of properties into the text area field below.</ng-container><br />
+  <ng-container i18n="@@apps.add.props.desc2">
+    Alternatively, you can also select a file in your local file system, which is used to populate the text area field.
+  </ng-container>
 </p>
 
 <form role="form" (ngSubmit)="submit()" clrForm [formGroup]="form" clrLayout="horizontal" clrLabelSize="4">
   <clr-control-container class="key-value-wrapper">
-    <label class="clr-col-md-1">Apps as Properties</label>
+    <label class="clr-col-md-1" i18n="@@apps.add.props.form.props">Apps as Properties</label>
     <app-key-value [validators]="validators" clrControl formControlName="properties" [kvFocus]="true"></app-key-value>
     <clr-control-helper>
-      Example:<br />
-      <pre><code>task.timestamp=maven://o.s.cloud.task.app:timestamp-task:1.2.3.RELEASE
+      <ng-container i18n="@@apps.add.props.form.props.helper1">Example:</ng-container><br />
+      <pre><code i18n="@@apps.add.props.form.props.helper2">task.timestamp=maven://o.s.cloud.task.app:timestamp-task:1.2.3.RELEASE
 task.spark-client=maven://o.s.cloud.task.app:spark-client-task:1.2.3.RELEASE</code></pre>
     </clr-control-helper>
     <clr-control-error>
-      One or more application(s) are required.<br />Example:
-      <code>task.timestamp=maven://o.s.cloud.task.app:timestamp-task:1.2.3.RELEASE</code>
+      <ng-container i18n="@@apps.add.props.form.props.error1">One or more application(s) are required.</ng-container>
+      <br /><ng-container i18n="@@apps.add.props.form.props.error2">Example:</ng-container>
+      <code i18n="@@apps.add.props.form.props.error3">task.timestamp=maven://o.s.cloud.task.app:timestamp-task:1.2.3.RELEASE</code>
     </clr-control-error>
   </clr-control-container>
 
   <clr-checkbox-container>
     <clr-checkbox-wrapper>
       <input formControlName="force" type="checkbox" clrCheckbox value="false" name="force" />
-      <label
-        >Force, the applications will be imported and installed even if it already exists but only if not being used
+      <label i18n="@@apps.add.props.form.props.force">Force, the applications will be imported and installed even if it already exists but only if not being used
         already.</label
       >
     </clr-checkbox-wrapper>
   </clr-checkbox-container>
   <div class="clr-accordion-footer">
-    <button class="btn btn-secondary" type="button" (click)="back()">Cancel</button>
-    <button class="btn btn-primary" type="submit">Import Application(s)</button>
+    <button class="btn btn-secondary" type="button" (click)="back()" i18n="@@modal.cancel">Cancel</button>
+    <button class="btn btn-primary" type="submit" i18n="@@apps.add.props.form.submit">Import Application(s)</button>
   </div>
 </form>
 
 <clr-modal [(clrModalOpen)]="isImporting" *ngIf="isImporting" clrModalClosable="false" clrModalSize="md">
-  <h3 class="modal-title">Import application(s)</h3>
+  <h3 class="modal-title" i18n="@@apps.add.props.modal.title">Import application(s)</h3>
   <div class="modal-body">
-    <div><clr-spinner clrInline clrSmall></clr-spinner>&nbsp; Importing application(s)...</div>
+    <div><clr-spinner clrInline clrSmall></clr-spinner>&nbsp; <ng-container i18n="@@apps.add.props.modal.registering">Importing application(s)...</ng-container></div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-default" [disabled]="true">Cancel</button>
+      <button type="button" class="btn btn-default" [disabled]="true" i18n="@@modal.cancel">Cancel</button>
     </div>
   </div>
 </clr-modal>

@@ -1,26 +1,29 @@
 <clr-modal [(clrModalOpen)]="isOpen" *ngIf="apps" [clrModalClosable]="!isRunning">
-  <h3 *ngIf="apps?.length === 1" class="modal-title">Confirm Unregister Application</h3>
-  <h3 *ngIf="apps?.length > 1" class="modal-title">Confirm Unregister Applications</h3>
+  <h3 *ngIf="apps?.length === 1" class="modal-title" i18n="@@apps.modal.unregister.title1">Confirm Unregister Application</h3>
+  <h3 *ngIf="apps?.length > 1" class="modal-title" i18n="@@apps.modal.unregister.title2">Confirm Unregister Applications</h3>
   <div class="modal-body" *ngIf="apps.length === 1 && !isRunning">
-    This action will unregister and delete application
-    <u
-      ><strong>{{ apps[0].name }}</strong></u
-    >
-    of type <span class="{{ apps[0].labelTypeClass() }}">{{ apps[0].type }}</span
-    >. Are you sure?
+    <ng-container i18n="@@apps.modal.unregister.text1">This action will unregister and delete application</ng-container>
+    <u><strong>{{ apps[0].name }}</strong></u>
+    <ng-container i18n="@@apps.modal.unregister.text2">of type</ng-container>&nbsp;
+    <span class="{{ apps[0].labelTypeClass() }}">{{ apps[0].type }}</span>
+    <ng-container i18n="@@apps.modal.unregister.text3">. Are you sure?</ng-container>
   </div>
   <div class="modal-body" *ngIf="apps?.length > 1 && !isRunning">
-    This action will unregister and delete the
-    <u
-      ><strong>{{ apps.length }} application{{ apps?.length > 1 ? 's' : '' }}</strong></u
-    >
-    listed below.<br />Are you sure?
+    <ng-container i18n="@@apps.modal.unregister.text4">This action will unregister and delete the</ng-container>
+    <u>
+      <strong>{{ apps.length }}&nbsp;
+        <ng-container *ngIf="apps.length > 1" i18n="@@apps.modal.unregister.text5">applications</ng-container>
+        <ng-container *ngIf="apps.length <= 1" i18n="@@apps.modal.unregister.text6">application</ng-container>
+      </strong>
+    </u>
+    <ng-container i18n="@@apps.modal.unregister.text7">listed below.</ng-container><br />
+    <ng-container i18n="@@apps.modal.unregister.text8">Are you sure?</ng-container>
     <br />
     <table class="table table-striped">
       <thead>
         <tr>
-          <th class="left">Name</th>
-          <th class="left">Type</th>
+          <th class="left" i18n="@@apps.modal.unregister.col.name">Name</th>
+          <th class="left" i18n="@@apps.modal.unregister.col.type">Type</th>
         </tr>
       </thead>
       <tbody>
@@ -37,13 +40,13 @@
   </div>
   <div class="modal-body" *ngIf="isRunning">
     <clr-spinner clrInline clrSmall></clr-spinner>
-    Unregistering application(s) ...
+    <ng-container i18n="@@apps.modal.unregister.unregistering">Unregistering application(s) ...</ng-container>
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-outline" [disabled]="isRunning" (click)="isOpen = false">Cancel</button>
     <button type="button" class="btn btn-danger" (click)="unregister()" [disabled]="isRunning">
-      <span *ngIf="apps.length === 1">Unregister the application</span>
-      <span *ngIf="apps.length > 1">Unregister the applications</span>
+      <span *ngIf="apps.length <= 1" i18n="@@apps.modal.unregister.text9">Unregister the application</span>
+      <span *ngIf="apps.length > 1" i18n="@@apps.modal.unregister.text10">Unregister the applications</span>
     </button>
   </div>
 </clr-modal>

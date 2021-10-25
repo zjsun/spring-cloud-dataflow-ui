@@ -1,7 +1,7 @@
 <clr-modal [(clrModalOpen)]="isOpen" clrModalSize="lg" class="modal-fixed modal-properties">
   <div class="modal-title">
     <h3 *ngIf="app" style="margin-top: 0.2rem">
-      Properties for <strong>{{ app.name }}</strong>
+      <ng-container i18n="@@streams.deploy.builder.modal.properties.text1">Properties for</ng-container>&nbsp;<strong>{{ app.name }}</strong>
       <span class="{{ app.labelTypeClass() }}">{{ typeString }}</span>
       <span class="label" *ngIf="app.version"
         ><span>{{ app.version }}</span></span
@@ -52,11 +52,14 @@
   </div>
 
   <div class="modal-body app-properties" *ngIf="!propertiesGroupModel || propertiesGroupModel.isLoading">
-    <div style="padding: 10px 0"><clr-spinner clrSmall clrInline></clr-spinner>&nbsp; Loading...</div>
+    <div style="padding: 10px 0">
+      <clr-spinner clrSmall clrInline></clr-spinner>&nbsp;
+      <ng-container i18n="@@streams.deploy.builder.modal.properties.loading">Loading...</ng-container>
+    </div>
   </div>
 
   <div class="modal-footer">
-    <button type="button" class="btn btn-default" (click)="handleCancel()">Cancel</button>
-    <button type="submit" class="btn btn-primary" (click)="handleOk()">Update</button>
+    <button type="button" class="btn btn-default" (click)="handleCancel()" i18n="@@modal.cancel">Cancel</button>
+    <button type="submit" class="btn btn-primary" (click)="handleOk()" i18n="@@streams.deploy.builder.modal.properties.update">Update</button>
   </div>
 </clr-modal>

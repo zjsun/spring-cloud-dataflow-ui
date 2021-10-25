@@ -1,5 +1,5 @@
 <form [formGroup]="formGroup" (submit)="deployStream()">
-  <p>
+  <p i18n="@@streams.deploy.freetext.text1">
     Enter the list of properties into the text area field below. Alternatively, you can also select a file in your local
     file system, which is used to populate the text area field.
   </p>
@@ -32,28 +32,27 @@
             type="file"
             #propertiesFile
             (change)="fileChange($event)"
+            i18n="@@streams.deploy.freetext.form.import"
           />
           Import a local file
         </button>
         <clr-tooltip-content clrPosition="top-right" clrSize="lg" *clrIfOpen>
-          <span
-            >Please provide a text file containing properties. This will be used to populate the text area above.</span
-          >
+          <span i18n="@@streams.deploy.freetext.form.import.file.tooltip">Please provide a text file containing properties. This will be used to populate the text area above.</span>
         </clr-tooltip-content>
       </clr-tooltip>
 
-      <button id="btn-export" type="button" class="btn btn-sm btn btn-secondary" (click)="exportProps()">Export</button>
-      <button id="btn-copy" type="button" class="btn btn-sm btn btn-secondary" (click)="copyToClipboard()">
+      <button id="btn-export" type="button" class="btn btn-sm btn btn-secondary" (click)="exportProps()" i18n="@@streams.deploy.freetext.form.export">Export</button>
+      <button id="btn-copy" type="button" class="btn btn-sm btn btn-secondary" (click)="copyToClipboard()" i18n="@@streams.deploy.freetext.form.copy">
         Copy to Clipboard
       </button>
     </div>
   </div>
 
   <div>
-    <a id="btn-cancel" class="btn btn-default" routerLink="/streams/list">Cancel</a>
+    <a id="btn-cancel" class="btn btn-default" routerLink="/streams/list" i18n="@@modal.cancel">Cancel</a>
     <button id="btn-deploy" type="submit" class="btn btn-primary">
-      <span *ngIf="!isDeployed">Deploy the stream</span>
-      <span *ngIf="isDeployed">Update the stream</span>
+      <span *ngIf="!isDeployed" i18n="@@streams.deploy.freetext.deploy">Deploy the stream</span>
+      <span *ngIf="isDeployed" i18n="@@streams.deploy.freetext.update">Update the stream</span>
     </button>
   </div>
 </form>

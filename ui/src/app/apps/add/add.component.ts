@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import { LocaleService } from '../../shared/service/locale.service';
 
 @Component({
   selector: 'app-add',
@@ -6,5 +7,5 @@ import {Component} from '@angular/core';
   styleUrls: ['./add.component.scss']
 })
 export class AddComponent {
-  constructor() {}
+  constructor(public locale: LocaleService) {}
 }
