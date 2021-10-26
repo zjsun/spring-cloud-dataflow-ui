@@ -4,8 +4,8 @@
     <button type="button" class="btn btn-sm btn-primary" (click)="create()" [appRole]="['ROLE_CREATE']" i18n="@@streams.list.create">
       Create stream(s)
     </button>
-    <button type="button" class="btn btn-sm btn-secondary" grafanaDashboardStreams i18n="@@streams.list.grafana">Grafana Dashboard</button>
-    <button type="button" class="btn btn-sm btn-secondary" wavefrontDashboardStreams i18n="@@streams.list.wavefront">Wavefront Dashboard</button>
+    <button type="button" class="btn btn-sm btn-secondary" grafanaDashboardStreams i18n="@@grafana.dashboard">Grafana Dashboard</button>
+    <button type="button" class="btn btn-sm btn-secondary" wavefrontDashboardStreams i18n="@@wavefront.dashboard">Wavefront Dashboard</button>
   </span>
 </h1>
 
@@ -154,8 +154,8 @@
       </button>
       <button class="action-item" (click)="destroy([stream])" [appRole]="['ROLE_DESTROY']" i18n="@@streams.list.row.destroy">Destroy</button>
       <button class="action-item" (click)="clone([stream])" [appRole]="['ROLE_CREATE']" i18n="@@streams.list.row.clone">Clone</button>
-      <button class="action-item" grafanaDashboardStream [stream]="stream" i18n="@@streams.list.row.grafana">Grafana Dashboard</button>
-      <button class="action-item" wavefrontDashboardStream [stream]="stream" i18n="@@streams.list.row.wavefront">Wavefront Dashboard</button>
+      <button class="action-item" grafanaDashboardStream [stream]="stream" i18n="@@grafana.dashboard">Grafana Dashboard</button>
+      <button class="action-item" wavefrontDashboardStream [stream]="stream" i18n="@@wavefront.dashboard">Wavefront Dashboard</button>
     </clr-dg-action-overflow>
     <ng-template
       [clrIfExpanded]="expanded[stream.name]"

@@ -1,5 +1,5 @@
 <form [formGroup]="formGroup" (submit)="launchTask()">
-  <p>Enter the list of properties into the text area field below.</p>
+  <p i18n="@@tasks.freetext.text1">Enter the list of properties into the text area field below.</p>
   <div class="form-textarea">
     <div class="numbers">
       <ng-template ngFor let-item [ngForOf]="plines">
@@ -28,23 +28,21 @@
             #propertiesFile
             (change)="propertiesFileChange($event)"
           />
-          Import a local file
+          <ng-container i18n="@@tasks.freetext.import">Import a local file</ng-container>
         </button>
         <clr-tooltip-content clrPosition="top-right" clrSize="lg" *clrIfOpen>
-          <span
-            >Please provide a text file containing properties. This will be used to populate the text area above.</span
-          >
+          <span i18n="@@tasks.freetext.text2">Please provide a text file containing properties. This will be used to populate the text area above.</span>
         </clr-tooltip-content>
       </clr-tooltip>
 
-      <button id="btn-export" type="button" class="btn btn-sm btn btn-secondary" (click)="exportProps()">Export</button>
-      <button id="btn-copy" type="button" class="btn btn-sm btn btn-secondary" (click)="copyPropsToClipboard()">
+      <button id="btn-export" type="button" class="btn btn-sm btn btn-secondary" (click)="exportProps()" i18n="@@tasks.freetext.export">Export</button>
+      <button id="btn-copy" type="button" class="btn btn-sm btn btn-secondary" (click)="copyPropsToClipboard()" i18n="@@tasks.freetext.copy">
         Copy to Clipboard
       </button>
     </div>
   </div>
 
-  <p>Enter the list of arguments into the text area field below.</p>
+  <p i18n="@@tasks.freetext.text3">Enter the list of arguments into the text area field below.</p>
   <div class="form-textarea">
     <div class="numbers">
       <ng-template ngFor let-item [ngForOf]="alines">
@@ -73,26 +71,24 @@
             #argumentsFile
             (change)="argumentsFileChange($event)"
           />
-          Import a local file
+          <ng-container i18n="@@tasks.freetext.import">Import a local file</ng-container>
         </button>
         <clr-tooltip-content clrPosition="top-right" clrSize="lg" *clrIfOpen>
-          <span
-            >Please provide a text file containing arguments. This will be used to populate the text area above.</span
-          >
+          <span i18n="@@tasks.freetext.text4">Please provide a text file containing arguments. This will be used to populate the text area above.</span>
         </clr-tooltip-content>
       </clr-tooltip>
 
-      <button id="btn-export" type="button" class="btn btn-sm btn btn-secondary" (click)="exportProps()">Export</button>
-      <button id="btn-copy" type="button" class="btn btn-sm btn btn-secondary" (click)="copyArgsToClipboard()">
+      <button id="btn-export" type="button" class="btn btn-sm btn btn-secondary" (click)="exportProps()" i18n="@@tasks.freetext.export">Export</button>
+      <button id="btn-copy" type="button" class="btn btn-sm btn btn-secondary" (click)="copyArgsToClipboard()" i18n="@@tasks.freetext.copy">
         Copy to Clipboard
       </button>
     </div>
   </div>
 
   <div>
-    <a id="btn-cancel" class="btn btn-default" routerLink="/tasks-jobs/tasks">Cancel</a>
+    <a id="btn-cancel" class="btn btn-default" routerLink="/tasks-jobs/tasks" i18n="@@modal.cancel">Cancel</a>
     <button id="btn-deploy" type="submit" class="btn btn-primary">
-      <span>Launch Task</span>
+      <span i18n="@@tasks.freetext.submit">Launch Task</span>
     </button>
   </div>
 </form>

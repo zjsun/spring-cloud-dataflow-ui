@@ -103,8 +103,8 @@
       <button class="action-item" (click)="cleanup([execution])" [appRole]="['ROLE_DESTROY']">
         Clean up task execution
       </button>
-      <button class="action-item" grafanaDashboardTaskExecution [taskExecution]="execution">Grafana Dashboard</button>
-      <button class="action-item" wavefrontDashboardTaskExecution [taskExecution]="execution">
+      <button class="action-item" grafanaDashboardTaskExecution [taskExecution]="execution" i18n="@@grafana.dashboard">Grafana Dashboard</button>
+      <button class="action-item" wavefrontDashboardTaskExecution [taskExecution]="execution" i18n="@@wavefront.dashboard">
         Wavefront Dashboard
       </button>
     </clr-dg-action-overflow>

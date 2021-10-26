@@ -95,7 +95,7 @@
             <!-- 6 -->
             <div *ngIf="state.specificPlatform">
               <div *ngIf="builder.builderDeploymentProperties.global.length > 0" class="line-body">
-                <div class="form-control form-control-label">Properties</div>
+                <div class="form-control form-control-label" i18n="@@streams.deploy.builder.specific.properties">Properties</div>
               </div>
             </div>
             <div *ngIf="state.specificPlatform" formArrayName="specificPlatform">
@@ -121,6 +121,7 @@
                 <input
                   tabindex="{{ 50 + i }}"
                   placeholder="Enter a value"
+                  i18n-placeholder="@@input.placeholder.value"
                   class="clr-input"
                   formControlName="property"
                   type="text"
@@ -176,6 +177,7 @@
                   <input
                     tabindex="{{ 102 + i }}"
                     placeholder="Enter a value"
+                    i18n-placeholder="@@input.placeholder.value"
                     class="clr-input"
                     formControlName="property"
                     type="text"
@@ -202,7 +204,7 @@
             >
               <div class="clr-select-wrapper">
                 <select tabindex="1" formControlName="platform" class="clr-select">
-                  <option value="">Select a value</option>
+                  <option value="" i18n="@@select.placeholder">Select a value</option>
                   <option *ngFor="let platform of builder.streamDeployConfig.platform.values" [value]="platform.key">
                     {{ platform.name }}
                     ({{ platform.type }})
@@ -236,7 +238,7 @@
                 <input
                   tabindex="{{ 2 + i }}"
                   placeholder="Enter a number"
-                  i18n-placeholder="@@streams.deploy.builder.col.name.placeholder"
+                  i18n-placeholder="@@input.placeholder.number"
                   formControlName="global"
                   class="clr-input"
                   [class.form-control-number]="deployer.suffix"
@@ -280,7 +282,7 @@
                 <input
                   tabindex="{{ 50 + i }}"
                   placeholder="Enter a value"
-                  i18n-placeholder="@@streams.deploy.builder.col.value.placeholder"
+                  i18n-placeholder="@@input.placeholder.value"
                   class="clr-input"
                   formControlName="global"
                   type="text"
@@ -305,7 +307,7 @@
                   <input
                     tabindex="{{ 102 + i }}"
                     placeholder="Enter a value"
-                    i18n-placeholder="@@streams.deploy.builder.col.value.placeholder"
+                    i18n-placeholder="@@input.placeholder.value"
                     class="clr-input"
                     formControlName="global"
                     type="text"
@@ -346,7 +348,7 @@
                   <input
                     tabindex="{{ 2 + i }}"
                     placeholder="Enter a number"
-                    i18n-placeholder="@@streams.deploy.builder.col.number.placeholder"
+                    i18n-placeholder="@@input.placeholder.number"
                     [formControlName]="app.name"
                     class="clr-input"
                     [class.form-control-number]="deployer.suffix"
@@ -391,7 +393,7 @@
                   <input
                     tabindex="{{ 50 + i }}"
                     placeholder="Enter a value"
-                    i18n-placeholder="@@streams.deploy.builder.col.value.placeholder"
+                    i18n-placeholder="@@input.placeholder.value"
                     class="clr-input"
                     [formControlName]="app.name"
                     type="text"
@@ -467,7 +469,7 @@
                     <input
                       tabindex="{{ 102 + i }}"
                       placeholder="Enter a value"
-                      i18n-placeholder="@@streams.deploy.builder.col.value.placeholder"
+                      i18n-placeholder="@@input.placeholder.value"
                       class="clr-input"
                       [formControlName]="app.name"
                       type="text"
@@ -501,7 +503,7 @@
           </button>
         </div>
         <div>
-          <a tabindex="200" id="btn-cancel" class="btn btn-default" routerLink="/streams/list">Cancel</a>
+          <a tabindex="200" id="btn-cancel" class="btn btn-default" routerLink="/streams/list" i18n="@@modal.cancel">Cancel</a>
           <button tabindex="200" id="btn-deploy-builder" type="submit" class="btn btn-primary">
             <span *ngIf="!isDeployed" i18n="@@streams.deploy.builder.deploy">Deploy stream</span>
             <span *ngIf="isDeployed" i18n="@@streams.deploy.builder.update">Update stream</span>

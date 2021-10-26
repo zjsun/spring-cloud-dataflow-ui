@@ -33,6 +33,7 @@ import {PropertiesDialogComponent} from '../../shared/properties/properties-dial
         (onProperties)="handleLinkEvent($event)"
         (validationMarkers)="markersFromGraphChanged($event)"
         searchFilterPlaceHolder="Search for applications..."
+        i18n-searchFilterPlaceHolder="@@streams.builder.create.search.placeholder"
       >
         <div header class="flow-definition-container">
           <dsl-editor
@@ -41,6 +42,7 @@ import {PropertiesDialogComponent} from '../../shared/properties/properties-dial
             line-wrapping="true"
             (focus)="editorContext.graphToTextSync = false"
             placeholder="Enter stream definition..."
+            i18n-placeholder="@@streams.builder.create.dsl_editor.placeholder"
             (blur)="editorContext.graphToTextSync = true"
             [hintOptions]="hintOptions"
             [lintOptions]="lintOptions"
@@ -81,10 +83,13 @@ import {PropertiesDialogComponent} from '../../shared/properties/properties-dial
           <clr-icon shape="plus-circle"></clr-icon>
         </button>
         <div class="divider"></div>
-        <button (click)="arrangeAll()" class="btn btn-sm btn-secondary" type="button">Fit to Content</button>
+        <button (click)="arrangeAll()" class="btn btn-sm btn-secondary" type="button" i18n="@@streams.builder.create.dsl_editor.fit_to_content">Fit to Content</button>
       </div>
       <div class="overlay-loader" *ngIf="!isReady">
-        <div style="padding: 10px 0;"><clr-spinner clrSmall clrInline></clr-spinner>&nbsp; Loading editor...</div>
+        <div style="padding: 10px 0;">
+          <clr-spinner clrSmall clrInline></clr-spinner>&nbsp;
+          <ng-container i18n="@@streams.builder.create.dsl_editor.loading">Loading editor...</ng-container>
+        </div>
       </div>
       <app-properties-dialog-content #propertiesDialog></app-properties-dialog-content>
     </div>

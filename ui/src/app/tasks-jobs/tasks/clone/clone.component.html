@@ -1,6 +1,6 @@
 <clr-modal [(clrModalOpen)]="isOpen" *ngIf="tasks" [clrModalClosable]="!isRunning">
-  <h3 *ngIf="tasks?.length === 1" class="modal-title">Clone Task</h3>
-  <h3 *ngIf="tasks?.length > 1" class="modal-title">Clone Tasks</h3>
+  <h3 *ngIf="tasks?.length === 1" class="modal-title" i18n="@@tasks.modal.clone.title1">Clone Task</h3>
+  <h3 *ngIf="tasks?.length > 1" class="modal-title" i18n="@@tasks.modal.clone.title2">Clone Tasks</h3>
   <div class="modal-body" *ngIf="!isRunning && !loading">
     <form
       clrForm
@@ -10,14 +10,17 @@
       clrLabelSize="4"
       style="padding: 0; margin: 0"
     >
-      <div style="margin-bottom: 0">This action will create the following <strong>task(s)</strong>:</div>
+      <div style="margin-bottom: 0">
+        <ng-container i18n="@@tasks.modal.clone.text1">This action will create the following</ng-container>&nbsp;
+        <strong i18n="@@tasks.modal.clone.text2">task(s)</strong>:
+      </div>
       <div class="alert alert-danger" *ngIf="form?.hasError('uniqueTaskNames')">
         <div class="alert-items">
           <div class="alert-item static">
             <div class="alert-icon-wrapper">
               <clr-icon class="alert-icon" shape="exclamation-circle"></clr-icon>
             </div>
-            <div class="alert-text">Duplicate task name, please check input names.</div>
+            <div class="alert-text" i18n="@@tasks.modal.clone.form.name.error">Duplicate task name, please check input names.</div>
           </div>
         </div>
       </div>
@@ -30,7 +33,7 @@
             </div>
           </div>
           <clr-input-container style="margin-top: 0">
-            <label class="clr-col-12 clr-col-md-2">Name</label>
+            <label class="clr-col-12 clr-col-md-2" i18n="@@tasks.modal.clone.form.name">Name</label>
             <input
               clrInput
               name="name"
@@ -40,14 +43,14 @@
               class="clr-col-12 clr-col-md-10"
               style="width: 100%"
             />
-            <clr-control-error *clrIfError="'required'"> Task name is required. </clr-control-error>
-            <clr-control-error *clrIfError="'pattern'">
+            <clr-control-error *clrIfError="'required'" i18n="@@tasks.modal.clone.form.name.error.required"> Task name is required. </clr-control-error>
+            <clr-control-error *clrIfError="'pattern'" i18n="@@tasks.modal.clone.form.name.error.pattern">
               Invalid task name (no space or special charaters).
             </clr-control-error>
-            <clr-control-error *clrIfError="'maxLength'">
+            <clr-control-error *clrIfError="'maxLength'" i18n="@@tasks.modal.clone.form.name.error.length">
               Task name must be less than 255 characters long.
             </clr-control-error>
-            <clr-control-error *clrIfError="'uniqueTaskName'"> Task name is already taken. </clr-control-error>
+            <clr-control-error *clrIfError="'uniqueTaskName'" i18n="@@tasks.modal.clone.form.name.error.unique"> Task name is already taken. </clr-control-error>
           </clr-input-container>
         </div>
       </div>
@@ -55,17 +58,17 @@
   </div>
   <div class="modal-body" *ngIf="isRunning">
     <clr-spinner clrInline clrSmall></clr-spinner>
-    Loading...
+    <ng-container i18n="@@tasks.modal.clone.loading">Loading...</ng-container>
   </div>
   <div class="modal-body" *ngIf="isRunning">
     <clr-spinner clrInline clrSmall></clr-spinner>
-    Cloning task(s)...
+    <ng-container i18n="@@tasks.modal.clone.cloning">Cloning task(s)...</ng-container>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline" (click)="isOpen = false" [disabled]="isRunning">Cancel</button>
+    <button type="button" class="btn btn-outline" (click)="isOpen = false" [disabled]="isRunning" i18n="@@modal.cancel">Cancel</button>
     <button type="button" class="btn btn-primary" (click)="submit()" [disabled]="isRunning">
-      <span *ngIf="tasks.length === 1">Clone the task</span>
-      <span *ngIf="tasks.length > 1">Clone the tasks</span>
+      <span *ngIf="tasks.length === 1" i18n="@@tasks.modal.clone.submit1">Clone the task</span>
+      <span *ngIf="tasks.length > 1" i18n="@@tasks.modal.clone.submit2">Clone the tasks</span>
     </button>
   </div>
 </clr-modal>

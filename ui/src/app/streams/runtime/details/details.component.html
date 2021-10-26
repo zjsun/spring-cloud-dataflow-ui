@@ -1,13 +1,12 @@
 <clr-modal [(clrModalOpen)]="isOpen" *ngIf="runtimeApp" [clrModalSize]="'lg'">
   <h3 class="modal-title">
-    Instances for app
-    <strong>{{ runtimeApp.deploymentId }}</strong
-    >&nbsp;
+    <ng-container i18n="@@streams.runtime.stream.detail.title">Instances for app</ng-container>
+    <strong>{{ runtimeApp.deploymentId }}</strong>&nbsp;
     <span class="{{ runtimeApp.stateColor() }}">{{ runtimeApp.state }}</span>
-    <button class="btn btn-sm btn-secondary" grafanaDashboardRuntimeApp [runtimeApp]="runtimeApp">
+    <button class="btn btn-sm btn-secondary" grafanaDashboardRuntimeApp [runtimeApp]="runtimeApp" i18n="@@grafana.dashboard">
       Grafana dashboard
     </button>
-    <button class="btn btn-sm btn-secondary" wavefrontDashboardRuntimeApp [runtimeApp]="runtimeApp">
+    <button class="btn btn-sm btn-secondary" wavefrontDashboardRuntimeApp [runtimeApp]="runtimeApp" i18n="@@wavefront.dashboard">
       Wavefront dashboard
     </button>
   </h3>
@@ -15,14 +14,14 @@
     <ng-template ngFor let-item [ngForOf]="runtimeApp.appInstances">
       <div>
         <h4>
-          Instance
+          <ng-container i18n="@@streams.runtime.stream.detail.instance">Instance</ng-container>&nbsp;
           <strong>{{ item.instanceId }}</strong
           >&nbsp;
           <span class="{{ item.stateColor() }}">{{ item.state }}</span>
-          <button class="btn btn-sm btn-secondary" grafanaDashboardRuntimeInstance [instance]="item">
+          <button class="btn btn-sm btn-secondary" grafanaDashboardRuntimeInstance [instance]="item" i18n="@@grafana.dashboard">
             Grafana dashboard
           </button>
-          <button class="btn btn-sm btn-secondary" wavefrontDashboardRuntimeInstance [instance]="item">
+          <button class="btn btn-sm btn-secondary" wavefrontDashboardRuntimeInstance [instance]="item" i18n="@@wavefront.dashboard">
             Wavefront dashboard
           </button>
         </h4>
@@ -48,6 +47,6 @@
     </ng-template>
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-outline" (click)="isOpen = false">Close</button>
+    <button type="button" class="btn btn-outline" (click)="isOpen = false" i18n="@@modal.close">Close</button>
   </div>
 </clr-modal>

@@ -30,6 +30,7 @@ import {TaskGraphPropertiesSource} from '../properties/task-properties-source';
         (validationMarkers)="validationMarkers = $event"
         (onProperties)="handleLinkEvent($event)"
         searchFilterPlaceHolder="Applications"
+        i18n-searchFilterPlaceHolder="@@tasks.builder.create.search.placeholder"
       >
         <div header class="flow-definition-container">
           <dsl-editor
@@ -38,6 +39,7 @@ import {TaskGraphPropertiesSource} from '../properties/task-properties-source';
             line-wrapping="true"
             (focus)="editorContext.graphToTextSync = false"
             placeholder="Enter task definitions here..."
+            i18n-placeholder="@@tasks.builder.create.dsl_editor.placeholder"
             (blur)="editorContext.graphToTextSync = true"
             [lintOptions]="lintOptions"
           ></dsl-editor>
@@ -77,10 +79,13 @@ import {TaskGraphPropertiesSource} from '../properties/task-properties-source';
           <clr-icon shape="plus-circle"></clr-icon>
         </button>
         <div class="divider"></div>
-        <button (click)="arrangeAll()" class="btn btn-sm btn-secondary" type="button">Fit to Content</button>
+        <button (click)="arrangeAll()" class="btn btn-sm btn-secondary" type="button" i18n="@@tasks.builder.create.dsl_editor.fit_to_content">Fit to Content</button>
       </div>
       <div class="overlay-loader" *ngIf="!isReady">
-        <div style="padding: 10px 0;"><clr-spinner clrSmall clrInline></clr-spinner>&nbsp; Loading editor...</div>
+        <div style="padding: 10px 0;">
+          <clr-spinner clrSmall clrInline></clr-spinner>&nbsp;
+          <ng-container i18n="@@tasks.builder.create.dsl_editor.loading">Loading editor...</ng-container>
+        </div>
       </div>
       <app-properties-dialog-content #propertiesDialog></app-properties-dialog-content>
     </div>

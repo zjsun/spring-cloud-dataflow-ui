@@ -13,11 +13,11 @@ import {TaskExecution} from '../../../../shared/model/task-execution.model';
       </div>
       <div *ngIf="loading">
         <clr-spinner clrInline clrSmall></clr-spinner>
-        Loading logs...
+        <ng-container i18n="@@tasks.detail.modal.log.loading">Loading logs...</ng-container>
       </div>
     </div>
     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" (click)="isOpen = false">Close</button>
+      <button type="button" class="btn btn-secondary" (click)="isOpen = false" i18n="@@modal.close">Close</button>
     </div>
   </clr-modal>`
 })

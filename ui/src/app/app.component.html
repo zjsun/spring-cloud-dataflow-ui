@@ -1,12 +1,12 @@
 <div class="login-wrapper" *ngIf="shouldProtect | async; else main">
   <form class="login">
     <section class="title">
-      <h3 class="welcome">Welcome to</h3>
-      Data Flow UI
-      <h5 class="hint">You have to log in to access the application.</h5>
+      <h3 class="welcome" i18n="@@app.login.welcome">Welcome to</h3>
+      <ng-container i18n="@@app.login.app_name">Data Flow UI</ng-container>
+      <h5 class="hint" i18n="@@app.login.hint">You have to log in to access the application.</h5>
     </section>
     <div style="padding-bottom: 50px">
-      <a href="/login" class="btn btn-primary"> Log In </a>
+      <a href="/login" class="btn btn-primary" i18n="@@app.login"> Log In </a>
     </div>
   </form>
 </div>
