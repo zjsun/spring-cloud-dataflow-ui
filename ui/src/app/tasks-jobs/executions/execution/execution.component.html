@@ -1,5 +1,5 @@
 <h1>
-  Task execution - Execution ID: <strong *ngIf="execution">{{ execution?.executionId }}</strong>
+  <ng-container i18n="@@execs.detail.title">Task execution - Execution ID:</ng-container>&nbsp;<strong *ngIf="execution">{{ execution?.executionId }}</strong>
 </h1>
 
 <div *ngIf="!loading">
@@ -10,6 +10,7 @@
       (click)="relaunch()"
       [disabled]="!task"
       [appRole]="['ROLE_DEPLOY']"
+      i18n="@@execs.detail.relaunch"
     >
       Relaunch task
     </button>
@@ -19,6 +20,7 @@
       (click)="stop()"
       [disabled]="execution.taskExecutionStatus === 'ERROR' || execution.taskExecutionStatus === 'COMPLETE'"
       [appRole]="['ROLE_DEPLOY']"
+      i18n="@@execs.detail.stop"
     >
       Stop execution
     </button>
@@ -28,6 +30,7 @@
       (click)="cleanup()"
       *ngIf="!execution.parentExecutionId"
       [appRole]="['ROLE_DESTROY']"
+      i18n="@@execs.detail.cleanup"
     >
       Clean up task execution
     </button>
@@ -41,16 +44,16 @@
 
   <div class="clr-row">
     <div class="clr-col-lg-6 clr-col-md-12 clr-col-12">
-      <app-view-card titleModal="Information" keyContext="execution" name="{{ execution?.executionId }}" id="info">
+      <app-view-card i18n-titleModal="@@execs.detail.card.info.title" titleModal="Information" keyContext="execution" name="{{ execution?.executionId }}" id="info">
         <ng-template>
           <div class="block card-block-keyvalue lg-key">
             <div *ngIf="execution">
               <div class="row">
-                <div class="key">Execution Id</div>
+                <div class="key" i18n="@@execs.detail.card.info.exec_id">Execution Id</div>
                 <div class="value">{{ execution.executionId }}</div>
               </div>
               <div class="row">
-                <div class="key">Arguments</div>
+                <div class="key" i18n="@@execs.detail.card.info.arguments">Arguments</div>
                 <div class="value">
                   <div *ngIf="execution.getArgumentsToArray().length > 0">
                     <div *ngFor="let arg of execution.getArgumentsToArray()">
@@ -62,20 +65,20 @@
                 </div>
               </div>
               <div class="row">
-                <div class="key">External Execution Id</div>
+                <div class="key" i18n="@@execs.detail.card.info.external_exec_id">External Execution Id</div>
                 <div class="value">
                   {{ execution.externalExecutionId || 'N/A' }}
                 </div>
               </div>
               <div class="row">
-                <div class="key">Batch Job</div>
+                <div class="key" i18n="@@execs.detail.card.info.batch_job">Batch Job</div>
                 <div class="value">
                   <clr-icon *ngIf="execution.jobExecutionIds?.length > 0" shape="success-standard"></clr-icon>
                   <clr-icon *ngIf="execution.jobExecutionIds?.length === 0" shape="times-circle"></clr-icon>
                 </div>
               </div>
               <div class="row">
-                <div class="key">Job Execution Ids</div>
+                <div class="key" i18n="@@execs.detail.card.info.job_exec_ids">Job Execution Ids</div>
                 <div class="value">
                   <a
                     [routerLink]="'/tasks-jobs/job-executions/' + jobExecutionId"
@@ -87,37 +90,37 @@
                 </div>
               </div>
               <div class="row">
-                <div class="key">Start Time</div>
+                <div class="key" i18n="@@execs.detail.card.info.start_time">Start Time</div>
                 <div class="value">
                   {{ execution.startTime | datetime }}
                 </div>
               </div>
               <div class="row">
-                <div class="key">End Time</div>
+                <div class="key" i18n="@@execs.detail.card.info.end_time">End Time</div>
                 <div class="value">
                   {{ execution.endTime | datetime }}
                 </div>
               </div>
               <div class="row">
-                <div class="key">Duration</div>
+                <div class="key" i18n="@@execs.detail.card.info.duration">Duration</div>
                 <div class="value">
                   {{ execution.startTime | duration: execution.endTime }}
                 </div>
               </div>
               <div class="row">
-                <div class="key">Exit Code</div>
+                <div class="key" i18n="@@execs.detail.card.info.exit_code">Exit Code</div>
                 <div class="value">
                   {{ execution.exitCode }}
                 </div>
               </div>
               <div class="row">
-                <div class="key">Exit Message</div>
+                <div class="key" i18n="@@execs.detail.card.info.exit_msg">Exit Message</div>
                 <div class="value">
                   {{ execution.exitMessage || 'N/A' }}
                 </div>
               </div>
               <div class="row" *ngIf="this.execution.externalExecutionId || execution.resourceUrl">
-                <div class="key">Resource URL</div>
+                <div class="key" i18n="@@execs.detail.card.info.res_url">Resource URL</div>
                 <div class="value">
                   {{ execution.resourceUrl || 'N/A' }}
                 </div>
@@ -126,7 +129,7 @@
                 class="row"
                 *ngIf="this.execution.externalExecutionId || execution.getAppPropertiesToArray().length > 0"
               >
-                <div class="key">Application Properties</div>
+                <div class="key" i18n="@@execs.detail.card.info.app_props">Application Properties</div>
                 <div class="value">
                   <div *ngIf="execution.getAppPropertiesToArray().length > 0">
                     <div *ngFor="let arg of execution.getAppPropertiesToArray()">
@@ -141,7 +144,7 @@
                 class="row"
                 *ngIf="this.execution.externalExecutionId || execution.getDeploymentPropertiesToArray().length > 0"
               >
-                <div class="key">Platform Properties</div>
+                <div class="key" i18n="@@execs.detail.card.info.platform_props">Platform Properties</div>
                 <div class="value">
                   <div *ngIf="execution.getDeploymentPropertiesToArray().length > 0">
                     <div *ngFor="let arg of execution.getDeploymentPropertiesToArray()">
@@ -157,37 +160,37 @@
           </div>
         </ng-template>
         <div class="card-footer" *ngIf="hasLog()">
-          <button class="btn btn-sm btn-secondary" (click)="log()">View log</button>
+          <button class="btn btn-sm btn-secondary" (click)="log()" i18n="@@execs.detail.card.info.view_log">View log</button>
         </div>
       </app-view-card>
     </div>
     <div class="clr-col-lg-6 clr-col-md-12 clr-col-12">
-      <app-view-card titleModal="Task" keyContext="execution" name="{{ execution?.executionId }}" id="task">
+      <app-view-card i18n-titleModal="@@execs.detail.card.task.title" titleModal="Task" keyContext="execution" name="{{ execution?.executionId }}" id="task">
         <ng-template>
           <div *ngIf="!loadingTask">
             <div class="block card-block-keyvalue" *ngIf="task">
               <div class="row">
-                <div class="key">Name</div>
+                <div class="key" i18n="@@execs.detail.card.task.name">Name</div>
                 <div class="value">{{ task.name }}</div>
               </div>
               <div *ngIf="task.description" class="row">
-                <div class="key">Description</div>
+                <div class="key" i18n="@@execs.detail.card.task.description">Description</div>
                 <div class="value">{{ task.description }}</div>
               </div>
               <div class="row">
-                <div class="key">Definition</div>
+                <div class="key" i18n="@@execs.detail.card.task.definition">Definition</div>
                 <div class="value">
                   <span class="dsl-text">{{ task.dslText }}</span>
                 </div>
               </div>
               <div class="row">
-                <div class="key">Status</div>
+                <div class="key" i18n="@@execs.detail.card.task.status">Status</div>
                 <div class="value">
                   <span class="{{ task.labelStatusClass() }}">{{ task.status }}</span>
                 </div>
               </div>
               <div class="row">
-                <div class="key">Applications</div>
+                <div class="key" i18n="@@execs.detail.card.task.apps">Applications</div>
                 <div class="value">
                   <div *ngIf="!loadingApplication">
                     <div *ngFor="let app of applications">
@@ -198,21 +201,21 @@
                   </div>
                   <div *ngIf="loadingApplication">
                     <clr-spinner clrInline clrSmall></clr-spinner>
-                    Loading application(s)...
+                    <ng-container i18n="@@execs.detail.card.task.apps.loading">Loading application(s)...</ng-container>
                   </div>
                 </div>
               </div>
             </div>
-            <div *ngIf="!task">No task found.</div>
+            <div *ngIf="!task" i18n="@@execs.detail.card.task.no_result">No task found.</div>
           </div>
           <div *ngIf="loadingTask">
             <clr-spinner clrInline clrSmall></clr-spinner>
-            Loading task...
+            <ng-container i18n="@@execs.detail.card.task.loading">Loading task...</ng-container>
           </div>
         </ng-template>
         <div class="card-footer" *ngIf="task">
-          <button class="btn btn-sm btn-secondary" (click)="navigateTask()">View task</button>
-          <button type="button" class="btn btn-sm btn-secondary" (click)="relaunch()">Relaunch Task</button>
+          <button class="btn btn-sm btn-secondary" (click)="navigateTask()" i18n="@@execs.detail.card.task.view_task">View task</button>
+          <button type="button" class="btn btn-sm btn-secondary" (click)="relaunch()" i18n="@@execs.detail.card.task.relaunch">Relaunch Task</button>
         </div>
       </app-view-card>
     </div>

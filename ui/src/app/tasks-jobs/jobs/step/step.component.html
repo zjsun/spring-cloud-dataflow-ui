@@ -1,45 +1,46 @@
 <h1>
-  Step Execution
+  <ng-container i18n="@@jobs.step.title">Step Execution</ng-container>
   <span *ngIf="stepResource && execution">
-    <strong>{{ stepResource.stepExecution.name }} ({{ stepResource.stepExecution.id }})</strong> - Job execution
+    <strong>{{ stepResource.stepExecution.name }} ({{ stepResource.stepExecution.id }})</strong>&nbsp;-&nbsp;
+    <ng-container i18n="@@jobs.step.text1">Job execution</ng-container>
     <strong>{{ execution.name }} ({{ execution.jobExecutionId }})</strong>
   </span>
 </h1>
 
 <div *ngIf="!loading">
   <div class="datagrid-action-bar">
-    <button type="button" class="btn btn-sm btn-secondary" (click)="refresh()">Refresh</button>
+    <button type="button" class="btn btn-sm btn-secondary" (click)="refresh()" i18n="@@jobs.step.refresh">Refresh</button>
   </div>
 
   <div class="clr-row">
     <div class="clr-col-lg-6 clr-col-md-12 clr-col-12">
-      <app-view-card titleModal="Information" keyContext="step" name="{{ stepResource.stepExecution.id }}" id="info">
+      <app-view-card i18n-titleModal="@@jobs.step.card.info.title" titleModal="Information" keyContext="step" name="{{ stepResource.stepExecution.id }}" id="info">
         <ng-template>
           <div class="progress" *ngIf="stepProgress.percentageComplete < 1">
             <progress [value]="stepProgress.percentageComplete * 100" max="100"></progress>
           </div>
 
-          <div *ngIf="!stepResource.stepExecution">No Step Execution available.</div>
+          <div *ngIf="!stepResource.stepExecution" i18n="@@jobs.step.card.info.no_result">No Step Execution available.</div>
 
           <div *ngIf="stepResource?.stepExecution" class="block card-block-keyvalue lg-key">
             <div class="row">
-              <div class="key"><strong>Step Execution Id</strong></div>
+              <div class="key"><strong i18n="@@jobs.step.card.info.step_exec_id">Step Execution Id</strong></div>
               <div class="value">{{ stepResource.stepExecution.id }}</div>
             </div>
             <div class="row">
-              <div class="key"><strong>Job Execution Id</strong></div>
+              <div class="key"><strong i18n="@@jobs.step.card.info.job_exec_id">Job Execution Id</strong></div>
               <div class="value">{{ stepResource.jobExecutionId }}</div>
             </div>
             <div class="row">
-              <div class="key"><strong>Step Name</strong></div>
+              <div class="key"><strong i18n="@@jobs.step.card.info.step_name">Step Name</strong></div>
               <div class="value">{{ stepResource.stepExecution.name }}</div>
             </div>
             <div class="row">
-              <div class="key"><strong>Step Type</strong></div>
+              <div class="key"><strong i18n="@@jobs.step.card.info.step_type">Step Type</strong></div>
               <div class="value">{{ stepResource.stepType }}</div>
             </div>
             <div class="row">
-              <div class="key"><strong>Status</strong></div>
+              <div class="key"><strong i18n="@@jobs.step.card.info.status">Status</strong></div>
               <div class="value">
                 <span class="{{ stepResource.stepExecution.labelStatusClass() }}">
                   {{ stepResource.stepExecution.status }}</span
@@ -47,45 +48,45 @@
               </div>
             </div>
             <div class="row">
-              <div class="key"><strong>Commits</strong></div>
+              <div class="key"><strong i18n="@@jobs.step.card.info.commits">Commits</strong></div>
               <div class="value">{{ stepResource.stepExecution.commitCount }}</div>
             </div>
             <div class="row">
-              <div class="key"><strong>Duration</strong></div>
+              <div class="key"><strong i18n="@@jobs.step.card.info.duration">Duration</strong></div>
               <div class="value">
                 {{ stepResource.stepExecution.startTime | duration: stepResource.stepExecution.endTime }}
               </div>
             </div>
             <div class="row">
-              <div class="key"><strong>Filter Count</strong></div>
+              <div class="key"><strong i18n="@@jobs.step.card.info.filter_count">Filter Count</strong></div>
               <div class="value">{{ stepResource.stepExecution.filterCount }}</div>
             </div>
             <div class="row">
-              <div class="key"><strong>Process Skips</strong></div>
+              <div class="key"><strong i18n="@@jobs.step.card.info.process_skips">Process Skips</strong></div>
               <div class="value">{{ stepResource.stepExecution.processSkipCount }}</div>
             </div>
             <div class="row">
-              <div class="key"><strong>Reads</strong></div>
+              <div class="key"><strong i18n="@@jobs.step.card.info.reads">Reads</strong></div>
               <div class="value">{{ stepResource.stepExecution.readCount }}</div>
             </div>
             <div class="row">
-              <div class="key"><strong>Read Skips</strong></div>
+              <div class="key"><strong i18n="@@jobs.step.card.info.read_skips">Read Skips</strong></div>
               <div class="value">{{ stepResource.stepExecution.readSkipCount }}</div>
             </div>
             <div class="row">
-              <div class="key"><strong>Rollbacks</strong></div>
+              <div class="key"><strong i18n="@@jobs.step.card.info.rollbacks">Rollbacks</strong></div>
               <div class="value">{{ stepResource.stepExecution.rollbackCount }}</div>
             </div>
             <div class="row">
-              <div class="key"><strong>Skips</strong></div>
+              <div class="key"><strong i18n="@@jobs.step.card.info.skips">Skips</strong></div>
               <div class="value">{{ stepResource.stepExecution.skipCount }}</div>
             </div>
             <div class="row">
-              <div class="key"><strong>Writes</strong></div>
+              <div class="key"><strong i18n="@@jobs.step.card.info.writes">Writes</strong></div>
               <div class="value">{{ stepResource.stepExecution.writeCount }}</div>
             </div>
             <div class="row">
-              <div class="key"><strong>Write Skips</strong></div>
+              <div class="key"><strong i18n="@@jobs.step.card.info.write_skips">Write Skips</strong></div>
               <div class="value">{{ stepResource.stepExecution.writeSkipCount }}</div>
             </div>
           </div>
@@ -94,6 +95,7 @@
 
       <app-view-card
         titleModal="Exit Description"
+        i18n-titleModal="@@jobs.step.card.exit.title"
         keyContext="step"
         name="{{ stepResource.stepExecution.id }}"
         id="exit"
@@ -107,6 +109,7 @@
 
       <app-view-card
         titleModal="Step Execution Context"
+        i18n-titleModal="@@jobs.step.card.context.title"
         keyContext="step"
         name="{{ stepResource.stepExecution.id }}"
         id="stepExecutionCount"
@@ -125,7 +128,7 @@
               </div>
             </div>
           </div>
-          <div *ngIf="(stepResource.stepExecution.executionContext.values | keyvalue)?.length === 0">
+          <div *ngIf="(stepResource.stepExecution.executionContext.values | keyvalue)?.length === 0" i18n="@@jobs.step.card.context.no_result">
             No step execution context
           </div>
         </ng-template>
@@ -133,6 +136,7 @@
 
       <app-view-card
         titleModal="Step Execution History"
+        i18n-titleModal="@@jobs.step.card.history.title"
         keyContext="step"
         name="{{ stepResource.stepExecution.id }}"
         id="stepHistoryExecution"
@@ -145,17 +149,17 @@
           >
             <thead>
               <tr>
-                <th class="left">Name</th>
-                <th class="left">Count</th>
-                <th class="left">Min</th>
-                <th class="left">Max</th>
-                <th class="left">Mean</th>
-                <th class="left">Standard Deviation</th>
+                <th class="left" i18n="@@jobs.step.card.history.name">Name</th>
+                <th class="left" i18n="@@jobs.step.card.history.count">Count</th>
+                <th class="left" i18n="@@jobs.step.card.history.min">Min</th>
+                <th class="left" i18n="@@jobs.step.card.history.max">Max</th>
+                <th class="left" i18n="@@jobs.step.card.history.mean">Mean</th>
+                <th class="left" i18n="@@jobs.step.card.history.std_dev">Standard Deviation</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td class="left"><strong>Commit Count</strong></td>
+                <td class="left"><strong i18n="@@jobs.step.card.history.commit_count">Commit Count</strong></td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.commitCount.count }}</td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.commitCount.min }}</td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.commitCount.max }}</td>
@@ -163,7 +167,7 @@
                 <td class="left">{{ stepProgress.stepExecutionHistory.commitCount.standardDeviation }}</td>
               </tr>
               <tr>
-                <td class="left"><strong>Duration</strong></td>
+                <td class="left"><strong i18n="@@jobs.step.card.history.duration">Duration</strong></td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.duration.count }}</td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.duration.min }}</td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.duration.max }}</td>
@@ -171,7 +175,7 @@
                 <td class="left">{{ stepProgress.stepExecutionHistory.duration.standardDeviation }}</td>
               </tr>
               <tr>
-                <td class="left"><strong>Duration per Read</strong></td>
+                <td class="left"><strong i18n="@@jobs.step.card.history.duration_per_read">Duration per Read</strong></td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.durationPerRead.count }}</td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.durationPerRead.min }}</td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.durationPerRead.max }}</td>
@@ -179,7 +183,7 @@
                 <td class="left">{{ stepProgress.stepExecutionHistory.durationPerRead.standardDeviation }}</td>
               </tr>
               <tr>
-                <td class="left"><strong>Filter Count</strong></td>
+                <td class="left"><strong i18n="@@jobs.step.card.history.filter_count">Filter Count</strong></td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.filterCount.count }}</td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.filterCount.min }}</td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.filterCount.max }}</td>
@@ -187,7 +191,7 @@
                 <td class="left">{{ stepProgress.stepExecutionHistory.filterCount.standardDeviation }}</td>
               </tr>
               <tr>
-                <td class="left"><strong>Process Skip Count</strong></td>
+                <td class="left"><strong i18n="@@jobs.step.card.history.process_skip_count">Process Skip Count</strong></td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.processSkipCount.count }}</td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.processSkipCount.min }}</td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.processSkipCount.max }}</td>
@@ -195,7 +199,7 @@
                 <td class="left">{{ stepProgress.stepExecutionHistory.processSkipCount.standardDeviation }}</td>
               </tr>
               <tr>
-                <td class="left"><strong>Read Count</strong></td>
+                <td class="left"><strong i18n="@@jobs.step.card.history.read_count">Read Count</strong></td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.readCount.count }}</td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.readCount.min }}</td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.readCount.max }}</td>
@@ -203,7 +207,7 @@
                 <td class="left">{{ stepProgress.stepExecutionHistory.readCount.standardDeviation }}</td>
               </tr>
               <tr>
-                <td class="left"><strong>Read Skip Count</strong></td>
+                <td class="left"><strong i18n="@@jobs.step.card.history.read_skip_count">Read Skip Count</strong></td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.readSkipCount.count }}</td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.readSkipCount.min }}</td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.readSkipCount.max }}</td>
@@ -211,7 +215,7 @@
                 <td class="left">{{ stepProgress.stepExecutionHistory.readSkipCount.standardDeviation }}</td>
               </tr>
               <tr>
-                <td class="left"><strong>Rollback Count</strong></td>
+                <td class="left"><strong i18n="@@jobs.step.card.history.rollback_count">Rollback Count</strong></td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.rollbackCount.count }}</td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.rollbackCount.min }}</td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.rollbackCount.max }}</td>
@@ -219,7 +223,7 @@
                 <td class="left">{{ stepProgress.stepExecutionHistory.rollbackCount.standardDeviation }}</td>
               </tr>
               <tr>
-                <td class="left"><strong>Write Count</strong></td>
+                <td class="left"><strong i18n="@@jobs.step.card.history.write_count">Write Count</strong></td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.writeCount.count }}</td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.writeCount.min }}</td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.writeCount.max }}</td>
@@ -227,7 +231,7 @@
                 <td class="left">{{ stepProgress.stepExecutionHistory.writeCount.standardDeviation }}</td>
               </tr>
               <tr>
-                <td class="left"><strong>Write Skip Count</strong></td>
+                <td class="left"><strong i18n="@@jobs.step.card.history.write_skip_count">Write Skip Count</strong></td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.writeSkipCount.count }}</td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.writeSkipCount.min }}</td>
                 <td class="left">{{ stepProgress.stepExecutionHistory.writeSkipCount.max }}</td>
@@ -240,32 +244,32 @@
       </app-view-card>
     </div>
     <div class="clr-col-lg-6 clr-col-md-12 clr-col-12">
-      <app-view-card titleModal="Task" keyContext="job" name="{{ execution.jobExecutionId }}" id="task">
+      <app-view-card titleModal="Task" i18n-titleModal="@@jobs.step.card.task.title" keyContext="job" name="{{ execution.jobExecutionId }}" id="task">
         <ng-template>
           <div *ngIf="!loadingTask">
             <div class="block card-block-keyvalue" *ngIf="task">
               <div class="row">
-                <div class="key">Name</div>
+                <div class="key" i18n="@@jobs.step.card.task.name">Name</div>
                 <div class="value">{{ task.name }}</div>
               </div>
               <div *ngIf="task.description" class="row">
-                <div class="key">Description</div>
+                <div class="key" i18n="@@jobs.step.card.task.description">Description</div>
                 <div class="value">{{ task.description }}</div>
               </div>
               <div class="row">
-                <div class="key">Definition</div>
+                <div class="key" i18n="@@jobs.step.card.task.definition">Definition</div>
                 <div class="value">
                   <span class="dsl-text">{{ task.dslText }}</span>
                 </div>
               </div>
               <div class="row">
-                <div class="key">Status</div>
+                <div class="key" i18n="@@jobs.step.card.task.status">Status</div>
                 <div class="value">
                   <span class="{{ task.labelStatusClass() }}">{{ task.status }}</span>
                 </div>
               </div>
               <div class="row">
-                <div class="key">Applications</div>
+                <div class="key" i18n="@@jobs.step.card.task.apps">Applications</div>
                 <div class="value">
                   <div *ngIf="!loadingApplications">
                     <div *ngFor="let app of applications">
@@ -276,33 +280,33 @@
                   </div>
                   <div *ngIf="loadingApplications">
                     <clr-spinner clrInline clrSmall></clr-spinner>
-                    Loading application(s)...
+                    <ng-container i18n="@@jobs.step.card.task.apps.loading">Loading application(s)...</ng-container>
                   </div>
                 </div>
               </div>
             </div>
-            <div *ngIf="!task">No task found.</div>
+            <div *ngIf="!task" i18n="@@jobs.step.card.task.no_result">No task found.</div>
           </div>
           <div *ngIf="loadingTask">
             <clr-spinner clrInline clrSmall></clr-spinner>
-            Loading task...
+            <ng-container i18n="@@jobs.step.card.task.loading">Loading task...</ng-container>
           </div>
         </ng-template>
         <div class="card-footer" *ngIf="task">
-          <button class="btn btn-sm btn-secondary" (click)="navigateTask()">View task</button>
-          <button type="button" class="btn btn-sm btn-secondary" (click)="relaunch()">Relaunch Task</button>
+          <button class="btn btn-sm btn-secondary" (click)="navigateTask()" i18n="@@jobs.step.card.task.view_task">View task</button>
+          <button type="button" class="btn btn-sm btn-secondary" (click)="relaunch()" i18n="@@jobs.step.card.task.relaunch">Relaunch Task</button>
         </div>
       </app-view-card>
-      <app-view-card titleModal="Task execution" keyContext="job" name="{{ execution.jobExecutionId }}" id="execution">
+      <app-view-card titleModal="Task execution" i18n-titleModal="@@jobs.step.card.task_exec.title" keyContext="job" name="{{ execution.jobExecutionId }}" id="execution">
         <ng-template>
           <div class="block card-block-keyvalue lg-key" *ngIf="!loadingExecution">
             <div *ngIf="taskExecution">
               <div class="row">
-                <div class="key">Execution Id</div>
+                <div class="key" i18n="@@jobs.step.card.task_exec.exec_id">Execution Id</div>
                 <div class="value">{{ taskExecution.executionId }}</div>
               </div>
               <div class="row">
-                <div class="key">Arguments</div>
+                <div class="key" i18n="@@jobs.step.card.task_exec.arguments">Arguments</div>
                 <div class="value">
                   <div *ngIf="taskExecution.getArgumentsToArray().length > 0">
                     <div *ngFor="let arg of taskExecution.getArgumentsToArray()">
@@ -314,7 +318,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="key">External Execution Id</div>
+                <div class="key" i18n="@@jobs.step.card.task_exec.external_exec_id">External Execution Id</div>
                 <div class="value">
                   <a
                     [routerLink]="'/tasks-jobs/job-executions/' + jobExecutionId"
@@ -326,56 +330,56 @@
                 </div>
               </div>
               <div class="row">
-                <div class="key">Batch Job</div>
+                <div class="key" i18n="@@jobs.step.card.task_exec.batch_job">Batch Job</div>
                 <div class="value">
                   <clr-icon *ngIf="taskExecution.jobExecutionIds?.length > 0" shape="check"></clr-icon>
                   <clr-icon *ngIf="taskExecution.jobExecutionIds?.length === 0" shape="success-standard"></clr-icon>
                 </div>
               </div>
               <div class="row">
-                <div class="key">Job Execution Ids</div>
+                <div class="key" i18n="@@jobs.step.card.task_exec.job_exec_ids">Job Execution Ids</div>
                 <div class="value">
                   {{ taskExecution.externalExecutionId || 'N/A' }}
                 </div>
               </div>
               <div class="row">
-                <div class="key">Start Time</div>
+                <div class="key" i18n="@@jobs.step.card.task_exec.start_time">Start Time</div>
                 <div class="value">
                   {{ taskExecution.startTime | datetime }}
                 </div>
               </div>
               <div class="row">
-                <div class="key">End Time</div>
+                <div class="key" i18n="@@jobs.step.card.task_exec.end_time">End Time</div>
                 <div class="value">
                   {{ taskExecution.endTime | datetime }}
                 </div>
               </div>
               <div class="row">
-                <div class="key">Duration</div>
+                <div class="key" i18n="@@jobs.step.card.task_exec.duration">Duration</div>
                 <div class="value">
                   {{ taskExecution.startTime | duration: taskExecution.endTime }}
                 </div>
               </div>
               <div class="row">
-                <div class="key">Exit Code</div>
+                <div class="key" i18n="@@jobs.step.card.task_exec.exit_code">Exit Code</div>
                 <div class="value">
                   {{ taskExecution.exitCode }}
                 </div>
               </div>
               <div class="row">
-                <div class="key">Exit Message</div>
+                <div class="key" i18n="@@jobs.step.card.task_exec.exit_msg">Exit Message</div>
                 <div class="value">
                   {{ taskExecution.exitMessage || 'N/A' }}
                 </div>
               </div>
               <div class="row">
-                <div class="key">Resource URL</div>
+                <div class="key" i18n="@@jobs.step.card.task_exec.res_url">Resource URL</div>
                 <div class="value">
                   {{ taskExecution.resourceUrl || 'N/A' }}
                 </div>
               </div>
               <div class="row">
-                <div class="key">Application Properties</div>
+                <div class="key" i18n="@@jobs.step.card.task_exec.app_props">Application Properties</div>
                 <div class="value">
                   <div *ngIf="taskExecution.getAppPropertiesToArray().length > 0">
                     <div *ngFor="let arg of taskExecution.getAppPropertiesToArray()">
@@ -387,7 +391,7 @@
                 </div>
               </div>
               <div class="row">
-                <div class="key">Platform Properties</div>
+                <div class="key" i18n="@@jobs.step.card.task_exec.platform_props">Platform Properties</div>
                 <div class="value">
                   <div *ngIf="taskExecution.getDeploymentPropertiesToArray().length > 0">
                     <div *ngFor="let arg of taskExecution.getDeploymentPropertiesToArray()">
@@ -399,16 +403,16 @@
                 </div>
               </div>
             </div>
-            <div *ngIf="!taskExecution">No execution yet.</div>
+            <div *ngIf="!taskExecution" i18n="@@jobs.step.card.task_exec.no_result">No execution yet.</div>
           </div>
           <div *ngIf="loadingExecution">
             <clr-spinner clrInline clrSmall></clr-spinner>
-            Loading execution...
+            <ng-container i18n="@@jobs.step.card.task_exec.loading">Loading execution...</ng-container>
           </div>
         </ng-template>
         <div class="card-footer" *ngIf="execution">
-          <button class="btn btn-sm btn-secondary" (click)="navigateTaskExecution()">View task execution</button>
-          <button class="btn btn-sm btn-secondary" (click)="viewLog()">View log</button>
+          <button class="btn btn-sm btn-secondary" (click)="navigateTaskExecution()" i18n="@@jobs.step.card.task_exec.view_task_exec">View task execution</button>
+          <button class="btn btn-sm btn-secondary" (click)="viewLog()" i18n="@@jobs.step.card.task_exec.view_log">View log</button>
         </div>
       </app-view-card>
     </div>
@@ -417,7 +421,7 @@
 
 <div *ngIf="loading" style="padding: 1rem 0">
   <clr-spinner clrInline clrSmall></clr-spinner>
-  Loading job step execution...
+  <ng-container i18n="@@jobs.step.loading">Loading job step execution...</ng-container>
 </div>
 
 <app-task-execution-log #logModal></app-task-execution-log>
