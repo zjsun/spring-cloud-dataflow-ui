@@ -52,21 +52,25 @@
   </div>
 </clr-modal>
 
-<app-confirm #unregisterModal (onConfirmed)="unregister()" i18n-title="@@apps.modal.version.unregister.confirm.title" title="Confirm unregister version" yes="Unregister">
+<app-confirm #unregisterModal (onConfirmed)="unregister()" i18n-title="@@apps.modal.version.unregister.confirm.title" title="Confirm unregister version"
+             yes="Unregister" i18n-yes="@@apps.modal.version.unregister.confirm.yes"
+>
   <ng-container i18n="@@apps.modal.version.unregister.confirm.text1">This action will unregister the</ng-container>&nbsp;
   <strong><ng-container i18n="@@apps.modal.version.unregister.confirm.text2">version</ng-container>&nbsp;{{ selected?.version }}</strong>&nbsp;
   <ng-container i18n="@@apps.modal.version.unregister.confirm.text3">of the application</ng-container>
   <strong>{{ selected?.name }}</strong>&nbsp;<span class="{{ selected?.labelTypeClass() }}">{{ selected?.type }}</span>
   <ng-container i18n="@@apps.modal.version.unregister.confirm.text4">.</ng-container>
   <br />
-  <ng-container i18n="@@apps.modal.version.unregister.confirm.text5">Are you sure?</ng-container>
+  <ng-container i18n="@@modal.are_you_sure">Are you sure?</ng-container>
 </app-confirm>
 
-<app-confirm #makeDefaultModal (onConfirmed)="makeDefault()" i18n-title="@@apps.modal.version.default.confirm.title" title="Confirm make default version" yes="Make default">
+<app-confirm #makeDefaultModal (onConfirmed)="makeDefault()" i18n-title="@@apps.modal.version.default.confirm.title" title="Confirm make default version"
+             yes="Make default" i18n-yes="@@apps.modal.version.default.confirm.yes"
+>
   <ng-container i18n="@@apps.modal.version.default.confirm.text1">This action will make the version</ng-container>&nbsp;
   <strong>{{ selected?.version }}</strong>&nbsp;<ng-container i18n="@@apps.modal.version.default.confirm.text2">as the default version for the application</ng-container>
   <strong>{{ selected?.name }}</strong>&nbsp; <span class="{{ selected?.labelTypeClass() }}">{{ selected?.type }}</span>
   <ng-container i18n="@@apps.modal.version.default.confirm.text3">.</ng-container>
   <br />
-  <ng-container i18n="@@apps.modal.version.default.confirm.text4">Are you sure?</ng-container>
+  <ng-container i18n="@@modal.are_you_sure">Are you sure?</ng-container>
 </app-confirm>

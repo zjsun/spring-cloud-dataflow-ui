@@ -316,18 +316,22 @@
   <ng-container i18n="@@jobs.detail.loading">Loading job execution...</ng-container>
 </div>
 
-<app-confirm #restartModal (onConfirmed)="restartJob()" i18n-title="@@jobs.detail.modal.restart.title" title="Confirm restart the job execution" yes="Restart">
+<app-confirm #restartModal (onConfirmed)="restartJob()" i18n-title="@@jobs.detail.modal.restart.title" title="Confirm restart the job execution"
+             yes="Restart" i18n-yes="@@jobs.detail.modal.restart.yes"
+>
   <ng-container i18n="@@jobs.detail.modal.restart.text1">This action will restart the steps failed of the job execution</ng-container>
   <strong>{{ execution?.name }} ({{ execution?.jobExecutionId }})</strong>
   <ng-container i18n="@@jobs.detail.modal.restart.text2">.</ng-container><br />
-  <ng-container i18n="@@jobs.detail.modal.restart.text3">Are you sure?</ng-container>
+  <ng-container i18n="@@modal.are_you_sure">Are you sure?</ng-container>
 </app-confirm>
 
-<app-confirm #stopModal (onConfirmed)="stopJob()" i18n-title="@@jobs.detail.modal.stop.title" title="Confirm stop the job execution" yes="Stop">
+<app-confirm #stopModal (onConfirmed)="stopJob()" i18n-title="@@jobs.detail.modal.stop.title" title="Confirm stop the job execution"
+             yes="Stop" i18n-yes="@@jobs.detail.modal.stop.yes"
+>
   <ng-container i18n="@@jobs.detail.modal.stop.text1">This action will stop the job execution</ng-container>
   <strong>{{ execution?.name }} ({{ execution?.jobExecutionId }})</strong>
   <ng-container i18n="@@jobs.detail.modal.stop.text2">.</ng-container><br />
-  <ng-container i18n="@@jobs.detail.modal.stop.text3">Are you sure?</ng-container>
+  <ng-container i18n="@@modal.are_you_sure">Are you sure?</ng-container>
 </app-confirm>
 
 <app-task-execution-log #logModal></app-task-execution-log>

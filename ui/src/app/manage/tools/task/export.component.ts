@@ -8,15 +8,17 @@ import {TaskService} from '../../../shared/api/task.service';
   selector: 'app-manage-task-export',
   template: `
     <clr-modal [(clrModalOpen)]="isOpen" [clrModalClosable]="!isRunning" clrModalSize="lg">
-      <h3 class="modal-title">Export task(s)</h3>
+      <h3 class="modal-title" i18n="@@tools.modal.export_tasks.title">Export task(s)</h3>
       <div class="modal-body" *ngIf="!isRunning">
         <div>
-          You can create an export of your <strong>selected tasks</strong>.<br />
-          This operation will generate and download a <strong>JSON file</strong>.
+          <ng-container i18n="@@tools.modal.export_tasks.text1">You can create an export of your</ng-container>&nbsp;
+          <strong i18n="@@tools.modal.export_tasks.text2">selected tasks</strong>.<br />
+          <ng-container i18n="@@tools.modal.export_tasks.text3">This operation will generate and download a</ng-container>&nbsp;
+          <strong i18n="@@tools.modal.export_tasks.text4">JSON file</strong>.
         </div>
         <clr-datagrid [(clrDgSelected)]="selected" *ngIf="tasks">
-          <clr-dg-column>Name</clr-dg-column>
-          <clr-dg-column>Definition</clr-dg-column>
+          <clr-dg-column i18n="@@tools.modal.export_tasks.name">Name</clr-dg-column>
+          <clr-dg-column i18n="@@tools.modal.export_tasks.definition">Definition</clr-dg-column>
           <clr-dg-row *clrDgItems="let task of tasks.items" [clrDgItem]="task">
             <clr-dg-cell>{{ task.name }}</clr-dg-cell>
             <clr-dg-cell>
@@ -27,12 +29,12 @@ import {TaskService} from '../../../shared/api/task.service';
       </div>
       <div class="modal-body" *ngIf="isRunning">
         <clr-spinner clrInline clrSmall></clr-spinner>
-        Exporting task(s) ...
+        <ng-container i18n="@@tools.modal.export_tasks.exporting">Exporting task(s) ...</ng-container>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline" [disabled]="isRunning" (click)="isOpen = false">Cancel</button>
+        <button type="button" class="btn btn-outline" [disabled]="isRunning" (click)="isOpen = false" i18n="@@modal.cancel">Cancel</button>
         <button type="button" class="btn btn-primary" (click)="run()" [disabled]="isRunning">
-          <span>Export task(s)</span>
+          <span i18n="@@tools.modal.export_tasks.submit">Export task(s)</span>
         </button>
       </div>
     </clr-modal>

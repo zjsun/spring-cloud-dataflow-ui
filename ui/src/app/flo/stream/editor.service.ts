@@ -33,16 +33,16 @@ const NODE_DROPPING = false;
  */
 @Injectable()
 export class EditorService implements Flo.Editor {
-  static VALMSG_NEEDS_OUTPUT_CONNECTION = 'Should direct its output to an app';
-  static VALMSG_NEEDS_INPUT_CONNECTION = 'Should have an input connection from an app';
-  static VALMSG_DESTINATION_SHOULD_BE_NAMED = 'Destination should be named';
-  static VALMSG_DESTINATION_CANNOT_BE_TAPPED = 'Cannot tap into a destination app';
-  static VALMSG_TAPSOURCE_CANNOT_BE_TAPPED = 'Cannot tap into a tap source';
-  static VALMSG_SOURCES_MUST_BE_AT_START = 'Sources must appear at the start of a stream';
-  static VALMSG_SINK_SHOULD_BE_AT_END = 'Sink should be at the end of a stream';
-  static VALMSG_ONLY_ONE_NON_TAPLINK_FROM_SOURCE = 'Only one non-tap link allowed from source';
-  static VALMSG_ONLY_ONE_NON_TAPLINK_FROM_PROCESSOR = 'Only one non-tap link allowed from processor';
-  static VALMSG_NEEDS_NONTAP_OUTPUT_CONNECTION = 'Element needs exactly one non-tapping output connection';
+  static VALMSG_NEEDS_OUTPUT_CONNECTION = $localize `:@@editor.msg01:Should direct its output to an app`;
+  static VALMSG_NEEDS_INPUT_CONNECTION = $localize `:@@editor.msg02:Should have an input connection from an app`;
+  static VALMSG_DESTINATION_SHOULD_BE_NAMED = $localize `:@@editor.msg03:Destination should be named`;
+  static VALMSG_DESTINATION_CANNOT_BE_TAPPED = $localize `:@@editor.msg04:Cannot tap into a destination app`;
+  static VALMSG_TAPSOURCE_CANNOT_BE_TAPPED = $localize `:@@editor.msg05:Cannot tap into a tap source`;
+  static VALMSG_SOURCES_MUST_BE_AT_START = $localize `:@@editor.msg06:Sources must appear at the start of a stream`;
+  static VALMSG_SINK_SHOULD_BE_AT_END = $localize `:@@editor.msg07:Sink should be at the end of a stream`;
+  static VALMSG_ONLY_ONE_NON_TAPLINK_FROM_SOURCE = $localize `:@@editor.msg08:Only one non-tap link allowed from source`;
+  static VALMSG_ONLY_ONE_NON_TAPLINK_FROM_PROCESSOR = $localize `:@@editor.msg09:Only one non-tap link allowed from processor`;
+  static VALMSG_NEEDS_NONTAP_OUTPUT_CONNECTION = $localize `:@@editor.msg10:Element needs exactly one non-tapping output connection`;
 
   STREAM_PALETTE_WIDTH = 1;
 

@@ -8,15 +8,18 @@ import {NotificationService} from '../../../shared/service/notification.service'
   selector: 'app-manage-stream-export',
   template: `
     <clr-modal [(clrModalOpen)]="isOpen" [clrModalClosable]="!isRunning" clrModalSize="lg">
-      <h3 class="modal-title">Export stream(s)</h3>
+      <h3 class="modal-title" i18n="@@tools.modal.export_streams.title">Export stream(s)</h3>
       <div class="modal-body" *ngIf="!isRunning">
         <div>
-          You can create an export of your <strong>selected streams</strong>.<br />
-          This operation will generate and download a <strong>JSON file</strong>.
+          <ng-container i18n="@@tools.modal.export_streams.text1">You can create an export of your</ng-container>&nbsp;
+          <strong i18n="@@tools.modal.export_streams.text2">selected streams</strong>
+          <ng-container i18n="@@tools.modal.export_streams.text3">.</ng-container><br />
+          <ng-container i18n="@@tools.modal.export_streams.text4">This operation will generate and download a</ng-container>&nbsp;
+          <strong i18n="@@tools.modal.export_streams.text5">JSON file</strong>.
         </div>
         <clr-datagrid [(clrDgSelected)]="selected" *ngIf="streams">
-          <clr-dg-column>Name</clr-dg-column>
-          <clr-dg-column>Definition</clr-dg-column>
+          <clr-dg-column i18n="@@tools.modal.export_streams.name">Name</clr-dg-column>
+          <clr-dg-column i18n="@@tools.modal.export_streams.definition">Definition</clr-dg-column>
           <clr-dg-row *clrDgItems="let stream of streams.items" [clrDgItem]="stream">
             <clr-dg-cell>{{ stream.name }}</clr-dg-cell>
             <clr-dg-cell>
@@ -27,12 +30,12 @@ import {NotificationService} from '../../../shared/service/notification.service'
       </div>
       <div class="modal-body" *ngIf="isRunning">
         <clr-spinner clrInline clrSmall></clr-spinner>
-        Exporting stream(s) ...
+        <ng-container i18n="@@tools.modal.export_streams.exporting">Exporting stream(s) ...</ng-container>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline" [disabled]="isRunning" (click)="isOpen = false">Cancel</button>
+        <button type="button" class="btn btn-outline" [disabled]="isRunning" (click)="isOpen = false" i18n="@@modal.cancel">Cancel</button>
         <button type="button" class="btn btn-primary" (click)="run()" [disabled]="isRunning">
-          <span>Export stream(s)</span>
+          <span i18n="@@tools.modal.export_streams.submit">Export stream(s)</span>
         </button>
       </div>
     </clr-modal>

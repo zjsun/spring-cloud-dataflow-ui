@@ -1,7 +1,7 @@
-<h1>Audit Records</h1>
+<h1 i18n="@@audit.title">Audit Records</h1>
 <clr-datagrid (clrDgRefresh)="refresh($event)" [clrDgLoading]="loading" #datagrid>
   <clr-dg-action-bar>
-    <button type="button" class="btn btn-sm btn-secondary" (click)="refresh(state)">Refresh</button>
+    <button type="button" class="btn btn-sm btn-secondary" (click)="refresh(state)" i18n="@@audit.refresh">Refresh</button>
   </clr-dg-action-bar>
   <clr-dg-column
     class="cell-id"
@@ -10,7 +10,7 @@
     (clrDgColumnResize)="updateContext('sizeId', $event)"
     [style.width.px]="context.sizeId | datagridcolumn: datagrid:contextName:0 | async"
   >
-    <ng-container> ID </ng-container>
+    <ng-container i18n="@@audit.col.id"> ID </ng-container>
     <clr-dg-filter style="display: none"></clr-dg-filter>
   </clr-dg-column>
   <clr-dg-column
@@ -20,7 +20,7 @@
     [clrFilterValue]="context.dates || []"
     [style.width.px]="context.sizeCreatedOn | datagridcolumn: datagrid:contextName | async"
   >
-    <ng-container> Created On </ng-container>
+    <ng-container i18n="@@audit.col.created_on"> Created On </ng-container>
     <clr-dg-filter [clrDgFilter]="datesFilter">
       <app-clr-datagrid-date-filter [value]="context.dates" #datesFilter></app-clr-datagrid-date-filter>
     </clr-dg-filter>
@@ -33,7 +33,7 @@
     [style.width.px]="context.sizeAuditAction | datagridcolumn: datagrid:contextName | async"
   >
     <ng-container>
-      Actions
+      <ng-container i18n="@@audit.col.actions">Actions</ng-container>
       <clr-dg-filter style="display: none"></clr-dg-filter>
     </ng-container>
     <clr-dg-filter [clrDgFilter]="actionFilter">
@@ -48,7 +48,7 @@
     [style.width.px]="context.sizeAuditOperation | datagridcolumn: datagrid:contextName | async"
   >
     <ng-container>
-      Operations
+      <ng-container i18n="@@audit.col.operations">Operations</ng-container>
       <clr-dg-filter style="display: none"></clr-dg-filter>
     </ng-container>
     <clr-dg-filter [clrDgFilter]="operationFilter">
@@ -63,7 +63,7 @@
     [style.width.px]="context.sizeCorrelationId | datagridcolumn: datagrid:contextName | async"
   >
     <ng-container>
-      Operation ID
+      <ng-container i18n="@@audit.col.operation_id">Operation ID</ng-container>
       <clr-dg-filter style="display: none"></clr-dg-filter>
     </ng-container>
   </clr-dg-column>
@@ -74,7 +74,7 @@
     [style.width.px]="context.sizeCreatedBy | datagridcolumn: datagrid:contextName | async"
   >
     <ng-container>
-      Create by
+      <ng-container i18n="@@audit.col.create_by">Create by</ng-container>
       <clr-dg-filter style="display: none"></clr-dg-filter>
     </ng-container>
   </clr-dg-column>
@@ -85,69 +85,59 @@
     [style.width.px]="context.sizePlatformName | datagridcolumn: datagrid:contextName | async"
   >
     <ng-container>
-      Platform name
+      <ng-container i18n="@@audit.col.platform_name">Platform name</ng-container>
       <clr-dg-filter style="display: none"></clr-dg-filter>
     </ng-container>
   </clr-dg-column>
   <clr-dg-row *ngFor="let record of page?.items" [clrDgItem]="record">
     <clr-dg-cell class="cell-id">{{ record.auditRecordId }}</clr-dg-cell>
     <clr-dg-cell>{{ record.createdOn | datetime }}</clr-dg-cell>
-    <clr-dg-cell
-      ><span class="{{ record.labelActionClass() }}">{{ record.auditAction }}</span></clr-dg-cell
-    >
-    <clr-dg-cell
-      ><span class="label">{{ record.auditOperation }}</span></clr-dg-cell
-    >
-    <clr-dg-cell
-      ><span class="text-truncate">{{ record.correlationId }}</span></clr-dg-cell
-    >
-    <clr-dg-cell
-      ><span class="text-truncate">{{ record.createdBy || 'N/A' }}</span></clr-dg-cell
-    >
-    <clr-dg-cell
-      ><span class="text-truncate">{{ record.platformName || 'N/A' }}</span></clr-dg-cell
-    >
+    <clr-dg-cell><span class="{{ record.labelActionClass() }}">{{ record.auditAction }}</span></clr-dg-cell>
+    <clr-dg-cell><span class="label">{{ record.auditOperation }}</span></clr-dg-cell>
+    <clr-dg-cell><span class="text-truncate">{{ record.correlationId }}</span></clr-dg-cell>
+    <clr-dg-cell><span class="text-truncate">{{ record.createdBy || 'N/A' }}</span></clr-dg-cell>
+    <clr-dg-cell><span class="text-truncate">{{ record.platformName || 'N/A' }}</span></clr-dg-cell>
   </clr-dg-row>
-  <clr-dg-placeholder>No results found.</clr-dg-placeholder>
+  <clr-dg-placeholder i18n="@audit.no_result">No results found.</clr-dg-placeholder>
   <clr-dg-detail *clrIfDetail="let detail">
-    <clr-dg-detail-header> Record {{ detail.auditRecordId }} </clr-dg-detail-header>
+    <clr-dg-detail-header> <ng-container i18n="@@audit.detail.title">Record</ng-container>&nbsp;{{ detail.auditRecordId }} </clr-dg-detail-header>
     <clr-dg-detail-body>
       <table class="table">
         <thead>
-          <th class="left" width="150px">Property</th>
-          <th class="left">Value</th>
+          <th class="left" width="150px" i18n="@@audit.detail.col.property">Property</th>
+          <th class="left" i18n="@@audit.detail.col.value">Value</th>
         </thead>
         <tbody>
           <tr>
-            <td class="left"><strong>Created On</strong></td>
+            <td class="left"><strong i18n="@@audit.detail.col.created_on">Created On</strong></td>
             <td class="left">{{ detail.createdOn | datetime }}</td>
           </tr>
           <tr>
-            <td class="left"><strong>Actions</strong></td>
+            <td class="left"><strong i18n="@@audit.detail.col.actions">Actions</strong></td>
             <td class="left">
               <span class="{{ detail.labelActionClass() }}">{{ detail.auditAction }}</span>
             </td>
           </tr>
           <tr>
-            <td class="left"><strong>Operations</strong></td>
+            <td class="left"><strong i18n="@@audit.detail.col.operations">Operations</strong></td>
             <td class="left">
               <span class="label">{{ detail.auditOperation }}</span>
             </td>
           </tr>
           <tr>
-            <td class="left"><strong>Operation ID</strong></td>
+            <td class="left"><strong i18n="@@audit.detail.col.operation_id">Operation ID</strong></td>
             <td class="left">{{ detail.correlationId }}</td>
           </tr>
           <tr>
-            <td class="left"><strong>Create by</strong></td>
+            <td class="left"><strong i18n="@@audit.detail.col.create_by">Create by</strong></td>
             <td class="left">{{ detail.createdBy || 'N/A' }}</td>
           </tr>
           <tr>
-            <td class="left"><strong>Platform name</strong></td>
+            <td class="left"><strong i18n="@@audit.detail.col.platform">Platform name</strong></td>
             <td class="left">{{ detail.platformName || 'N/A' }}</td>
           </tr>
           <tr>
-            <td class="left"><strong>Data</strong></td>
+            <td class="left"><strong i18n="@@audit.detail.col.data">Data</strong></td>
             <td class="left">
               <code style="word-break: break-all">{{ detail.auditData || 'N/A' }}</code>
             </td>
@@ -163,8 +153,12 @@
       [clrDgPageSize]="context.size"
       [clrDgPage]="context.current"
     >
-      <clr-dg-page-size [clrPageSizeOptions]="[10, 20, 50, 100]">Records per page</clr-dg-page-size>
-      {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of {{ page?.total }} records
+      <clr-dg-page-size [clrPageSizeOptions]="[10, 20, 50, 100]">
+        <ng-container i18n="@@audit.pager.title1">Records</ng-container>&nbsp;
+        <ng-container i18n="@@pager.per">per page</ng-container>
+      </clr-dg-page-size>
+      {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of {{ page?.total }}&nbsp;
+      <ng-container i18n="@@audit.pager.title2">records</ng-container>
     </clr-dg-pagination>
   </clr-dg-footer>
 </clr-datagrid>

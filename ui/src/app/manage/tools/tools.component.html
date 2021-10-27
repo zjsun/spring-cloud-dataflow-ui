@@ -1,43 +1,43 @@
-<h1>Tools</h1>
+<h1 i18n="@@tools.title">Tools</h1>
 
 <div class="clr-row">
   <div class="clr-col-lg-6 clr-col-md-12 clr-col-12" appRole appFeature="streams">
-    <app-view-card titleModal="Streams" keyContext="import-export" name="import-export" id="streams">
+    <app-view-card titleModal="Streams" i18n-titleModal="@@tools.card.streams.title" keyContext="import-export" name="import-export" id="streams">
       <ng-template>
         <div>
           <clr-icon shape="angle" style="transform: rotate(90deg)"></clr-icon>
-          <a href="/#" (click)="run('export-stream')">Export stream(s): Create a JSON file with the selected streams</a>
+          <a href="/#" (click)="run('export-stream')" i18n="@@tools.card.streams.export">Export stream(s): Create a JSON file with the selected streams</a>
         </div>
         <div [appRole]="['ROLE_CREATE']">
           <clr-icon shape="angle" style="transform: rotate(90deg)"></clr-icon>
-          <a href="/#" (click)="run('import-stream')">Import stream(s): Import streams from a JSON file</a>
+          <a href="/#" (click)="run('import-stream')" i18n="@@tools.card.streams.import">Import stream(s): Import streams from a JSON file</a>
         </div>
       </ng-template>
     </app-view-card>
 
-    <app-view-card titleModal="Clean up Task Executions" keyContext="import-export" name="import-export" id="cleanup">
+    <app-view-card titleModal="Clean up Task Executions" i18n-titleModal="@@tools.card.cleanup.title" keyContext="import-export" name="import-export" id="cleanup">
       <ng-template>
         <div>
           <clr-icon shape="angle" style="transform: rotate(90deg)"></clr-icon>
-          <a href="/#" (click)="run('cleanup-all')">Clean up all task/job executions</a>
+          <a href="/#" (click)="run('cleanup-all')" i18n="@@tools.card.cleanup.tasks">Clean up all task/job executions</a>
         </div>
         <div>
           <clr-icon shape="angle" style="transform: rotate(90deg)"></clr-icon>
-          <a href="/#" (click)="run('cleanup-completed')">Clean up all completed task/job executions</a>
+          <a href="/#" (click)="run('cleanup-completed')" i18n="@@tools.card.cleanup.execs">Clean up all completed task/job executions</a>
         </div>
       </ng-template>
     </app-view-card>
   </div>
   <div class="clr-col-lg-6 clr-col-md-12 clr-col-12" appRole appFeature="tasks">
-    <app-view-card titleModal="Tasks" keyContext="import-export" name="import-export" id="tasks">
+    <app-view-card titleModal="Tasks" i18n-titleModal="@@tools.card.tasks.ttile" keyContext="import-export" name="import-export" id="tasks">
       <ng-template>
         <div>
           <clr-icon shape="angle" style="transform: rotate(90deg)"></clr-icon>
-          <a href="/#" (click)="run('export-task')">Export task(s): Create a JSON file with the selected tasks</a>
+          <a href="/#" (click)="run('export-task')" i18n="@@tools.card.tasks.export">Export task(s): Create a JSON file with the selected tasks</a>
         </div>
         <div [appRole]="['ROLE_CREATE']">
           <clr-icon shape="angle" style="transform: rotate(90deg)"></clr-icon>
-          <a href="/#" (click)="run('import-task')">Import task(s): Import tasks from a JSON file</a>
+          <a href="/#" (click)="run('import-task')" i18n="@@tools.card.tasks.import">Import task(s): Import tasks from a JSON file</a>
         </div>
       </ng-template>
     </app-view-card>

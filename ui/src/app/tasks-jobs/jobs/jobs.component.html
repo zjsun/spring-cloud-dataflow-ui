@@ -107,16 +107,20 @@
   </clr-dg-footer>
 </clr-datagrid>
 
-<app-confirm #restartModal (onConfirmed)="restartJob()" i18n-title="@@jobs.modal.restart.title" title="Confirm restart the job execution" yes="Restart">
+<app-confirm #restartModal (onConfirmed)="restartJob()" i18n-title="@@jobs.modal.restart.title" title="Confirm restart the job execution"
+             yes="Restart" i18n-yes="@@jobs.modal.restart.yes"
+>
   <ng-container i18n="@@jobs.modal.restart.text1">This action will restart the steps failed of the job execution</ng-container>
   <strong>{{ selection?.name }} ({{ selection?.jobExecutionId }})</strong>
   <ng-container i18n="@@jobs.modal.restart.text2">.</ng-container><br />
-  <ng-container i18n="@@jobs.modal.restart.text3">Are you sure?</ng-container>
+  <ng-container i18n="@@modal.are_you_sure">Are you sure?</ng-container>
 </app-confirm>
 
-<app-confirm #stopModal (onConfirmed)="stopJob()" i18n-title="@@jobs.modal.stop.title" title="Confirm stop the job execution" yes="Stop">
+<app-confirm #stopModal (onConfirmed)="stopJob()" i18n-title="@@jobs.modal.stop.title" title="Confirm stop the job execution"
+             yes="Stop" i18n-yes="@@jobs.modal.stop.yes"
+>
   <ng-container i18n="@@jobs.modal.stop.text1">This action will stop the job execution</ng-container>
   <strong>{{ selection?.name }} ({{ selection?.jobExecutionId }})</strong>
   <ng-container i18n="@@jobs.modal.stop.text2">.</ng-container><br />
-  <ng-container i18n="@@jobs.modal.stop.text3">Are you sure?</ng-container>
+  <ng-container i18n="@@modal.are_you_sure">Are you sure?</ng-container>
 </app-confirm>

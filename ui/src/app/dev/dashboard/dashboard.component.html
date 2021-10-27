@@ -95,7 +95,9 @@
   #importAppsModal
   (onConfirmed)="runOperation('IMPORT_APPS')"
   title="Confirm Import Apps Starters"
+  i18n-title="@@dashboard.modal.import.title"
   yes="Import Apps Starters"
+  i18n-yes="@@dashboard.modal.import.yes"
 >
-  Are you sure?
+  <ng-container i18n="@@modal.are_you_sure">Are you sure?</ng-container>
 </app-confirm>

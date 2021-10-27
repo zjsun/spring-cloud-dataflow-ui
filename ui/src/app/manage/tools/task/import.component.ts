@@ -10,26 +10,28 @@ import {ImportExportService} from '../../../shared/service/import-export.service
       [clrModalClosable]="view !== 'loading'"
       [clrModalSize]="view === 'result' ? 'lg' : 'md'"
     >
-      <h3 class="modal-title">Import task(s)</h3>
+      <h3 class="modal-title" i18n="@@tools.modal.import_tasks.title">Import task(s)</h3>
       <div class="modal-body clr-form clr-form-horizontal" *ngIf="view === 'file'">
         <div>
-          You can import your tasks from a <strong>JSON file</strong>.<br />
-          The file needs to be modified for sensitive properties before importing.
+          <ng-container i18n="@@tools.modal.import_tasks.text1">You can import your tasks from a</ng-container>&nbsp;
+          <strong i18n="@@tools.modal.import_tasks.text2">JSON file</strong>
+          <ng-container i18n="@@tools.modal.import_tasks.text3">.</ng-container><br />
+          <ng-container i18n="@@tools.modal.import_tasks.text4">The file needs to be modified for sensitive properties before importing.</ng-container>
         </div>
         <div class="clr-form-control clr-row">
-          <label class="clr-col-2 clr-control-label">JSON file</label>
+          <label class="clr-col-2 clr-control-label" i18n="@@tools.modal.import_tasks.json_file">JSON file</label>
           <div class="clr-control-container clr-col-10">
             <div class="clr-file-input-wrapper">
               <label for="file">
                 <span class="filename text-truncate">{{ file?.name }}</span>
-                <span class="btn btn-sm btn-secondary">Select a file</span>
+                <span class="btn btn-sm btn-secondary" i18n="@@tools.modal.import_tasks.json_file.placeholder">Select a file</span>
                 <input name="file" id="file" type="file" (change)="fileChanged($event)" />
               </label>
             </div>
           </div>
         </div>
         <clr-checkbox-container class="clr-form-control clr-row">
-          <label class="clr-col-2">Options</label>
+          <label class="clr-col-2" i18n="@@tools.modal.import_tasks.options">Options</label>
           <clr-checkbox-wrapper>
             <input
               type="checkbox"
@@ -39,21 +41,20 @@ import {ImportExportService} from '../../../shared/service/import-export.service
               [(ngModel)]="excludeChildren"
               class="clr-col-10"
             />
-            <label>Exclude children</label>
+            <label i18n="@@tools.modal.import_tasks.options.label">Exclude children</label>
           </clr-checkbox-wrapper>
         </clr-checkbox-container>
       </div>
       <div class="modal-body" *ngIf="view === 'result'">
         <div>
-          File: <strong>{{ file?.name }}</strong
-          ><br />
-          Duration: <strong>{{ result.duration }}s</strong>
+          <ng-container i18n="@@tools.modal.import_tasks.text5">File:</ng-container>&nbsp;<strong>{{ file?.name }}</strong><br />
+          <ng-container i18n="@@tools.modal.import_tasks.text6">Duration:</ng-container>&nbsp;<strong>{{ result.duration }}s</strong>
         </div>
         <div *ngIf="result.error.length > 0">
-          <h4>{{ result.error.length }} error(s)</h4>
+          <h4>{{ result.error.length }}&nbsp;<ng-container i18n="@@tools.modal.import_tasks.errors">error(s)</ng-container></h4>
           <clr-datagrid class="clr-datagrid-no-fixed-height">
             <clr-dg-column [style.width.px]="10">&nbsp;</clr-dg-column>
-            <clr-dg-column>Description</clr-dg-column>
+            <clr-dg-column i18n="@@tools.modal.import_tasks.errors.description">Description</clr-dg-column>
             <clr-dg-row *clrDgItems="let task of result.error; index as i">
               <clr-dg-cell>
                 <clr-icon shape="error-standard" class="is-solid"></clr-icon>
@@ -66,18 +67,18 @@ import {ImportExportService} from '../../../shared/service/import-export.service
                   <span class="dsl-text dsl-truncate">{{ task.dslText }}</span>
                 </div>
                 <div class="error">
-                  Message: {{ task.message }}<br />
-                  Index: {{ i }}
+                  <ng-container i18n="@@tools.modal.import_tasks.errors.msg">Message:</ng-container>&nbsp;{{ task.message }}<br />
+                  <ng-container i18n="@@tools.modal.import_tasks.errors.idx">Index:</ng-container>&nbsp;{{ i }}
                 </div>
               </clr-dg-cell>
             </clr-dg-row>
           </clr-datagrid>
         </div>
         <div *ngIf="result.success.length > 0">
-          <h4>{{ result.success.length }} task(s) created</h4>
+          <h4>{{ result.success.length }}&nbsp;<ng-container i18n="@@tools.modal.import_tasks.tasks">task(s) created</ng-container></h4>
           <clr-datagrid class="clr-datagrid-no-fixed-height">
             <clr-dg-column [style.width.px]="10">&nbsp;</clr-dg-column>
-            <clr-dg-column>Description</clr-dg-column>
+            <clr-dg-column i18n="@@tools.modal.import_tasks.tasks.description">Description</clr-dg-column>
             <clr-dg-row *clrDgItems="let task of result.success">
               <clr-dg-cell>
                 <clr-icon shape="success-standard" class="is-solid"></clr-icon>
@@ -96,10 +97,10 @@ import {ImportExportService} from '../../../shared/service/import-export.service
       </div>
       <div class="modal-body" *ngIf="view === 'importing'">
         <clr-spinner clrInline clrSmall></clr-spinner>
-        Importing task(s) ...
+        <ng-container i18n="@@tools.modal.import_tasks.importing">Importing task(s) ...</ng-container>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-outline" [disabled]="view === 'importing'" (click)="isOpen = false">
+        <button type="button" class="btn btn-outline" [disabled]="view === 'importing'" (click)="isOpen = false" i18n="@@modal.cancel">
           Cancel
         </button>
         <button
@@ -109,7 +110,7 @@ import {ImportExportService} from '../../../shared/service/import-export.service
           [disabled]="view === 'importing'"
           *ngIf="view === 'file'"
         >
-          <span>Import task(s)</span>
+          <span i18n="@@tools.modal.import_tasks.submit">Import task(s)</span>
         </button>
       </div>
     </clr-modal>
