@@ -198,6 +198,7 @@
     "streams.deploy.builder.modal.group.loading": "Loading...",
     "streams.deploy.builder.modal.group.update": "Update",
     "streams.deploy.builder.modal.properties.text1": "Properties for",
+    "streams.deploy.builder.modal.properties.search.placeholder": "Search properties ...",
     "streams.deploy.builder.modal.properties.loading": "Loading...",
     "streams.deploy.builder.modal.properties.update": "Update",
     "list.no_result": " No results found. ",
