@@ -68,7 +68,8 @@
              yes="Make default" i18n-yes="@@apps.modal.version.default.confirm.yes"
 >
   <ng-container i18n="@@apps.modal.version.default.confirm.text1">This action will make the version</ng-container>&nbsp;
-  <strong>{{ selected?.version }}</strong>&nbsp;<ng-container i18n="@@apps.modal.version.default.confirm.text2">as the default version for the application</ng-container>
+  <strong>{{ selected?.version }}</strong>&nbsp;
+  <ng-container i18n="@@apps.modal.version.default.confirm.text2">as the default version for the application</ng-container>&nbsp;
   <strong>{{ selected?.name }}</strong>&nbsp; <span class="{{ selected?.labelTypeClass() }}">{{ selected?.type }}</span>
   <ng-container i18n="@@apps.modal.version.default.confirm.text3">.</ng-container>
   <br />
