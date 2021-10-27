@@ -456,7 +456,7 @@
     "streams.deploy.multi.title": "部署数据流",
     "streams.deploy.multi.deploy": "部署",
     "streams.deploy.multi.update": "更新",
-    "streams.deploy.multi.form.dsl": "DSL内容",
+    "streams.deploy.multi.form.dsl": "代码",
     "streams.deploy.multi.form.description": "描述",
     "streams.deploy.multi.form.status": "状态",
     "streams.deploy.multi.form.platform": " 目标平台 ",
