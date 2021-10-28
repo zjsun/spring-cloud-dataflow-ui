@@ -11,6 +11,13 @@
     <description>This application provides the Dashboard application of Spring Cloud Data Flow.</description>
     <url>https://cloud.spring.io/spring-cloud-dataflow/</url>
 
+    <properties>
+        <skipTests>true</skipTests>
+        <maven.javadoc.skip>true</maven.javadoc.skip>
+        <checkstyle.skip>true</checkstyle.skip>
+        <docker.prefix>docker.datav.com/datav</docker.prefix>
+    </properties>
+
     <organization>
         <name>Pivotal Software, Inc.</name>
         <url>https://www.spring.io</url>

@@ -12,8 +12,9 @@ export class UserComponent {
   constructor(private securityService: SecurityService, private router: Router) {}
 
   logout(): void {
-    this.securityService.logout().subscribe(security => {
-      this.router.navigate(['/']);
-    });
+    location.href = "/logout";
+    // this.securityService.logout().subscribe(security => {
+    //   this.router.navigate(['/']);
+    // });
   }
 }
