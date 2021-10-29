@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <modelVersion>4.0.0</modelVersion>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.springframework.cloud</groupId>
-    <artifactId>spring-cloud-dataflow-ui</artifactId>
-    <version>3.2.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <name>Spring Cloud Data Flow User Interface</name>
-    <description>This application provides the Dashboard application of Spring Cloud Data Flow.</description>
-    <url>https://cloud.spring.io/spring-cloud-dataflow/</url>
+	<groupId>org.springframework.cloud</groupId>
+	<artifactId>spring-cloud-dataflow-ui</artifactId>
+	<version>3.2.2-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>Spring Cloud Data Flow User Interface</name>
+	<description>This application provides the Dashboard application of Spring Cloud Data Flow.</description>
+	<url>https://cloud.spring.io/spring-cloud-dataflow/</url>
 
+    <!-- datav -->
     <properties>
         <skipTests>true</skipTests>
         <maven.javadoc.skip>true</maven.javadoc.skip>
@@ -18,176 +18,174 @@
         <docker.prefix>docker.datav.com/datav</docker.prefix>
     </properties>
 
-    <organization>
-        <name>Pivotal Software, Inc.</name>
-        <url>https://www.spring.io</url>
-    </organization>
-    <licenses>
-        <license>
-            <name>The Apache License, Version 2.0</name>
-            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
-        </license>
-    </licenses>
-    <scm>
-        <url>https://github.com/spring-cloud/spring-cloud-dataflow-ui</url>
-        <connection>scm:git:git://github.com/spring-cloud/spring-cloud-dataflow-ui.git</connection>
-        <developerConnection>scm:git:ssh://git@github.com/spring-cloud/spring-cloud-dataflow-ui.git</developerConnection>
-        <tag>HEAD</tag>
-    </scm>
-    <developers>
-        <developer>
-            <id>ghillert</id>
-            <name>Gunnar Hillert</name>
-            <email>ghillert at pivotal.io</email>
-            <organization>Pivotal Software, Inc.</organization>
-            <organizationUrl>https://www.spring.io</organizationUrl>
-            <roles>
-                <role>Project lead</role>
-            </roles>
-        </developer>
-        <developer>
-            <id>ilayaperumalg</id>
-            <name>Ilayaperumal Gopinathan</name>
-            <email>ilayaperumalg at pivotal.io</email>
-            <organization>Pivotal Software, Inc.</organization>
-            <organizationUrl>https://www.spring.io</organizationUrl>
-            <roles>
-                <role>Project lead</role>
-            </roles>
-        </developer>
-        <developer>
-            <id>aclement</id>
-            <name>Andy Clement</name>
-            <email>aclement at pivotal.io</email>
-            <organization>Pivotal Software, Inc.</organization>
-            <organizationUrl>https://www.spring.io</organizationUrl>
-            <roles>
-                <role>Project lead</role>
-            </roles>
-        </developer>
-        <developer>
-            <id>aboyko</id>
-            <name>Alex Boyko</name>
-            <email>aboyko at pivotal.io</email>
-            <organization>Pivotal Software, Inc.</organization>
-            <organizationUrl>https://www.spring.io</organizationUrl>
-            <roles>
-                <role>Project lead</role>
-            </roles>
-        </developer>
-    </developers>
-    <prerequisites>
-        <maven>3.1.0</maven>
-    </prerequisites>
-    <build>
-        <resources>
-            <resource>
-                <directory>src/main/resources</directory>
-            </resource>
-        </resources>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.6.2</version>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>com.github.eirslett</groupId>
-                <artifactId>frontend-maven-plugin</artifactId>
-                <version>1.12.0</version>
-                <configuration>
-                    <workingDirectory>ui</workingDirectory>
-                </configuration>
-                <executions>
-                    <execution>
-                        <id>install node and npm</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>install-node-and-npm</goal>
-                        </goals>
-                        <configuration>
-                            <nodeVersion>v14.17.4</nodeVersion>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>npm install</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>install --scripts-prepend-node-path=auto</arguments>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>npm doc</id>
-                        <phase>generate-resources</phase>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>run doc</arguments>
-                            <skip>true</skip>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>npm build</id>
-                        <phase>compile</phase>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>run mavenbuild-without-tests</arguments>
-                        </configuration>
-                    </execution>
-                    <execution>
-                        <id>npm test</id>
-                        <phase>test</phase>
-                        <goals>
-                            <goal>npm</goal>
-                        </goals>
-                        <configuration>
-                            <arguments>run mavenbuild-tests</arguments>
-                            <skip>true</skip>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-            <plugin>
-                <artifactId>maven-clean-plugin</artifactId>
-                <version>3.0.0</version>
-                <configuration>
-                    <filesets>
-<!--                        <fileset>-->
-<!--                            <directory>ui/node_modules</directory>-->
-<!--                            <followSymlinks>false</followSymlinks>-->
-<!--                        </fileset>-->
-<!--                        <fileset>-->
-<!--                            <directory>ui</directory>-->
-<!--                            <includes>-->
-<!--                                <include>package-lock.json</include>-->
-<!--                            </includes>-->
-<!--                            <followSymlinks>false</followSymlinks>-->
-<!--                        </fileset>-->
-                        <fileset>
-                            <directory>ui/dist</directory>
-                            <followSymlinks>false</followSymlinks>
-                        </fileset>
-                        <fileset>
-                            <directory>src/main/resources/public/dashboard</directory>
-                            <followSymlinks>false</followSymlinks>
-                        </fileset>
-<!--                        <fileset>-->
-<!--                            <directory>ui/node</directory>-->
-<!--                            <followSymlinks>false</followSymlinks>-->
-<!--                        </fileset>-->
-                    </filesets>
-                </configuration>
-            </plugin>
+	<organization>
+		<name>Pivotal Software, Inc.</name>
+		<url>https://www.spring.io</url>
+	</organization>
+	<licenses>
+	  <license>
+	    <name>The Apache License, Version 2.0</name>
+	    <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+	  </license>
+	</licenses>
+	<scm>
+		<url>https://github.com/spring-cloud/spring-cloud-dataflow-ui</url>
+		<connection>scm:git:git://github.com/spring-cloud/spring-cloud-dataflow-ui.git</connection>
+		<developerConnection>scm:git:ssh://git@github.com/spring-cloud/spring-cloud-dataflow-ui.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+	<developers>
+		<developer>
+			<id>ghillert</id>
+			<name>Gunnar Hillert</name>
+			<email>ghillert at pivotal.io</email>
+			<organization>Pivotal Software, Inc.</organization>
+			<organizationUrl>https://www.spring.io</organizationUrl>
+			<roles>
+				<role>Project lead</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>ilayaperumalg</id>
+			<name>Ilayaperumal Gopinathan</name>
+			<email>ilayaperumalg at pivotal.io</email>
+			<organization>Pivotal Software, Inc.</organization>
+			<organizationUrl>https://www.spring.io</organizationUrl>
+			<roles>
+				<role>Project lead</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>aclement</id>
+			<name>Andy Clement</name>
+			<email>aclement at pivotal.io</email>
+			<organization>Pivotal Software, Inc.</organization>
+			<organizationUrl>https://www.spring.io</organizationUrl>
+			<roles>
+				<role>Project lead</role>
+			</roles>
+		</developer>
+		<developer>
+			<id>aboyko</id>
+			<name>Alex Boyko</name>
+			<email>aboyko at pivotal.io</email>
+			<organization>Pivotal Software, Inc.</organization>
+			<organizationUrl>https://www.spring.io</organizationUrl>
+			<roles>
+				<role>Project lead</role>
+			</roles>
+		</developer>
+	</developers>
+	<prerequisites>
+		<maven>3.1.0</maven>
+	</prerequisites>
+	<build>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+			</resource>
+		</resources>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.6.2</version>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>com.github.eirslett</groupId>
+				<artifactId>frontend-maven-plugin</artifactId>
+				<version>1.12.0</version>
+				<configuration>
+					<workingDirectory>ui</workingDirectory>
+				</configuration>
+				<executions>
+					<execution>
+						<id>install node and npm</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>install-node-and-npm</goal>
+						</goals>
+						<configuration>
+							<nodeVersion>v14.17.4</nodeVersion>
+						</configuration>
+					</execution>
+					<execution>
+						<id>npm install</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<arguments>install --scripts-prepend-node-path=auto</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>npm doc</id>
+						<phase>generate-resources</phase>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<arguments>run doc</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>npm build</id>
+						<phase>compile</phase>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<arguments>run mavenbuild-without-tests</arguments>
+						</configuration>
+					</execution>
+					<execution>
+						<id>npm test</id>
+						<phase>test</phase>
+						<goals>
+							<goal>npm</goal>
+						</goals>
+						<configuration>
+							<arguments>run mavenbuild-tests</arguments>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+			 <plugin>
+				<artifactId>maven-clean-plugin</artifactId>
+				<version>3.0.0</version>
+				<configuration>
+				<filesets>
+						<fileset>
+							<directory>ui/node_modules</directory>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+						<fileset>
+							<directory>ui</directory>
+							<includes>
+								<include>package-lock.json</include>
+							</includes>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+						<fileset>
+							<directory>ui/dist</directory>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+						<fileset>
+							<directory>src/main/resources/public/dashboard</directory>
+							<followSymlinks>false</followSymlinks>
+						</fileset>
+						<fileset>
+							 <directory>ui/node</directory>
+							 <followSymlinks>false</followSymlinks>
+						</fileset>
+				</filesets>
+				</configuration>
+			</plugin>
             <plugin>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>3.2.0</version>
@@ -204,22 +202,22 @@
                     </execution>
                 </executions>
             </plugin>
-        </plugins>
-    </build>
-    <profiles>
-        <profile>
-            <id>spring</id>
-            <repositories>
-                <repository>
-                    <id>repo.spring.io.milestone</id>
-                    <name>Spring Maven Milestone Repository</name>
-                    <url>https://repo.spring.io/libs-milestone</url>
-                </repository>
-                <repository>
-                    <id>clojars.org</id>
-                    <url>https://clojars.org/repo</url>
-                </repository>
-            </repositories>
-        </profile>
-    </profiles>
+		</plugins>
+	</build>
+	<profiles>
+		<profile>
+			<id>spring</id>
+			<repositories>
+				<repository>
+					<id>repo.spring.io.milestone</id>
+					<name>Spring Maven Milestone Repository</name>
+					<url>https://repo.spring.io/libs-milestone</url>
+				</repository>
+				<repository>
+					<id>clojars.org</id>
+					<url>https://clojars.org/repo</url>
+				</repository>
+			</repositories>
+		</profile>
+	</profiles>
 </project>
