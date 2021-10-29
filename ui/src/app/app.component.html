@@ -1,12 +1,35 @@
 <div class="login-wrapper" *ngIf="shouldProtect | async; else main">
-  <form class="login">
+  <form #loginForm class="login" method="post" action="/login">
     <section class="title">
       <h3 class="welcome" i18n="@@app.login.welcome">Welcome to</h3>
       <ng-container i18n="@@app.login.app_name">Data Flow UI</ng-container>
       <h5 class="hint" i18n="@@app.login.hint">You have to log in to access the application.</h5>
     </section>
-    <div style="padding-bottom: 50px">
-      <a href="/login" class="btn btn-primary" i18n="@@app.login"> Log In </a>
+
+    <div class="login-group">
+      <clr-input-container>
+        <label class="clr-sr-only" i18n="@@app.login.username">Username</label>
+        <input type="text" name="username" clrInput placeholder="Username" i18n-placeholder="@@app.login.username.placeholder" required />
+      </clr-input-container>
+      <clr-password-container>
+        <label class="clr-sr-only" i18n="@@app.login.password">Password</label>
+        <input type="password"
+               name="password"
+               clrPassword
+               placeholder="Password"
+               i18n-placeholder="@@app.login.password.placeholder"
+               (keyup.enter)="loginForm.submit()"
+               required
+        />
+      </clr-password-container>
+      <clr-checkbox-wrapper>
+        <label i18n="@@app.login.remember">Remember me</label>
+        <input type="checkbox" name="remember-me" clrCheckbox checked />
+      </clr-checkbox-wrapper>
+      <div class="error" *ngIf="false" i18n="@@app.login.error">
+        Invalid user name or password
+      </div>
+      <button type="button" class="btn btn-primary" style="margin-top: 1rem;" (click)="loginForm.submit()" i18n="@@app.login"> Log In </button>
     </div>
   </form>
 </div>
@@ -17,7 +40,7 @@
       <div class="branding">
         <a routerLink="/" class="logo-and-title">
           <app-logo></app-logo>
-          <span class="title" i18n="@@app.logo-title">Data Flow</span>
+          <span class="title" i18n="@@app.logo-title1">Data Flow</span>
         </a>
       </div>
       <app-search></app-search>

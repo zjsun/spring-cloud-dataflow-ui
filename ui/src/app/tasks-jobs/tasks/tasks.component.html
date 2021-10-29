@@ -1,5 +1,5 @@
 <h1 class="page-title-actions">
-  <ng-container i18n="@@tasks.title1">Tasks</ng-container>
+  <ng-container i18n="@@tasks.title">Tasks</ng-container>
   <span class="actions">
     <button type="button" class="btn btn-sm btn-primary" (click)="createTask()" [appRole]="['ROLE_CREATE']" i18n="@@tasks.create">
       Create task
@@ -162,10 +162,10 @@
       [clrDgPage]="context.current"
     >
       <clr-dg-page-size [clrPageSizeOptions]="[10, 20, 50, 100]">
-        <ng-container i18n="@@tasks.title1">Tasks</ng-container>&nbsp;<ng-container i18n="@@pater.per">per page</ng-container>
+        <ng-container i18n="@@tasks.pager.title1">Tasks</ng-container>&nbsp;<ng-container i18n="@@pager.per">per page</ng-container>
       </clr-dg-page-size>
       {{ pagination.firstItem + 1 }} - {{ pagination.lastItem + 1 }} of {{ page?.total }}&nbsp;
-      <ng-container i18n="@@tasks.title2">tasks</ng-container>
+      <ng-container i18n="@@tasks.pager.title2">tasks</ng-container>
     </clr-dg-pagination>
   </clr-dg-footer>
 </clr-datagrid>

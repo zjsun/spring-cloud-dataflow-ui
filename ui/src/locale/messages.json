@@ -56,7 +56,13 @@
     "app.login.welcome": "Welcome to",
     "app.login.app_name": "Data Flow UI",
     "app.login.hint": "You have to log in to access the application.",
-    "app.logo-title": "Data Flow",
+    "app.login.username": "Username",
+    "app.login.username.placeholder": "Username",
+    "app.login.password": "Password",
+    "app.login.password.placeholder": "Password",
+    "app.login.remember": "Remember me",
+    "app.login.error": " Invalid user name or password ",
+    "app.logo-title1": "Data Flow",
     "apps.add.title": "Add application(s)",
     "apps.add.register": "Register one or more applications",
     "apps.add.import.http": "Import application coordinates from an HTTP URI location",
@@ -226,6 +232,7 @@
     "tasks.builder.create.dsl_editor.placeholder": "Enter task definitions here...",
     "tasks.builder.create.dsl_editor.fit_to_content": "Fit to Content",
     "tasks.builder.create.dsl_editor.loading": "Loading editor...",
+    "app.logo-title2": "Spring Cloud Dataflow UI",
     "nav.applications": "Applications",
     "nav.streams": "Streams",
     "nav.streams.streams": " Streams ",
@@ -971,7 +978,7 @@
     "tasks.detail.card.schedule.no_schedule": "No schedule yet.",
     "tasks.detail.card.schedule.loading": "Loading schedule(s)...",
     "tasks.detail.loading": "Loading task...",
-    "tasks.title1": "Tasks",
+    "tasks.title": "Tasks",
     "tasks.create": " Create task ",
     "tasks.list.schedule": " Schedule task(s) ",
     "tasks.list.destroy": " Destroy task(s) ",
@@ -989,7 +996,7 @@
     "tasks.list.row.clone": " Clone ",
     "tasks.list.row.cleanup": " Cleanup ",
     "tasks.list.no_results": "No results found.",
-    "pater.per": "per page",
-    "tasks.title2": "tasks"
+    "tasks.pager.title1": "Tasks",
+    "tasks.pager.title2": "tasks"
   }
 }

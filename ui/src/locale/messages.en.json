@@ -56,7 +56,8 @@
     "app.login.welcome": "Welcome to",
     "app.login.app_name": "Data Flow UI",
     "app.login.hint": "You have to log in to access the application.",
-    "app.logo-title": "Data Flow",
+    "app.logo-title1": "Data Flow",
+    "app.logo-title2": "Spring Cloud Dataflow UI",
     "apps.add.title": "Add application(s)",
     "apps.add.register": "Register one or more applications",
     "apps.add.import.http": "Import application coordinates from an HTTP URI location",
@@ -971,7 +972,7 @@
     "tasks.detail.card.schedule.no_schedule": "No schedule yet.",
     "tasks.detail.card.schedule.loading": "Loading schedule(s)...",
     "tasks.detail.loading": "Loading task...",
-    "tasks.title1": "Tasks",
+    "tasks.title": "Tasks",
     "tasks.create": " Create task ",
     "tasks.list.schedule": " Schedule task(s) ",
     "tasks.list.destroy": " Destroy task(s) ",
@@ -989,7 +990,7 @@
     "tasks.list.row.clone": " Clone ",
     "tasks.list.row.cleanup": " Cleanup ",
     "tasks.list.no_results": "No results found.",
-    "pater.per": "per page",
-    "tasks.title2": "tasks"
+    "tasks.pager.title1": "Tasks",
+    "tasks.pager.title2": "tasks"
   }
 }
