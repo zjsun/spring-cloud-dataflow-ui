@@ -123,16 +123,17 @@
 							<arguments>install --scripts-prepend-node-path=auto</arguments>
 						</configuration>
 					</execution>
-					<execution>
-						<id>npm doc</id>
-						<phase>generate-resources</phase>
-						<goals>
-							<goal>npm</goal>
-						</goals>
-						<configuration>
-							<arguments>run doc</arguments>
-						</configuration>
-					</execution>
+<!--					datav-->
+<!--					<execution>-->
+<!--						<id>npm doc</id>-->
+<!--						<phase>generate-resources</phase>-->
+<!--						<goals>-->
+<!--							<goal>npm</goal>-->
+<!--						</goals>-->
+<!--						<configuration>-->
+<!--							<arguments>run doc</arguments>-->
+<!--						</configuration>-->
+<!--					</execution>-->
 					<execution>
 						<id>npm build</id>
 						<phase>compile</phase>
@@ -159,7 +160,7 @@
 				<artifactId>maven-clean-plugin</artifactId>
 				<version>3.0.0</version>
 				<configuration>
-				<filesets>
+					<filesets>
 						<fileset>
 							<directory>ui/node_modules</directory>
 							<followSymlinks>false</followSymlinks>
@@ -183,7 +184,7 @@
 							 <directory>ui/node</directory>
 							 <followSymlinks>false</followSymlinks>
 						</fileset>
-				</filesets>
+					</filesets>
 				</configuration>
 			</plugin>
             <plugin>
