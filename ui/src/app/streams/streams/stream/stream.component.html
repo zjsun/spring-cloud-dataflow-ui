@@ -1,7 +1,7 @@
 <h1 class="page-title">
   <span class="text-truncate">
     <ng-container i18n="@@streams.detail.title">Stream</ng-container>&nbsp;<strong>{{ stream?.name }}</strong>&nbsp;
-    <span *ngIf="stream?.status" class="{{ stream.labelStatusClass() }}">{{ stream.status }}</span>
+    <span *ngIf="stream?.status" class="{{ stream.labelStatusClass() }}">{{ stream.status | i18n: 'stream.status'}}</span>
   </span>
 </h1>
 
@@ -90,7 +90,7 @@
             <div class="row">
               <div class="key" i18n="@@streams.detail.status">Status</div>
               <div class="value">
-                <span class="{{ stream.labelStatusClass() }}">{{ stream.status }}</span>
+                <span class="{{ stream.labelStatusClass() }}">{{ stream.status | i18n: 'stream.status'}}</span>
               </div>
             </div>
             <div class="row">

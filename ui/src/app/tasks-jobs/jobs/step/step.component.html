@@ -1,5 +1,5 @@
 <h1>
-  <ng-container i18n="@@jobs.step.title">Step Execution</ng-container>
+  <ng-container i18n="@@jobs.step.title">Step Execution</ng-container>&nbsp;
   <span *ngIf="stepResource && execution">
     <strong>{{ stepResource.stepExecution.name }} ({{ stepResource.stepExecution.id }})</strong>&nbsp;-&nbsp;
     <ng-container i18n="@@jobs.step.text1">Job execution</ng-container>
@@ -43,8 +43,8 @@
               <div class="key"><strong i18n="@@jobs.step.card.info.status">Status</strong></div>
               <div class="value">
                 <span class="{{ stepResource.stepExecution.labelStatusClass() }}">
-                  {{ stepResource.stepExecution.status }}</span
-                >
+                  {{ stepResource.stepExecution.status |i18n: 'job.status'}}
+                </span>
               </div>
             </div>
             <div class="row">
@@ -265,7 +265,7 @@
               <div class="row">
                 <div class="key" i18n="@@jobs.step.card.task.status">Status</div>
                 <div class="value">
-                  <span class="{{ task.labelStatusClass() }}">{{ task.status }}</span>
+                  <span class="{{ task.labelStatusClass() }}">{{ task.status |i18n: 'task.status'}}</span>
                 </div>
               </div>
               <div class="row">

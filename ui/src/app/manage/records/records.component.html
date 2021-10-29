@@ -92,8 +92,8 @@
   <clr-dg-row *ngFor="let record of page?.items" [clrDgItem]="record">
     <clr-dg-cell class="cell-id">{{ record.auditRecordId }}</clr-dg-cell>
     <clr-dg-cell>{{ record.createdOn | datetime }}</clr-dg-cell>
-    <clr-dg-cell><span class="{{ record.labelActionClass() }}">{{ record.auditAction }}</span></clr-dg-cell>
-    <clr-dg-cell><span class="label">{{ record.auditOperation }}</span></clr-dg-cell>
+    <clr-dg-cell><span class="{{ record.labelActionClass() }}">{{ record.auditAction |i18n: 'audit.action'}}</span></clr-dg-cell>
+    <clr-dg-cell><span class="label">{{ record.auditOperation |i18n: 'audit.operation'}}</span></clr-dg-cell>
     <clr-dg-cell><span class="text-truncate">{{ record.correlationId }}</span></clr-dg-cell>
     <clr-dg-cell><span class="text-truncate">{{ record.createdBy || 'N/A' }}</span></clr-dg-cell>
     <clr-dg-cell><span class="text-truncate">{{ record.platformName || 'N/A' }}</span></clr-dg-cell>
@@ -115,13 +115,13 @@
           <tr>
             <td class="left"><strong i18n="@@audit.detail.col.actions">Actions</strong></td>
             <td class="left">
-              <span class="{{ detail.labelActionClass() }}">{{ detail.auditAction }}</span>
+              <span class="{{ detail.labelActionClass() }}">{{ detail.auditAction |i18n: 'audit.action'}}</span>
             </td>
           </tr>
           <tr>
             <td class="left"><strong i18n="@@audit.detail.col.operations">Operations</strong></td>
             <td class="left">
-              <span class="label">{{ detail.auditOperation }}</span>
+              <span class="label">{{ detail.auditOperation |i18n: 'audit.operation'}}</span>
             </td>
           </tr>
           <tr>

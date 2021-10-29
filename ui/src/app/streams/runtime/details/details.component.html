@@ -1,8 +1,8 @@
 <clr-modal [(clrModalOpen)]="isOpen" *ngIf="runtimeApp" [clrModalSize]="'lg'">
   <h3 class="modal-title">
-    <ng-container i18n="@@streams.runtime.stream.detail.title">Instances for app</ng-container>
+    <ng-container i18n="@@streams.runtime.stream.detail.title">Instances for app</ng-container>&nbsp;
     <strong>{{ runtimeApp.deploymentId }}</strong>&nbsp;
-    <span class="{{ runtimeApp.stateColor() }}">{{ runtimeApp.state }}</span>
+    <span class="{{ runtimeApp.stateColor() }}">{{ runtimeApp.state | i18n: 'stream.status'}}</span>
     <button class="btn btn-sm btn-secondary" grafanaDashboardRuntimeApp [runtimeApp]="runtimeApp" i18n="@@grafana.dashboard">
       Grafana dashboard
     </button>
@@ -17,7 +17,7 @@
           <ng-container i18n="@@streams.runtime.stream.detail.instance">Instance</ng-container>&nbsp;
           <strong>{{ item.instanceId }}</strong
           >&nbsp;
-          <span class="{{ item.stateColor() }}">{{ item.state }}</span>
+          <span class="{{ item.stateColor() }}">{{ item.state |i18n: 'stream.status'}}</span>
           <button class="btn btn-sm btn-secondary" grafanaDashboardRuntimeInstance [instance]="item" i18n="@@grafana.dashboard">
             Grafana dashboard
           </button>

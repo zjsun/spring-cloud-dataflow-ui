@@ -121,7 +121,7 @@
       </span>
     </clr-dg-cell>
     <clr-dg-cell
-      ><span class="{{ stream.labelStatusClass() }}">{{ stream.status }}</span></clr-dg-cell
+      ><span class="{{ stream.labelStatusClass() }}">{{ stream.status | i18n : 'stream.status'}}</span></clr-dg-cell
     >
     <clr-dg-action-overflow *ngIf="!grouped">
       <button class="action-item" (click)="details(stream)" i18n="@@streams.list.row.details">Details</button>

@@ -186,7 +186,7 @@
               <div class="row">
                 <div class="key" i18n="@@execs.detail.card.task.status">Status</div>
                 <div class="value">
-                  <span class="{{ task.labelStatusClass() }}">{{ task.status }}</span>
+                  <span class="{{ task.labelStatusClass() }}">{{ task.status |i18n: 'task.status'}}</span>
                 </div>
               </div>
               <div class="row">

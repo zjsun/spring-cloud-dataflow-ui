@@ -65,9 +65,7 @@
     <clr-dg-cell>{{ execution.jobInstanceId }}</clr-dg-cell>
     <clr-dg-cell>{{ execution.startTime | datetime }}</clr-dg-cell>
     <clr-dg-cell>{{ execution.stepExecutionCount }}</clr-dg-cell>
-    <clr-dg-cell
-      ><span class="{{ execution.labelStatusClass() }}">{{ execution.status }}</span></clr-dg-cell
-    >
+    <clr-dg-cell><span class="{{ execution.labelStatusClass() }}">{{ execution.status |i18n: 'job.status'}}</span></clr-dg-cell>
     <clr-dg-action-overflow>
       <button class="action-item" (click)="details(execution)" i18n="@@jobs.row.detail">Details</button>
       <button

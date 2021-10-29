@@ -70,7 +70,7 @@
             <div class="row">
               <div class="key" i18n="@@jobs.detail.card.info.status">Status</div>
               <div class="value">
-                <span class="{{ execution.labelStatusClass() }}">{{ execution.status }}</span>
+                <span class="{{ execution.labelStatusClass() }}">{{ execution.status |i18n: 'job.status'}}</span>
               </div>
             </div>
             <div class="row">
@@ -113,7 +113,7 @@
               <div class="row">
                 <div class="key" i18n="@@jobs.detail.card.task.status">Status</div>
                 <div class="value">
-                  <span class="{{ task.labelStatusClass() }}">{{ task.status }}</span>
+                  <span class="{{ task.labelStatusClass() }}">{{ task.status |i18n: 'task.status'}}</span>
                 </div>
               </div>
               <div class="row">
@@ -300,7 +300,7 @@
                 <td class="left">{{ step.rollbackCount }}</td>
                 <td class="left">{{ step.startTime | duration: step.endTime }}</td>
                 <td class="left">
-                  <span class="{{ step.labelStatusClass() }}">{{ step.status }}</span>
+                  <span class="{{ step.labelStatusClass() }}">{{ step.status |i18n: 'job.status'}}</span>
                 </td>
               </tr>
             </tbody>

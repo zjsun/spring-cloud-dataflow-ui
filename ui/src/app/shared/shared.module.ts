@@ -2,6 +2,7 @@ import {NgModule} from '@angular/core';
 import {ClarityModule} from '@clr/angular';
 import {KeyValueComponent} from './component/key-value/key-value.component';
 import {DatetimePipe} from './pipe/datetime.pipe';
+import { I18nPipe } from './pipe/i18n.pipe';
 import {OrderByPipe} from './pipe/order-by.pipe';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {DurationPipe} from './pipe/duration.pipe';
@@ -76,7 +77,8 @@ import {DatagridColumnPipe} from './pipe/datagrid-column.pipe';
     TippyDirective,
     StreamDslComponent,
     DateFilterComponent,
-    DatagridColumnPipe
+    DatagridColumnPipe,
+    I18nPipe
   ],
   imports: [
     CommonModule,
@@ -128,7 +130,8 @@ import {DatagridColumnPipe} from './pipe/datagrid-column.pipe';
     TippyDirective,
     StreamDslComponent,
     DateFilterComponent,
-    DatagridColumnPipe
+    DatagridColumnPipe,
+    I18nPipe
   ]
 })
 export class SharedModule {}

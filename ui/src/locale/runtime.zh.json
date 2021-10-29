@@ -1,0 +1,52 @@
+{
+  "app.type": {
+    "source": "上游",
+    "sink": "下游",
+    "processor": "处理",
+    "app": "应用",
+    "task": "任务",
+    "all": "所有",
+    "other": "其他"
+  },
+  "stream.status": {
+    "undeployed": "未部署",
+    "deployed": "已部署",
+    "deploying": "部署中",
+    "error": "部署错误",
+    "failed": "部署失败",
+    "incomplete": "部署未完成",
+    "partial": "部分已部署",
+    "unknown": "未知"
+  },
+  "task.status": {
+    "complete": "已完成",
+    "success": "成功",
+    "error": "错误",
+    "running": "运行中",
+    "unknown": "未知"
+  },
+  "job.status": {
+    "completed": "已完成",
+    "error": "错误",
+    "failed": "失败",
+    "unknown": "未知"
+  },
+  "audit.action": {
+    "create": "新建",
+    "delete": "删除",
+    "deploy": "部署",
+    "rollback": "回滚",
+    "undeploy": "卸载",
+    "update": "更新",
+    "modify": "更新",
+    "login_success": "成功登录"
+  },
+  "audit.operation": {
+    "app_registration": "应用",
+    "app": "应用",
+    "schedule": "计划",
+    "stream": "流处理",
+    "task": "批处理",
+    "login": "登录"
+  }
+}

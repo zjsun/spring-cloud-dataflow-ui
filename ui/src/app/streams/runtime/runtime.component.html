@@ -25,7 +25,7 @@
             <div class="card-block">
               <h4 class="card-title">
                 {{ runtimeApp.deploymentId }}
-                <span class="{{ runtimeApp.stateColor() }}"> {{ runtimeApp.state }}</span>
+                <span class="{{ runtimeApp.stateColor() }}"> {{ runtimeApp.state | i18n: 'stream.status'}}</span>
               </h4>
               <p class="card-text">
                 {{ runtimeApp.appInstances.length }}

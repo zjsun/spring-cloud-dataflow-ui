@@ -17,7 +17,7 @@
   #datagrid
 >
   <clr-dg-action-bar *ngIf="grouped">
-    <button type="button" class="btn btn-sm btn-secondary" (click)="setMode(false)">Cancel</button>
+    <button type="button" class="btn btn-sm btn-secondary" (click)="setMode(false)" i18n="@@modal.cancel">Cancel</button>
     <button
       type="button"
       [disabled]="selected?.length === 0"
@@ -107,7 +107,7 @@
       ><span class="dsl-text dsl-truncate">{{ task.dslText }}</span></clr-dg-cell
     >
     <clr-dg-cell
-      ><span class="{{ task.labelStatusClass() }}">{{ task.status }}</span></clr-dg-cell
+      ><span class="{{ task.labelStatusClass() }}">{{ task.status |i18n: 'task.status'}}</span></clr-dg-cell
     >
     <clr-dg-action-overflow *ngIf="!grouped">
       <button class="action-item" (click)="details(task)" i18n="@@tasks.list.row.detail">Details</button>

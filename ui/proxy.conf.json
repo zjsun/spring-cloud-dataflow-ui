@@ -44,6 +44,11 @@
         "secure": false,
         "logLevel": "debug"
     },
+    "/static" : {
+      "target": "http://localhost:9393/",
+      "secure": false,
+      "logLevel": "debug"
+    },
     "/metrics" : {
         "target": "http://localhost:9393/",
         "secure": false,

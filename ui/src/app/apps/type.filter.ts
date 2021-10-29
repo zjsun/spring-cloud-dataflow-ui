@@ -7,27 +7,27 @@ import {App, ApplicationType} from '../shared/model/app.model';
   template: ` <div>
     <clr-radio-wrapper>
       <input type="radio" clrRadio (change)="change()" [(ngModel)]="val" value="all" name="options" />
-      <label>All type</label>
+      <label>{{'All' | i18n:'app.type'}}</label>
     </clr-radio-wrapper>
     <clr-radio-wrapper>
       <input type="radio" clrRadio (change)="change()" [(ngModel)]="val" value="source" name="options" />
-      <label>Source</label>
+      <label>{{'Source' | i18n:'app.type'}}</label>
     </clr-radio-wrapper>
     <clr-radio-wrapper>
       <input type="radio" clrRadio (change)="change()" [(ngModel)]="val" value="processor" name="options" />
-      <label>Processor</label>
+      <label>{{'Processor' | i18n:'app.type'}}</label>
     </clr-radio-wrapper>
     <clr-radio-wrapper>
       <input type="radio" clrRadio (change)="change()" [(ngModel)]="val" value="sink" name="options" />
-      <label>Sink</label>
+      <label>{{'Sink' | i18n:'app.type'}}</label>
     </clr-radio-wrapper>
     <clr-radio-wrapper>
       <input type="radio" clrRadio (change)="change()" [(ngModel)]="val" value="task" name="options" />
-      <label>Task</label>
+      <label>{{'Task' | i18n:'app.type'}}</label>
     </clr-radio-wrapper>
     <clr-radio-wrapper>
       <input type="radio" clrRadio (change)="change()" [(ngModel)]="val" value="app" name="options" />
-      <label>App</label>
+      <label>{{'App' | i18n:'app.type'}}</label>
     </clr-radio-wrapper>
   </div>`
 })
