@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {SecurityService} from '../../security/service/security.service';
-import {environment} from '../../../environments/environment';
+import { Component } from '@angular/core';
+import { SecurityService } from '../../security/service/security.service';
+import { LocaleService } from '../../shared/service/locale.service';
 
 @Component({
   selector: 'app-nav',
@@ -10,5 +10,6 @@ import {environment} from '../../../environments/environment';
 export class NavComponent {
   shouldProtect = this.securityService.shouldProtect();
 
-  constructor(private securityService: SecurityService) {}
+  constructor(private securityService: SecurityService, public locale: LocaleService) {
+  }
 }
