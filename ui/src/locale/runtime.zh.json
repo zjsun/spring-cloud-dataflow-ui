@@ -6,7 +6,8 @@
     "app": "应用",
     "task": "任务",
     "all": "所有",
-    "other": "其他"
+    "other": "其他",
+    "control nodes": "控制"
   },
   "stream.status": {
     "undeployed": "未部署",
