@@ -30,7 +30,7 @@ export class PropsComponent {
 
   submit(): void {
     if (!this.form.valid) {
-      this.notificationService.error('Invalid field(s)', 'Some field(s) are missing or invalid.');
+      this.notificationService.error($localize`:@@notify.error.app-add-props.title:Invalid field(s)`, $localize`:@@notify.error.app-add-props.body:Some field(s) are missing or invalid.`);
     } else {
       this.isImporting = true;
       this.appService
@@ -38,14 +38,14 @@ export class PropsComponent {
         // .pipe(takeUntil(this.ngUnsubscribe$), finalize(() => this.blockerService.unlock()))
         .subscribe(
           () => {
-            this.notificationService.success('Import application(s)', 'Application(s) Imported.');
+            this.notificationService.success($localize`:@@notify.success.app-add-props.title:Import application(s)`, $localize`:@@notify.success.app-add-props.body:Application(s) Imported.`);
             this.back();
           },
           () => {
             this.isImporting = false;
             this.notificationService.error(
-              'An error occurred',
-              'An error occurred while importing Apps. ' + 'Please check the server logs for more details.'
+              $localize`:@@notify.error.title:An error occurred`,
+              $localize`:@@notify.error.app-add-props.body2:An error occurred while importing Apps. Please check the server logs for more details.`
             );
           }
         );

@@ -147,6 +147,6 @@ export class KeyValueComponent implements ControlValueAccessor, OnChanges, OnIni
       return;
     }
     this.clipboardCopyService.executeCopy(this.form.get('textarea').value);
-    this.notificationService.success('Content copied', 'The content have been copied to your clipboard.');
+    this.notificationService.success($localize`:@@notify.key-value.title1:Content copied`, $localize`:@@notify.key-value.body1:The content have been copied to your clipboard.`);
   }
 }

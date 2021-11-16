@@ -26,8 +26,8 @@ export class StopComponent {
     this.taskService.executionStop(this.execution).subscribe(
       () => {
         this.notificationService.success(
-          'Stop task execution(s)',
-          `Request submitted to stop task execution "${this.execution.executionId}".`
+          $localize`:@@notify.execution-stop.title1:Stop task execution(s)`,
+          $localize`:@@notify.execution-stop.body1:Request submitted to stop task execution ` + `"${this.execution.executionId}".`
         );
         this.onStopped.emit(true);
         this.isOpen = false;
@@ -36,8 +36,8 @@ export class StopComponent {
       },
       error => {
         this.notificationService.error(
-          'An error occurred',
-          'An error occurred while stopping task executions. ' + 'Please check the server logs for more details.'
+          $localize`:@@notify.error.title:An error occurred`,
+          $localize`:@@notify.execution-stop.body2:An error occurred while stopping task executions. Please check the server logs for more details.`
         );
         this.isOpen = false;
         this.execution = null;

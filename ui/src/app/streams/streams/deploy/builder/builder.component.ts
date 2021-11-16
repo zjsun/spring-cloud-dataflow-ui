@@ -833,7 +833,7 @@ export class BuilderComponent implements OnInit, OnDestroy {
    */
   deployStream(): void {
     if (!this.isSubmittable(this.refBuilder)) {
-      this.notificationService.error('An error occurred', 'Some field(s) are invalid.');
+      this.notificationService.error($localize`:@@notify.error.title:An error occurred`, $localize`:@@notify.app-deploy-builder.body1:Some field(s) are invalid.`);
     } else {
       this.deploy.emit(this.getProperties());
     }

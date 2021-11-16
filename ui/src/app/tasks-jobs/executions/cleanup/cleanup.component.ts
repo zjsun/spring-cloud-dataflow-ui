@@ -25,13 +25,14 @@ export class CleanupComponent {
     this.isRunning = true;
     this.taskService.executionsClean(this.executions).subscribe(
       data => {
-        this.notificationService.success('Clean up task execution(s)', `${data.length} task execution(s) cleaned up.`);
+        this.notificationService.success($localize`:@@notify.execution-cleanup.title1:Clean up task execution(s)`,
+          `${data.length}` + $localize`:@@notify.execution-cleanup.body1: task execution(s) cleaned up.`);
         this.onCleaned.emit(data);
         this.isOpen = false;
         this.executions = null;
       },
       error => {
-        this.notificationService.error('An error occurred', error);
+        this.notificationService.error($localize`:@@notify.error.title:An error occurred`, error);
         this.isOpen = false;
         this.executions = null;
       }

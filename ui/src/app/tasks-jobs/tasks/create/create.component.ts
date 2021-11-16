@@ -56,12 +56,13 @@ export class CreateComponent implements OnInit {
       // .pipe(takeUntil(this.ngUnsubscribe$), finalize(() => this.blockerService.unlock()))
       .subscribe(
         () => {
-          this.notificationService.success('Task creation', 'Task Definition created for ' + this.taskName.value);
+          this.notificationService.success($localize`:@@notify.task-create.title1:Task creation`,
+            $localize`:@@notify.task-create.body1:Task Definition created for ` + this.taskName.value);
           this.back();
         },
         error => {
           this.isCreating = false;
-          this.notificationService.error('An error occurred', error);
+          this.notificationService.error($localize`:@@notify.error.title:An error occurred`, error);
         }
       );
     // }
@@ -93,7 +94,7 @@ export class CreateComponent implements OnInit {
 
   createTask(): void {
     if (!this.flo.dsl || !this.flo.dsl.trim()) {
-      this.notificationService.error('An error occurred', 'Please, enter a valid task.');
+      this.notificationService.error($localize`:@@notify.error.title:An error occurred`, $localize`:@@notify.task-create.body2:Please, enter a valid task.`);
       return;
     }
     this.taskName.setValue('');

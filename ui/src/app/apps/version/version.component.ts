@@ -30,7 +30,7 @@ export class VersionComponent {
         this.loading = false;
       },
       error => {
-        this.notificationService.error('An error occurred', error);
+        this.notificationService.error($localize`:@@notify.error.title:An error occurred`, error);
         this.isOpen = false;
       }
     );
@@ -50,8 +50,8 @@ export class VersionComponent {
     this.appService.unregisterApp(this.selected).subscribe(
       () => {
         this.notificationService.success(
-          'Unregister version',
-          'Successfully removed version "' + this.selected.version + '".'
+          $localize`:@@notify.app-version.title1:Unregister version`,
+          $localize`:@@notify.app-version.body1:Successfully removed version "` + this.selected.version + '".'
         );
         this.open(this.versions[0].name, this.versions[0].type);
         this.selected = null;
@@ -61,7 +61,7 @@ export class VersionComponent {
         this.onChange.emit(true);
       },
       error => {
-        this.notificationService.error('An error occurred', error);
+        this.notificationService.error($localize`:@@notify.error.title:An error occurred`, error);
         this.isOpen = false;
         this.selected = null;
       }
@@ -72,7 +72,7 @@ export class VersionComponent {
     this.appService.defaultVersion(this.selected).subscribe(
       () => {
         this.notificationService.success(
-          'Default version',
+          $localize`:@@notify.app-version.title2:Default version`,
           `The version <strong>${this.selected.version}</strong> ` +
             `is now the default version of the application <strong>${this.versions[0].name}</strong> (${this.versions[0].type}).`
         );
@@ -81,7 +81,7 @@ export class VersionComponent {
         this.onChange.emit(true);
       },
       error => {
-        this.notificationService.error('An error occurred', error);
+        this.notificationService.error($localize`:@@notify.error.title:An error occurred`, error);
         this.isOpen = false;
         this.selected = null;
       }

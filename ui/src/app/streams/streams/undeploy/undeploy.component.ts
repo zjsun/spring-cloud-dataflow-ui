@@ -27,11 +27,12 @@ export class UndeployComponent {
       data => {
         if (data.length === 1) {
           this.notificationService.success(
-            'Undeploy stream',
-            'Successfully undeploy stream "' + this.streams[0].name + '".'
+            $localize`:@@notify.stream-rollback-un.title1:Undeploy stream`,
+            $localize`:@@notify.stream-rollback-un.body1:Successfully undeploy stream "` + this.streams[0].name + '".'
           );
         } else {
-          this.notificationService.success('Undeploy streams', `${data.length} stream(s) undeployed.`);
+          this.notificationService.success($localize`:@@notify.stream-rollback-un.title2:Undeploy streams`,
+            `${data.length}` + $localize`:@@notify.stream-rollback-un.body2: stream(s) undeployed.`);
         }
         this.onUndeployed.emit(data);
         this.isOpen = false;
@@ -40,8 +41,8 @@ export class UndeployComponent {
       },
       error => {
         this.notificationService.error(
-          'An error occurred',
-          'An error occurred while undeploying Streams. ' + 'Please check the server logs for more details.'
+          $localize`:@@notify.error.title:An error occurred`,
+          $localize`:@@notify.stream-rollback-un.body3:An error occurred while undeploying Streams. Please check the server logs for more details.`
         );
         this.isOpen = false;
         this.isRunning = false;

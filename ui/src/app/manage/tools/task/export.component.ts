@@ -63,11 +63,11 @@ export class TaskExportComponent {
 
   run(): void {
     if (this.selected.length === 0) {
-      this.notificationService.error('No task selected', 'Please, select task(s) to export.');
+      this.notificationService.error($localize`:@@notify.app-task-export.title1:No task selected`, $localize`:@@notify.app-task-export.body1:Please, select task(s) to export.`);
     } else {
       this.isRunning = true;
       this.importExportService.tasksExport(this.selected).subscribe(() => {
-        this.notificationService.success('Task(s) export', 'Task(s) has been exported.');
+        this.notificationService.success($localize`:@@notify.app-task-export.title2:Task(s) export`, $localize`:@@notify.app-task-export.body2:Task(s) has been exported.`);
         this.isOpen = false;
       });
     }

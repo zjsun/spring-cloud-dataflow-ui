@@ -1,4 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
+import { $localize } from '@angular/localize/init';
 import {ClrWizard} from '@clr/angular';
 import {delay, map, mergeMap} from 'rxjs/operators';
 import {Observable, of} from 'rxjs';
@@ -119,7 +120,7 @@ export class TaskCreateComponent {
 
   execute(operations: Array<Observable<any>>): void {
     if (!operations || operations.length === 0) {
-      this.notificationService.success('Creation success', 'The tasks have been created.');
+      this.notificationService.success($localize`:@@notify.task-create.title1:Creation success`, $localize`:@@notify.task-create.body1:The tasks have been created.`);
       this.isOpen = false;
       return;
     }

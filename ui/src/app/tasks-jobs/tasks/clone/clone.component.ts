@@ -73,20 +73,22 @@ export class CloneComponent {
   done(success: number, error: number): void {
     if (success > 0) {
       if (error > 0) {
-        this.notificationService.success('Task(s) clone', 'Task(s) have been cloned partially');
+        this.notificationService.success($localize`:@@notify.task-clone.title1:Task(s) clone`,
+          $localize`:@@notify.task-clone.body1:Task(s) have been cloned partially`);
       } else {
-        this.notificationService.success('Task(s) clone', 'Task(s) have been cloned successfully');
+        this.notificationService.success($localize`:@@notify.task-clone.title2:Task(s) clone`,
+          $localize`:@@notify.task-clone.body2:Task(s) have been cloned successfully`);
       }
       this.onCloned.emit(true);
       this.cancel();
     } else {
-      this.notificationService.error('Error(s) occurred', 'No task(s) cloned.');
+      this.notificationService.error($localize`:@@notify.task-clone.title3:Error(s) occurred`, $localize`:@@notify.task-clone.body3:No task(s) cloned.`);
     }
   }
 
   submit(): void {
     if (this.form.invalid) {
-      this.notificationService.error('Invalid field', 'Some field(s) are missing or invalid.');
+      this.notificationService.error($localize`:@@notify.task-clone.title4:Invalid field`, $localize`:@@notify.task-clone.body4:Some field(s) are missing or invalid.`);
       return;
     }
     const requests = this.tasks.map(task => {
@@ -110,7 +112,7 @@ export class CloneComponent {
         err => {
           count++;
           error++;
-          this.notificationService.error('Error(s) occurred', err);
+          this.notificationService.error($localize`:@@notify.task-clone.title5:Error(s) occurred`, err);
           if (count === requests.length) {
             this.done(success, error);
           }

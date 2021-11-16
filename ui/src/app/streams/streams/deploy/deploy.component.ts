@@ -72,7 +72,7 @@ export class DeployComponent implements OnInit, OnDestroy {
           this.loading = false;
         },
         error => {
-          this.notificationService.error('An error occurred', error);
+          this.notificationService.error($localize`:@@notify.error.title:An error occurred`, error);
           if (HttpError.is404(error)) {
             this.router.navigate(['/streams/definitions']);
           }
@@ -103,7 +103,7 @@ export class DeployComponent implements OnInit, OnDestroy {
   runExport(value: Array<string>): void {
     this.update(value);
     if (this.properties.length === 0) {
-      this.notificationService.error('An error occured', 'There are no properties to export.');
+      this.notificationService.error($localize`:@@notify.error.title:An error occured`, $localize`:@@notify.stream-deploy.body1:There are no properties to export.`);
     } else {
       const propertiesText = this.properties.join('\n');
       const date = DateTime.local().toFormat('yyyy-MM-HHmmss');
@@ -121,11 +121,11 @@ export class DeployComponent implements OnInit, OnDestroy {
   runCopy(value: Array<string>): void {
     this.update(value);
     if (this.properties.length === 0) {
-      this.notificationService.error('An error occured', 'There are no properties to copy.');
+      this.notificationService.error($localize`:@@notify.error.title:An error occured`, $localize`:@@notify.stream-deploy.body2:There are no properties to copy.`);
     } else {
       const propertiesText = this.properties.join('\n');
       this.clipboardCopyService.executeCopy(propertiesText);
-      this.notificationService.success('Copy to clipboard', 'The properties have been copied to your clipboard.');
+      this.notificationService.success($localize`:@@notify.stream-deploy.title3:Copy to clipboard`, $localize`:@@notify.stream-deploy.body3:The properties have been copied to your clipboard.`);
     }
   }
 
@@ -144,7 +144,7 @@ export class DeployComponent implements OnInit, OnDestroy {
       if (this.ignoreProperties.indexOf(val) === -1) {
         const arr = val.split(/=(.*)/);
         if (arr.length !== 3) {
-          this.loggerService.error('Split line property', val);
+          this.loggerService.error(`Split line property`, val);
         } else {
           // Workaround sensitive property: ignored property
           if (arr[1] === "'******'" || arr[1] === '******') {
@@ -169,13 +169,13 @@ export class DeployComponent implements OnInit, OnDestroy {
         () => {
           if (isDeployed) {
             this.notificationService.success(
-              'Deploy success',
-              `Successfully updated stream definition "${this.stream.name}"`
+              $localize`:@@notify.stream-deploy.title5:Deploy success`,
+              $localize`:@@notify.stream-deploy.body5:Successfully updated stream definition   ` + `"${this.stream.name}"`
             );
           } else {
             this.notificationService.success(
-              'Deploy success',
-              `Successfully deployed stream definition "${this.stream.name}"`
+              $localize`:@@notify.stream-deploy.title6:Deploy success`,
+              $localize`:@@notify.stream-deploy.body6:Successfully deployed stream definition ` + `"${this.stream.name}"`
             );
           }
           this.router.navigate(['streams/list']);
@@ -184,8 +184,8 @@ export class DeployComponent implements OnInit, OnDestroy {
           this.isDeploying = false;
           const err = error.message ? error.message : error.toString();
           this.notificationService.error(
-            'An error occurred',
-            err ? err : 'An error occurred during the stream deployment update.'
+            $localize`:@@notify.error.title:An error occurred`,
+            err ? err : $localize`:@@notify.stream-deploy.body7:An error occurred during the stream deployment update.`
           );
         }
       );

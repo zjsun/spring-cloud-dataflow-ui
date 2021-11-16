@@ -30,7 +30,7 @@ export class UriComponent {
 
   submit(): void {
     if (!this.form.valid) {
-      this.notificationService.error('Invalid field', 'Some field(s) are missing or invalid.');
+      this.notificationService.error($localize`:@@notify.app-add-uri.title1:Invalid field`, $localize`:@@notify.app-add-uri.body1:Some field(s) are missing or invalid.`);
     } else {
       this.isImporting = true;
       this.appService
@@ -38,12 +38,12 @@ export class UriComponent {
         // .pipe(takeUntil(this.ngUnsubscribe$), finalize(() => this.blockerService.unlock()))
         .subscribe(
           data => {
-            this.notificationService.success('Import application(s)', 'Application(s) Imported.');
+            this.notificationService.success($localize`:@@notify.app-add-uri.title2:Import application(s)`, $localize`:@@notify.app-add-uri.body2:Application(s) Imported.`);
             this.back();
           },
           error => {
             this.isImporting = false;
-            this.notificationService.error('An error occurred', error);
+            this.notificationService.error($localize`:@@notify.error.title:An error occurred`, error);
           }
         );
     }

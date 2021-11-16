@@ -30,14 +30,14 @@ export class RollbackComponent {
     this.streamService.rollbackStream(this.history).subscribe(
       data => {
         this.notificationService.success(
-          'Rollback success',
-          `Successful stream rollback to version '${this.history.version}'`
+          $localize`:@@notify.stream-rollback.title1:Rollback success`,
+          $localize`:@@notify.stream-rollback.body1:Successful stream rollback to version ` + `'${this.history.version}'`
         );
         this.onRollback.emit(true);
         this.close();
       },
       error => {
-        this.notificationService.error('An error occurred', error);
+        this.notificationService.error($localize`:@@notify.error.title:An error occurred`, error);
         this.isRunning = false;
       }
     );

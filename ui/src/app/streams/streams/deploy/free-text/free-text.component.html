@@ -32,9 +32,8 @@
             type="file"
             #propertiesFile
             (change)="fileChange($event)"
-            i18n="@@streams.deploy.freetext.form.import"
           />
-          Import a local file
+          <ng-container i18n="@@streams.deploy.freetext.form.import">Import a local file</ng-container>
         </button>
         <clr-tooltip-content clrPosition="top-right" clrSize="lg" *clrIfOpen>
           <span i18n="@@streams.deploy.freetext.form.import.file.tooltip">Please provide a text file containing properties. This will be used to populate the text area above.</span>

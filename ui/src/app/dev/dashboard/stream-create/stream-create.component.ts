@@ -1,4 +1,5 @@
 import {Component, ViewChild} from '@angular/core';
+import { $localize } from '@angular/localize/init';
 import {ClrWizard} from '@clr/angular';
 import {StreamService} from '../../../shared/api/stream.service';
 import {delay, map, mergeMap} from 'rxjs/operators';
@@ -130,7 +131,7 @@ export class StreamCreateComponent {
 
   execute(operations: Array<Observable<any>>): void {
     if (!operations || operations.length === 0) {
-      this.notificationService.success('Creation success', 'The streams have been created.');
+      this.notificationService.success($localize`:@@notify.scream-create.title1:Creation success`, $localize`:@@notify.scream-create.body1:The streams have been created.`);
       this.isOpen = false;
       return;
     }

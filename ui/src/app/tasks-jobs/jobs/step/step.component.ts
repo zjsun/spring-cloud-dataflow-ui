@@ -74,7 +74,7 @@ export class StepComponent implements OnInit {
           this.loading = false;
         },
         error => {
-          this.notificationService.error('An error occurred', error);
+          this.notificationService.error($localize`:@@notify.error.title:An error occurred`, error);
           if (HttpError.is404(error)) {
             this.router.navigateByUrl('/tasks-jobs/job-executions');
           }
@@ -92,7 +92,7 @@ export class StepComponent implements OnInit {
       },
       error => {
         this.loadingExecution = false;
-        this.notificationService.error('An error occurred', error);
+        this.notificationService.error($localize`:@@notify.error.title:An error occurred`, error);
       }
     );
   }
@@ -144,7 +144,7 @@ export class StepComponent implements OnInit {
   }
 
   viewLog(): void {
-    this.logModal.open(`Log task execution ${this.taskExecution.executionId}`, this.taskExecution);
+    this.logModal.open($localize`:@@notify.execution-step.title1:Log task execution ` + `${this.taskExecution.executionId}`, this.taskExecution);
   }
 
   navigateTask(): void {

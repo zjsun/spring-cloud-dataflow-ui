@@ -137,6 +137,6 @@ describe('apps/register/register.component.ts', () => {
     fixture.detectChanges();
     fixture.debugElement.query(By.css('button[name=register]')).nativeElement.click();
     fixture.detectChanges();
-    expect(NotificationServiceMock.mock.errorNotification[0].title).toBe('An error occurred');
+    expect(NotificationServiceMock.mock.errorNotification[0].title).toBe($localize`:@@notify.error.title:An error occurred`);
   });
 });

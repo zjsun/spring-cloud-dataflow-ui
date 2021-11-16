@@ -72,7 +72,7 @@ describe('apps/apps.component.ts', () => {
     await fixture.whenStable();
     fixture.detectChanges();
     expect(navigate).toHaveBeenCalledWith('/apps');
-    expect(NotificationServiceMock.mock.errorNotification[0].title).toBe('An error occurred');
+    expect(NotificationServiceMock.mock.errorNotification[0].title).toBe($localize`:@@notify.error.title:An error occurred`);
     done();
   });
 

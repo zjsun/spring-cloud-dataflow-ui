@@ -205,11 +205,11 @@ export class CreateComponent implements OnInit {
 
   createStream(): void {
     if (!this.flo.dsl || !this.flo.dsl.trim()) {
-      this.notificationService.error('Invalid stream(s)', 'Please, enter one or more valid streams.');
+      this.notificationService.error($localize`:@@notify.stream-create.title1:Invalid stream(s)`, $localize`:@@notify.stream-create.body1:Please, enter one or more valid streams.`);
       return;
     }
     if (this.flo.isCreateStreamsDisabled) {
-      this.notificationService.error('Invalid stream(s)', 'Some field(s) are missing or invalid.');
+      this.notificationService.error($localize`:@@notify.stream-create.title2:Invalid stream(s)`, $localize`:@@notify.stream-create.body2:Some field(s) are missing or invalid.`);
       return;
     }
     this.form = new FormGroup({}, this.uniqueStreamNames());
@@ -240,7 +240,7 @@ export class CreateComponent implements OnInit {
               // this.confirm.emit(true);
               this.operationRunning = 'Creation completed';
               setTimeout(() => {
-                this.notificationService.success('Stream(s) creation', 'Stream(s) have been created successfully');
+                this.notificationService.success($localize`:@@notify.stream-create.title3:Stream(s) creation`, $localize`:@@notify.stream-create.body3:Stream(s) have been created successfully`);
                 this.router.navigate(['/streams/list']);
               }, PROGRESS_BAR_WAIT_TIME);
             } else {
@@ -262,11 +262,11 @@ export class CreateComponent implements OnInit {
             }, PROGRESS_BAR_WAIT_TIME);
             if (error._body && error._body.message) {
               this.notificationService.error(
-                'An error occurred',
+                $localize`:@@notify.error.title:An error occurred`,
                 `Problem creating stream '${def.name}': ${error._body.message}`
               );
             } else {
-              this.notificationService.error('An error occurred', `Failed to create stream '${def.name}'`);
+              this.notificationService.error($localize`:@@notify.error.title:An error occurred`, $localize`:@@notify.stream-create.body4:Failed to create stream `+`'${def.name}'`);
             }
           }
         );

@@ -57,7 +57,7 @@ export class ExecutionComponent implements OnInit {
           this.loading = false;
         },
         error => {
-          this.notificationService.error('An error occurred', error);
+          this.notificationService.error($localize`:@@notify.error.title:An error occurred`, error);
           if (HttpError.is404(error)) {
             this.router.navigateByUrl('/tasks-jobs/job-executions');
           }
@@ -75,7 +75,7 @@ export class ExecutionComponent implements OnInit {
       },
       error => {
         this.loadingExecution = false;
-        this.notificationService.error('An error occurred', error);
+        this.notificationService.error($localize`:@@notify.error.title:An error occurred`, error);
       }
     );
   }
@@ -133,10 +133,11 @@ export class ExecutionComponent implements OnInit {
   restartJob(): void {
     this.jobService.restart(this.execution).subscribe(
       () => {
-        this.notificationService.success('Restart job', `Successfully restarted job "${this.execution.name}"`);
+        this.notificationService.success($localize`:@@notify.execution-job.title1:Restart job`,
+          $localize`:@@notify.execution-job.body1:Successfully restarted job ` + `"${this.execution.name}"`);
       },
       error => {
-        this.notificationService.error('An error occurred', error);
+        this.notificationService.error($localize`:@@notify.error.title:An error occurred`, error);
       }
     );
   }
@@ -149,7 +150,7 @@ export class ExecutionComponent implements OnInit {
   }
 
   viewLog(): void {
-    this.logModal.open(`Log task execution ${this.taskExecution.executionId}`, this.taskExecution);
+    this.logModal.open($localize`:@@notify.execution-job.title2:Log task execution ` + `${this.taskExecution.executionId}`, this.taskExecution);
   }
 
   navigateTask(): void {
@@ -171,10 +172,11 @@ export class ExecutionComponent implements OnInit {
   stopJob(): void {
     this.jobService.stop(this.execution).subscribe(
       () => {
-        this.notificationService.success('Stop job', `Successfully stopped job "${this.execution.name}"`);
+        this.notificationService.success($localize`:@@notify.execution-job.title3:Stop job`,
+          $localize`:@@notify.execution-job.body3:Successfully stopped job ` + `"${this.execution.name}"`);
       },
       error => {
-        this.notificationService.error('An error occurred', error);
+        this.notificationService.error($localize`:@@notify.error.title:An error occurred`, error);
       }
     );
   }

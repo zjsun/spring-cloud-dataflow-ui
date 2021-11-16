@@ -52,7 +52,7 @@ export class ExecutionComponent implements OnInit {
           this.getTask();
         },
         error => {
-          this.notificationService.error('An error occurred', error);
+          this.notificationService.error($localize`:@@notify.error.title:An error occurred`, error);
           if (HttpError.is404(error)) {
             this.router.navigateByUrl('/tasks-jobs/task-executions');
           }
@@ -122,7 +122,7 @@ export class ExecutionComponent implements OnInit {
   }
 
   log(): void {
-    this.logModal.open(`Log task execution ${this.execution.executionId}`, this.execution);
+    this.logModal.open($localize`:@@notify.execution.title1:Log task execution ` + `${this.execution.executionId}`, this.execution);
   }
 
   stop(): void {

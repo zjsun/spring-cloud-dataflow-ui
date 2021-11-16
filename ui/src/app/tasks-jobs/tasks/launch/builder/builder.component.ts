@@ -991,7 +991,7 @@ export class BuilderComponent implements OnInit, OnDestroy {
       this.changeDetector.markForCheck();
     });
     this.groupsPropertiesModal.setData(groupPropertiesSources);
-    this.groupsPropertiesModal.title = `Deployment properties for platform`;
+    this.groupsPropertiesModal.title = $localize`:@@notify.task-launch-builder.title1:Deployment properties for platform`;
     this.groupsPropertiesModal.isOpen = true;
   }
 
@@ -1031,7 +1031,7 @@ export class BuilderComponent implements OnInit, OnDestroy {
     });
 
     this.ctrPropertiesModal.setData(propertiesSource);
-    this.ctrPropertiesModal.title = `Ctr properties`;
+    this.ctrPropertiesModal.title = $localize`:@@notify.task-launch-builder.title2:Ctr properties`;
     this.ctrPropertiesModal.isOpen = true;
   }
 
@@ -1112,7 +1112,8 @@ export class BuilderComponent implements OnInit, OnDestroy {
    */
   launchTask() {
     if (!this.isSubmittable(this.refBuilder)) {
-      this.notificationService.error('An error occurred', 'Some field(s) are invalid.');
+      this.notificationService.error($localize`:@@notify.error.title:An error occurred`,
+        $localize`:@@notify.task-launch-builder.body3:Some field(s) are invalid.`);
     } else {
       this.launch.emit({props: this.getProperties(), args: this.getArguments()});
     }

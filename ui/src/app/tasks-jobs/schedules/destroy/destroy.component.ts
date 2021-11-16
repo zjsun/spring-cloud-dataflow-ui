@@ -32,15 +32,16 @@ export class DestroyComponent {
       )
       .subscribe(
         data => {
-          this.notificationService.success('Delete schedule(s)', `${data.length} schedule(s) deleted.`);
+          this.notificationService.success($localize`:@@notify.schedule-destroy.title1:Delete schedule(s)`,
+            `${data.length}` + $localize`:@@notify.schedule-destroy.body1: schedule(s) deleted.`);
           this.onDestroyed.emit(data);
           this.isOpen = false;
           this.schedules = null;
         },
         error => {
           this.notificationService.error(
-            'An error occurred',
-            'An error occurred while deleting schedule(s). ' + 'Please check the server logs for more details.'
+            $localize`:@@notify.error.title:An error occurred`,
+            $localize`:@@notify.schedule-destroy.body2:An error occurred while deleting schedule(s). Please check the server logs for more details.`
           );
           this.isOpen = false;
           this.schedules = null;

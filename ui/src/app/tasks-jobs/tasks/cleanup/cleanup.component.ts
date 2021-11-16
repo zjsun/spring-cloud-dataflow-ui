@@ -28,13 +28,14 @@ export class CleanupComponent {
         this.count = count;
         this.loading = false;
         if (this.count.all === 0) {
-          this.notificationService.warning('No execution', 'There is no execution for this task.');
+          this.notificationService.warning($localize`:@@notify.task-cleanup.title1:No execution`,
+            $localize`:@@notify.task-cleanup.body1:There is no execution for this task.`);
           this.isOpen = false;
           this.task = null;
         }
       },
       (error: AppError) => {
-        this.notificationService.error('An error occurred', error.getMessage());
+        this.notificationService.error($localize`:@@notify.error.title:An error occurred`, error.getMessage());
         this.isOpen = false;
       }
     );
@@ -55,7 +56,7 @@ export class CleanupComponent {
         this.task = null;
       },
       error => {
-        this.notificationService.error('An error occurred', error);
+        this.notificationService.error($localize`:@@notify.error.title:An error occurred`, error);
         this.isOpen = false;
         this.task = null;
       }

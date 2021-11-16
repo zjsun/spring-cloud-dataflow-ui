@@ -25,15 +25,16 @@ export class DestroyComponent {
     this.isRunning = true;
     this.taskService.destroyTasks(this.tasks).subscribe(
       data => {
-        this.notificationService.success('Destroy task(s)', `${data.length} task definition(s) destroyed.`);
+        this.notificationService.success($localize`:@@notify.task-destroy.title1:Destroy task(s)`,
+          `${data.length}` + $localize`:@@notify.task-destroy.body1: task definition(s) destroyed.`);
         this.onDestroyed.emit(data);
         this.isOpen = false;
         this.tasks = null;
       },
       error => {
         this.notificationService.error(
-          'An error occurred',
-          'An error occurred while destroying tasks. ' + 'Please check the server logs for more details.'
+          $localize`:@@notify.error.title:An error occurred`,
+          $localize`:@@notify.task-destroy.body2:An error occurred while destroying tasks. Please check the server logs for more details.`
         );
         this.isOpen = false;
         this.tasks = null;

@@ -23,7 +23,7 @@ export class CleanupComponent {
       this.count = count;
       this.loading = false;
       if (this.count.all === 0) {
-        this.notificationService.warning('No execution', 'There is no execution.');
+        this.notificationService.warning($localize`:@@notify.app-tools-cleanup.title1:No execution`, $localize`:@@notify.app-tools-cleanup.body1:There is no execution.`);
         this.isOpen = false;
       }
     });
@@ -36,14 +36,14 @@ export class CleanupComponent {
     this.taskService.taskExecutionsClean(null, this.status === 'completed').subscribe(
       () => {
         this.notificationService.success(
-          'Clean up execution(s)',
-          `${this.status === 'completed' ? this.count.completed : this.count.all} execution(s) cleaned up.`
+          $localize`:@@notify.app-tools-cleanup.title2:Clean up execution(s)`,
+          `${this.status === 'completed' ? this.count.completed : this.count.all}` + $localize`:@@notify.app-tools-cleanup.body2: execution(s) cleaned up.`
         );
         this.onCleaned.emit(this.count);
         this.isOpen = false;
       },
       error => {
-        this.notificationService.error('An error occurred', error);
+        this.notificationService.error($localize`:@@notify.error.title:An error occurred`, error);
         this.isOpen = false;
       }
     );

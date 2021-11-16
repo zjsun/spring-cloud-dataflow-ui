@@ -1,4 +1,5 @@
 import {Component, OnDestroy, ViewChild} from '@angular/core';
+import { $localize } from '@angular/localize/init';
 import {AppService} from '../../shared/api/app.service';
 import {forkJoin, Observable, Subscription} from 'rxjs';
 import {NotificationService} from '../../shared/service/notification.service';
@@ -33,7 +34,7 @@ export class DashboardComponent implements OnDestroy {
     this.processing = true;
     this.operationSubscription = this.getOperation(operation).subscribe(() => {
       this.processing = false;
-      this.notificationService.success('Operation success', 'The operation has been processed with success.');
+      this.notificationService.success($localize`:@@notify.app-dashboard.title1:Operation success`, $localize`:@@notify.app-dashboard.body1:The operation has been processed with success.`);
     });
   }
 

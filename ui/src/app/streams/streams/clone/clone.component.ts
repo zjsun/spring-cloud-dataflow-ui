@@ -73,20 +73,20 @@ export class CloneComponent {
   done(success: number, error: number): void {
     if (success > 0) {
       if (error > 0) {
-        this.notificationService.success('Stream(s) clone', 'Stream(s) have been cloned partially');
+        this.notificationService.success($localize`:@@notify.stream-clone.title1:Stream(s) clone`, $localize`:@@notify.stream-clone.body1:Stream(s) have been cloned partially`);
       } else {
-        this.notificationService.success('Stream(s) clone', 'Stream(s) have been cloned successfully');
+        this.notificationService.success($localize`:@@notify.stream-clone.title2:Stream(s) clone`, $localize`:@@notify.stream-clone.body2:Stream(s) have been cloned successfully`);
       }
       this.onCloned.emit(true);
       this.cancel();
     } else {
-      this.notificationService.error('Error(s) occurred', 'No stream(s) cloned.');
+      this.notificationService.error($localize`:@@notify.stream-clone.title3:Error(s) occurred`, $localize`:@@notify.stream-clone.body3:No stream(s) cloned.`);
     }
   }
 
   submit(): void {
     if (this.form.invalid) {
-      this.notificationService.error('Invalid field', 'Some field(s) are missing or invalid.');
+      this.notificationService.error($localize`:@@notify.stream-clone.title4:Invalid field`, $localize`:@@notify.stream-clone.body4:Some field(s) are missing or invalid.`);
       return;
     }
     const requests = this.streams.map(stream => {
@@ -110,7 +110,7 @@ export class CloneComponent {
         err => {
           count++;
           error++;
-          this.notificationService.error('Error(s) occurred', err);
+          this.notificationService.error($localize`:@@notify.stream-clone.title5:Error(s) occurred`, err);
           if (count === requests.length) {
             this.done(success, error);
           }

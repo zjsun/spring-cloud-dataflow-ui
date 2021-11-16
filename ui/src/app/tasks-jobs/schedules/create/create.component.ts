@@ -41,7 +41,7 @@ export class CreateComponent implements OnInit {
             if (this.groupService.group(params.id)) {
               return forkJoin([...(this.groupService.group(params.id) as any)].map(id => this.taskService.getTask(id)));
             } else {
-              return throwError('Group selection not found.');
+              return throwError($localize`:@@notify.schedule-create.title1:Group selection not found.`);
             }
           } else {
             return forkJoin([this.taskService.getTask(params.id)]);
@@ -78,7 +78,7 @@ export class CreateComponent implements OnInit {
           this.loading = false;
         },
         error => {
-          this.notificationService.error('An error occurred', error);
+          this.notificationService.error($localize`:@@notify.error.title:An error occurred`, error);
           this.back();
         }
       );
@@ -124,7 +124,8 @@ export class CreateComponent implements OnInit {
 
   submit(): void {
     if (!this.form.valid) {
-      this.notificationService.error('Invalid field(s)', 'Some field(s) are missing or invalid.');
+      this.notificationService.error($localize`:@@notify.schedule-create.title2:Invalid field(s)`,
+        $localize`:@@notify.schedule-create.body2:Some field(s) are missing or invalid.`);
     } else {
       this.creating = true;
       const getClean = (val: string): Array<string> => val.split('\n').filter(a => a !== '');
@@ -147,19 +148,19 @@ export class CreateComponent implements OnInit {
         () => {
           if (scheduleParams.length === 1) {
             this.notificationService.success(
-              'Schedule creation',
-              `Successfully schedule creation "${scheduleParams[0].schedulerName}"`
+              $localize`:@@notify.schedule-create.title3:Schedule creation`,
+              $localize`:@@notify.schedule-create.body3:Successfully schedule creation ` + `"${scheduleParams[0].schedulerName}"`
             );
           } else {
             this.notificationService.success(
-              'Schedules creation',
-              `Successfully ${scheduleParams.length} schedules creation`
+              $localize`:@@notify.schedule-create.title4:Schedules creation`,
+              $localize`:@@notify.schedule-create.body41:Successfully ` + `${scheduleParams.length}` + $localize`:@@notify.schedule-create.body42: schedules creation`
             );
           }
           this.back();
         },
         error => {
-          this.notificationService.error('An error occurred', error);
+          this.notificationService.error($localize`:@@notify.error.title:An error occurred`, error);
           this.creating = false;
         }
       );

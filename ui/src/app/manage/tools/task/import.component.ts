@@ -151,7 +151,7 @@ export class TaskImportComponent {
 
   run(): void {
     if (!this.file) {
-      this.notificationService.error('Invalid file', 'Please, select a file.');
+      this.notificationService.error($localize`:@@notify.app-task-import.title1:Invalid file`, $localize`:@@notify.app-task-import.body1:Please, select a file.`);
       return;
     }
     const date = new Date().getTime();
@@ -168,7 +168,7 @@ export class TaskImportComponent {
       },
       () => {
         this.view = 'file';
-        this.notificationService.error('Invalid file', 'The file is not valid.');
+        this.notificationService.error($localize`:@@notify.app-task-import.title2:Invalid file`, $localize`:@@notify.app-task-import.body2:The file is not valid.`);
       }
     );
   }

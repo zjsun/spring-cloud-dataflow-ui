@@ -64,11 +64,11 @@ export class StreamExportComponent {
 
   run(): void {
     if (this.selected.length === 0) {
-      this.notificationService.error('No stream selected', 'Please, select stream(s) to export.');
+      this.notificationService.error($localize`:@@notify.app-stream-export.title1:No stream selected`, $localize`:@@notify.app-stream-export.body1:Please, select stream(s) to export.`);
     } else {
       this.isRunning = true;
       this.importExportService.streamsExport(this.selected).subscribe(() => {
-        this.notificationService.success('Stream(s) export', 'Stream(s) has been exported.');
+        this.notificationService.success($localize`:@@notify.app-stream-export.title2:Stream(s) export`, $localize`:@@notify.app-stream-export.body2:Stream(s) has been exported.`);
         this.isOpen = false;
       });
     }

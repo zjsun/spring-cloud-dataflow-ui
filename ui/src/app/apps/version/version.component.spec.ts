@@ -64,7 +64,7 @@ describe('apps/version/version.component.ts', () => {
     fixture.detectChanges();
     await fixture.whenStable();
     fixture.detectChanges();
-    expect(NotificationServiceMock.mock.errorNotification[0].title).toBe('An error occurred');
+    expect(NotificationServiceMock.mock.errorNotification[0].title).toBe($localize`:@@notify.error.title:An error occurred`);
     expect(component.isOpen).toBe(false);
     done();
   });
@@ -114,7 +114,7 @@ describe('apps/version/version.component.ts', () => {
     await fixture.whenStable();
     fixture.detectChanges();
     expect(component.isOpen).toBe(false);
-    expect(NotificationServiceMock.mock.errorNotification[0].title).toBe('An error occurred');
+    expect(NotificationServiceMock.mock.errorNotification[0].title).toBe($localize`:@@notify.error.title:An error occurred`);
     done();
   });
 
@@ -162,7 +162,7 @@ describe('apps/version/version.component.ts', () => {
     await fixture.whenStable();
     fixture.detectChanges();
     expect(component.isOpen).toBe(false);
-    expect(NotificationServiceMock.mock.errorNotification[0].title).toBe('An error occurred');
+    expect(NotificationServiceMock.mock.errorNotification[0].title).toBe($localize`:@@notify.error.title:An error occurred`);
     done();
   });
 });
