@@ -78,9 +78,7 @@
               </div>
               <div
                 class="clr-subtext"
-                *ngIf="
-                  getControl(def.index.toString()).errors && getControl(def.index.toString()).errors.uniqueResource
-                "
+                *ngIf=" getControl(def.index.toString()).errors && getControl(def.index.toString()).errors.uniqueResource"
                 i18n="@@streams.create.modal.form.name.error.unique"
               >
                 Stream name is already taken!
@@ -103,7 +101,7 @@
           </div>
 
           <clr-control-container class="form-group">
-            <label [for]="def.index.toString() + '_desc'" i18n="@@streams.create.modal.form.description">Description</label>
+            <label [for]="def.index.toString() + '_desc'" class="clr-col-12 clr-col-md-2" i18n="@@streams.create.modal.form.description">Description</label>
             <input
               [id]="def.index.toString() + '_desc'"
               [name]="def.index.toString() + '_desc'"

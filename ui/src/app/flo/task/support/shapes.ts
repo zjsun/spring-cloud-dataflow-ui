@@ -120,14 +120,14 @@ export const TaskAppShape = joint.shapes.basic.Generic.extend({
           ry: NODE_ROUNDED_CORNER
         },
         '.options-handle': {
-          text: 'Options',
+          text: $localize`:@@flo.node.options:Options`,
           ref: '.box',
           refX: 0,
           refY: -5,
           yAlignment: 'bottom'
         },
         '.delete-handle': {
-          text: 'Delete',
+          text: $localize`:@@flo.node.delete:Delete`,
           ref: '.box',
           refX: '100%',
           refY: -5,
@@ -273,7 +273,7 @@ export const BatchSyncShape = joint.shapes.basic.Generic.extend({
           ref: '.box'
         },
         '.delete-handle': {
-          text: 'Delete',
+          text: $localize`:@@flo.node.delete:Delete`,
           ref: '.box',
           refX: '100%',
           refY: -5,

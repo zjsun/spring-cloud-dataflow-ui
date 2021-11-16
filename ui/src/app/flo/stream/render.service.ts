@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+import { I18nPipe } from '../../shared/pipe/i18n.pipe';
 import {
   NODE_ROUNDED_CORNER_PALETTE,
   TYPE_ICON_PADDING_PALETTE,
@@ -32,7 +33,7 @@ import {NodeHelper} from './node-helper.service';
 import {layout} from './support/layout';
 import {ViewUtils} from '../shared/support/view-utils';
 import {LoggerService} from '../../shared/service/logger.service';
-import {createPaletteGroupHeader} from '../shared/support/shared-shapes';
+import { createPaletteGroupHeader } from '../shared/support/shared-shapes';
 import {MessageRateComponent} from './message-rate/message-rate.component';
 import {InstanceDotComponent} from './instance-dot/instance-dot.component';
 import {StreamNodeComponent} from './node/stream-node.component';
@@ -41,7 +42,6 @@ import {PropertiesEditor} from './properties-editor.service';
 
 import * as _joint from 'jointjs';
 import * as _ from 'lodash';
-import {StreamPropertiesDialogComponent} from './properties/stream-properties-dialog.component';
 
 const joint: any = _joint;
 
@@ -64,10 +64,11 @@ export class RenderService implements Flo.Renderer {
   constructor(
     protected metamodelService: MetamodelService,
     protected nodeHelper: NodeHelper,
+    private i18n : I18nPipe,
     protected propertiesEditor?: PropertiesEditor,
     protected componentFactoryResolver?: ComponentFactoryResolver,
     protected injector?: Injector,
-    protected applicationRef?: ApplicationRef
+    protected applicationRef?: ApplicationRef,
   ) {}
 
   createNode(viewerDescriptor: Flo.ViewerDescriptor, metadata: Flo.ElementMetadata): dia.Element {
@@ -553,7 +554,7 @@ export class RenderService implements Flo.Renderer {
 
   getPaletteRenderer(): any {
     return {
-      createGroupHeader: createPaletteGroupHeader
+      createGroupHeader: createPaletteGroupHeader(this.i18n)
     };
   }
 }

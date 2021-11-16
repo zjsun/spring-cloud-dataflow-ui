@@ -234,7 +234,7 @@ export class NodeHelper {
   createHandles(node: dia.Element, metadata: Flo.ElementMetadata): void {
     if (!metadata || SharedUtils.isUnresolvedMetadata(metadata)) {
       node.attr('.delete-handle', {
-        text: 'Delete',
+        text: $localize`:@@flo.node.delete:Delete`,
         ref: '.box',
         refX: '50%',
         refY: -HANDLE_SHAPE_SPACING,
@@ -243,7 +243,7 @@ export class NodeHelper {
       });
     } else {
       node.attr('.options-handle', {
-        text: 'Options',
+        text: $localize`:@@flo.node.options:Options`,
         ref: '.box',
         refX: '50%',
         refX2: -BETWEEN_HANDLE_SPACING,
@@ -260,7 +260,7 @@ export class NodeHelper {
         xAlignment: 'middle'
       });
       node.attr('.delete-handle', {
-        text: 'Delete',
+        text: $localize`:@@flo.node.delete:Delete`,
         ref: '.box',
         refX: '50%',
         refX2: BETWEEN_HANDLE_SPACING,

@@ -2,6 +2,7 @@ import {dia} from 'jointjs';
 import * as _joint from 'jointjs';
 
 import {loadShapes} from 'spring-flo';
+import { I18nPipe } from '../../../shared/pipe/i18n.pipe';
 
 const joint: any = _joint;
 const g = joint.g;
@@ -151,27 +152,29 @@ export function loadSharedShapes(): void {
   });
 }
 
-export function createPaletteGroupHeader(title: string, isOpen: boolean): any {
-  const group = new joint.shapes.flo.DataflowPaletteGroupHeader();
-  group.attr('.group-label/text', title.toUpperCase());
-  // Add CSS class to rectangle 'group-label-bg'. If class is not set then it is 'group-label-bg'
-  group.attr(
-    '.group-label-bg/class',
-    `${group.attr('.group-label-bg/class') || 'group-label-bg'} ${title.replace(' ', '-')}`
-  );
-  group.attr('.collapse-handle/xlink:href', isOpen ? 'assets/img/chevron-down.svg' : 'assets/img/chevron-left.svg');
-  group.attr(
-    '.collapse-handle2/xlink:href',
-    isOpen ? 'assets/img/chevron-down-white.svg' : 'assets/img/chevron-left-white.svg'
-  );
-  group.on('change:isOpen', (cell, newValue) => {
-    group.attr('.collapse-handle/xlink:href', newValue ? 'assets/img/chevron-down.svg' : 'assets/img/chevron-left.svg');
+export function createPaletteGroupHeader(i18n: I18nPipe) {
+  return (title: string, isOpen: boolean): any => {
+    const group = new joint.shapes.flo.DataflowPaletteGroupHeader();
+    group.attr('.group-label/text', i18n.transform(title.toUpperCase(), 'app.type'));
+    // Add CSS class to rectangle 'group-label-bg'. If class is not set then it is 'group-label-bg'
+    group.attr(
+      '.group-label-bg/class',
+      `${group.attr('.group-label-bg/class') || 'group-label-bg'} ${title.replace(' ', '-')}`
+    );
+    group.attr('.collapse-handle/xlink:href', isOpen ? 'assets/img/chevron-down.svg' : 'assets/img/chevron-left.svg');
     group.attr(
       '.collapse-handle2/xlink:href',
-      newValue ? 'assets/img/chevron-down-white.svg' : 'assets/img/chevron-left-white.svg'
+      isOpen ? 'assets/img/chevron-down-white.svg' : 'assets/img/chevron-left-white.svg'
     );
-  });
-  return group;
+    group.on('change:isOpen', (cell, newValue) => {
+      group.attr('.collapse-handle/xlink:href', newValue ? 'assets/img/chevron-down.svg' : 'assets/img/chevron-left.svg');
+      group.attr(
+        '.collapse-handle2/xlink:href',
+        newValue ? 'assets/img/chevron-down-white.svg' : 'assets/img/chevron-left-white.svg'
+      );
+    });
+    return group;
+  };
 }
 
 export function shiftGraphHorizontallyOnPaper(paper: dia.Paper, offset: number): void {

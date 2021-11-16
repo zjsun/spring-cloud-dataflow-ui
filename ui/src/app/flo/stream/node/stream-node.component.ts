@@ -33,4 +33,12 @@ export class StreamNodeComponent extends NodeComponent {
   showOptions(): void {
     this.propertiesEditor.showForNode(<dia.Element>this.view.model, this.paper.model);
   }
+
+  get inputPortText(): string {
+    return $localize`:@@flo.input-port:Input Port`;
+  }
+
+  get outputPortText(): string {
+    return $localize`:@@flo.output-port:Output Port`;
+  }
 }

@@ -2,6 +2,7 @@ import {ApplicationRef, ComponentFactoryResolver, ComponentRef, Injectable, Inje
 import {Constants, Flo} from 'spring-flo';
 import {dia} from 'jointjs';
 import {defaultsDeep} from 'lodash';
+import { I18nPipe } from '../../shared/pipe/i18n.pipe';
 import {MetamodelService} from './metamodel.service';
 import {
   TaskAppShape,
@@ -24,7 +25,7 @@ import {TaskGraphPropertiesSource} from './properties/task-properties-source';
 import {ElementComponent} from '../shared/support/shape-component';
 import {ViewUtils} from '../shared/support/view-utils';
 import {LoggerService} from '../../shared/service/logger.service';
-import {createPaletteGroupHeader} from '../shared/support/shared-shapes';
+import { createPaletteGroupHeader } from '../shared/support/shared-shapes';
 import {App, ApplicationType} from '../../shared/model/app.model';
 import {ModalService} from '../../shared/service/modal.service';
 
@@ -50,6 +51,7 @@ const SYNC_CANVAS_SIZE = {width: 100, height: 40};
 export class RenderService implements Flo.Renderer {
   constructor(
     private metamodelService: MetamodelService,
+    private i18n: I18nPipe,
     private modalService?: ModalService,
     private componentFactoryResolver?: ComponentFactoryResolver,
     private injector?: Injector,
@@ -397,7 +399,7 @@ export class RenderService implements Flo.Renderer {
 
   getPaletteRenderer(): any {
     return {
-      createGroupHeader: createPaletteGroupHeader
+      createGroupHeader: createPaletteGroupHeader(this.i18n)
     };
   }
 }

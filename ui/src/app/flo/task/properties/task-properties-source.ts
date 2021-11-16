@@ -19,7 +19,7 @@ export class TaskGraphPropertiesSource extends GraphNodePropertiesSource {
         defaultValue: this.cell.prop('metadata/name'),
         attr: 'node-label',
         value: this.cell.attr('node-label'),
-        description: 'Label of the task',
+        description: $localize`:@@flo.node.task.label:Label of the task`,
         isSemantic: false
       });
     }

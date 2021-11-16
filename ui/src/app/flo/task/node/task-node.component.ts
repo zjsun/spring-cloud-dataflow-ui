@@ -39,4 +39,12 @@ export class TaskNodeComponent extends NodeComponent {
     modal.title = `Properties for ${element.prop('metadata/name').toUpperCase()}`;
     modal.setData(new TaskGraphPropertiesSource(element));
   }
+
+  get inputPortText(): string {
+    return $localize`:@@flo.input-port:Input Port`;
+  }
+
+  get outputPortText(): string {
+    return $localize`:@@flo.output-port:Output Port`;
+  }
 }

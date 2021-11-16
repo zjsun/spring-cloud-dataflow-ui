@@ -79,7 +79,7 @@
     <svg:g
       class="input-port"
       tippy
-      [tippyOptions]="{content: 'Input Port', appendTo: docBody(), delay: 300}"
+      [tippyOptions]="{content: inputPortText, appendTo: docBody(), delay: 300}"
       [attr.disabled]="!isCanvas() || isDisabled ? '' : null"
     >
       <svg:circle class="port-outer-circle-input" />
@@ -90,7 +90,7 @@
     <svg:g
       class="output-port"
       tippy
-      [tippyOptions]="{content: 'Output Port', appendTo: docBody(), delay: 300}"
+      [tippyOptions]="{content: outputPortText, appendTo: docBody(), delay: 300}"
       [attr.disabled]="!isCanvas() || isDisabled ? '' : null"
     >
       <svg:circle class="port-outer-circle-output" />
@@ -134,7 +134,7 @@
     <svg:g
       class="input-port"
       tippy
-      [tippyOptions]="{content: 'Input Port', appendTo: docBody(), delay: 300}"
+      [tippyOptions]="{content: inputPortText, appendTo: docBody(), delay: 300}"
       [attr.disabled]="!isCanvas() || isDisabled ? '' : null"
     >
       <svg:circle class="port-outer-circle-input" />
@@ -145,7 +145,7 @@
     <svg:g
       class="output-port"
       tippy
-      [tippyOptions]="{content: 'Output Port', appendTo: docBody(), delay: 300}"
+      [tippyOptions]="{content: outputPortText, appendTo: docBody(), delay: 300}"
       [attr.disabled]="!isCanvas() || isDisabled ? '' : null"
     >
       <svg:circle class="port-outer-circle-output" />
