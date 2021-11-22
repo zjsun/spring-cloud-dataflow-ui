@@ -10,8 +10,8 @@
 	<description>This application provides the Dashboard application of Spring Cloud Data Flow.</description>
 	<url>https://cloud.spring.io/spring-cloud-dataflow/</url>
 
-    <!-- datav -->
     <properties>
+		<!-- datav -->
         <skipTests>true</skipTests>
         <maven.javadoc.skip>true</maven.javadoc.skip>
         <checkstyle.skip>true</checkstyle.skip>
