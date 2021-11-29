@@ -48,7 +48,7 @@
         <li *ngIf="about.security.username">
           <strong i18n="@@about.security.username">Username: </strong> {{ about.security.username || 'N/A' }}
         </li>
-        <li *ngIf="about.security.roles?.length > 0">
+        <li *ngIf="locale.pub">
           <strong i18n="@@about.security.roles">Roles: </strong>
           <ul>
             <li *ngFor="let role of about.security.roles">
