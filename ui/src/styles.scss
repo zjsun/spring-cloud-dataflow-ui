@@ -4,3 +4,7 @@
 @import 'app/flo/shared/flo.scss';
 @import '../node_modules/tippy.js/dist/tippy.css';
 @import './scss/styles';
+
+.stylefix  clr-icon {
+  color: unset !important;
+}
